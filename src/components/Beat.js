@@ -10,16 +10,17 @@ export default class Beat extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleClick(e) {
+    e.stopPropagation();
   	e.preventDefault();
   	this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex, this.props.id);
   }
 
   handleKeyDown(e) {
-    console.log("e.key: ", e.key);
-
     if(e.key === 'ArrowRight') {
       if(this.props.id < 3) {
         this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex, this.props.id+1)
@@ -37,6 +38,17 @@ export default class Beat extends React.Component {
       
   }
 
+  handleKeyPress(e) {
+    if(e.key === 'Enter') {
+      this.props.markBeatAsClicked(-1, -1, -1)
+    }
+  }
+
+  handleChange(e) {
+    e.preventDefault();
+    this.props.setChord(e.target.value, this.props.sectionId, this.props.measureIndex, this.props.id)
+  }
+
 
 
   render() {
@@ -44,7 +56,7 @@ export default class Beat extends React.Component {
     var thingToDisplay = this.props.chord
     if(this.props.clicked) {
       background = 'goldenrod'
-      thingToDisplay = <input ref={'input'} className={'chord-input'} type={'text'} onKeyDown={this.handleKeyDown} placeholder={this.props.chord} autoFocus/>
+      thingToDisplay = <input ref={'input'} className={'chord-input'} type={'text'} onKeyDown={this.handleKeyDown} onKeyPress={this.handleKeyPress} onChange={this.handleChange} placeholder={this.props.chord} autoFocus/>
     }
     return (
       <div onClick={this.handleClick} style={{

@@ -65,3 +65,28 @@ export const markBeatAsClicked = (sectionId, measureIndex, id) => {
 		id
 	}
 }
+
+export const setChord = (chord, sectionId, measureIndex, id) => {
+	return {
+		type: 'SET_CHORD',
+		chord,
+		sectionId,
+		measureIndex,
+		id
+	}
+}
+
+export const setSectionName = (name, sectionId) => {
+	return {
+		type: 'SET_SECTION_NAME',
+		name,
+		sectionId
+	}
+}
+
+export const markSectionAsClicked = (sectionId) => {
+	return {
+		type: 'MARK_SECTION_AS_CLICKED',
+		sectionId
+	}
+}

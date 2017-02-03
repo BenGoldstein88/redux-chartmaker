@@ -1,15 +1,53 @@
+// function measure(state = {}, action) {
+// 	switch(action.type) {
+// 		case 'ADD_MEASURE':
+// 			return Object.assign(state, {
+// 				id: action.id,
+// 				index: section.measures.length,
+// 				sectionId: action.sectionId,
+// 				numBeats: action.numBeats,
+// 				beats: [{chord: "", clicked: false, id: 0, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 1, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 2, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 3, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}],
+// 				clicked: false
+// 			})
+// 		case 'REMOVE_MEASURE':
+
+// 			return state
+// 		default:
+// 			return state
+// 	}
+// }
+ 
+function section(state = {}, action) {
+	switch(action.type) {
+		case 'ADD_SECTION':
+			return Object.assign(state, {
+				id: action.id,
+				name: action.name,
+				numMeasures: action.numMeasures,
+				measures: [],
+				clicked: false					
+			})
+
+		case 'REMOVE_SECTION':
+			return state
+
+		// case 'SET_SECTION_NAME':
+		// 	return Object.assign(state, {name: action.name})
+		// case 'MARK_SECTION_AS_CLICKED':
+		// 	return Object.assign(state, {clicked: true})
+		// case 'UNMARK_SECTION':
+		// 	return Object.assign(state, {clicked: false})
+		default:
+			return state
+	}
+}
+
 function sections(state = [], action) {
 	switch(action.type) {
 		case 'ADD_SECTION':
 			return [
 				...state,
-				{
-					id: action.id,
-					name: action.name,
-					numMeasures: action.numMeasures,
-					measures: [],
-					clicked: false					
-				}
+				section(undefined, action)
 			]
 		case 'REMOVE_SECTION':
 			const clone = state.map((section, index) => {
@@ -78,7 +116,6 @@ function sections(state = [], action) {
 			return newMeasures
 		case 'MARK_BEAT_AS_CLICKED':
 
-			console.log("action: ", action);
 			var updatedSections = []
 			for(var i in state) {
 				var currentSection = state[i]
@@ -132,7 +169,87 @@ function sections(state = [], action) {
 				updatedSections.push(currentSectionClone)
 			}
 			return updatedSections
+		case 'SET_CHORD':
+			var updatedSections = []
+			var sanitizedChord = action.chord.replace("*", "𝄪")
+			sanitizedChord = sanitizedChord.replace("#", "♯")
+			sanitizedChord = sanitizedChord.replace(/(b{2})/, "𝄫")
+			sanitizedChord = sanitizedChord.replace("b", "♭")
+			sanitizedChord = sanitizedChord.replace(/([a-g])/g, function replacer(match) {
+				return match.toUpperCase()
+			})
+			if(sanitizedChord === "♭") {
+				sanitizedChord = "B"
+			}
+			for(var i in state) {
+				var currentSection = state[i]
 
+				var currentMeasures = []
+				for(var j in currentSection.measures) {
+					var currentMeasure = currentSection.measures[j]
+
+					var currentBeats = []
+					for(var k in currentMeasure.beats) {
+						var currentBeat = currentMeasure.beats[k]
+
+						if(currentBeat.id === action.id && currentBeat.measureIndex === action.measureIndex && currentBeat.sectionId === action.sectionId) {
+							var currentBeatClone = {
+								id: currentBeat.id,
+								measureIndex: currentMeasure.index,
+								sectionId: currentBeat.sectionId,
+								chord: sanitizedChord,
+								clicked: currentBeat.clicked
+							}
+						} else {
+							var currentBeatClone = Object.assign({}, currentBeat)
+							// var currentBeatClone = {
+							// 	id: currentBeat.id,
+							// 	measureIndex: currentMeasure.index,
+							// 	sectionId: currentBeat.sectionId,
+							// 	chord: currentBeat.chord,
+							// 	clicked: currentbeat.clicked
+							// }
+						}
+						currentBeats.push(currentBeatClone)
+					}
+					var currentMeasureClone = {
+						id: currentMeasure.id,
+						index: currentMeasure.index,
+						sectionId: currentMeasure.sectionId,
+						numBeats: currentMeasure.numBeats,
+						clicked: currentMeasure.clicked,
+						beats: currentBeats
+					}
+					currentMeasures.push(currentMeasureClone)
+
+				}
+
+				var currentSectionClone = {
+					id: currentSection.id,
+					name: currentSection.name,
+					numMeasures: currentSection.numMeasures,
+					clicked: currentSection.clicked,
+					measures: currentMeasures
+				}
+				updatedSections.push(currentSectionClone)
+			}
+			return updatedSections
+		case 'SET_SECTION_NAME':
+			var tempClone = state.map((section, index) => {
+				if(section.id === action.sectionId) {
+					return Object.assign(section, { name: action.name})
+				}
+				return section
+			})
+			return tempClone
+		case 'MARK_SECTION_AS_CLICKED':
+			var clone = state.map((currentSection, index) => {
+				if(currentSection.id === action.sectionId) {
+					return Object.assign(currentSection, {clicked: true})
+				}
+				return Object.assign(currentSection, {clicked: false})
+			})
+			return clone			
 		default:
 			return state
 	}

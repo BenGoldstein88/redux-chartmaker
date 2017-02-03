@@ -17,7 +17,7 @@ export default class Chart extends React.Component {
 	  		if(section === null || section === undefined) {
 	  			return null
 	  		}
-	  		return <Section removeSection={that.props.actions.removeSection} key={section.id} id={section.id} name={section.name} numMeasures={section.numMeasures} measures={section.measures} addMeasure={that.props.actions.addMeasure} removeMeasure={that.props.actions.removeMeasure} markBeatAsClicked={that.props.actions.markBeatAsClicked} />
+	  		return <Section removeSection={that.props.actions.removeSection} key={section.id} id={section.id} name={section.name} numMeasures={section.numMeasures} measures={section.measures} clicked={section.clicked} addMeasure={that.props.actions.addMeasure} removeMeasure={that.props.actions.removeMeasure} markBeatAsClicked={that.props.actions.markBeatAsClicked} setChord={that.props.actions.setChord} setSectionName={that.props.actions.setSectionName} markSectionAsClicked={that.props.actions.markSectionAsClicked}/>
   	})
     return (
       <div>

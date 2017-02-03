@@ -14,7 +14,7 @@ export default class Measure extends React.Component {
   render() {
     var that = this;
   	const beatsToRender = that.props.beats.map(function(beat, index) {
-  		return <Beat clicked={beat.clicked} chord={beat.chord} key={index} id={index} measureId={that.props.id} sectionId={that.props.sectionId} markBeatAsClicked={that.props.markBeatAsClicked} measureIndex={that.props.index}/>
+  		return <Beat clicked={beat.clicked} chord={beat.chord} key={index} id={index} measureId={that.props.id} sectionId={that.props.sectionId} markBeatAsClicked={that.props.markBeatAsClicked} measureIndex={that.props.index} setChord={that.props.setChord}/>
   	})
     return (
       <div style={{
