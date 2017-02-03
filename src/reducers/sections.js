@@ -1,25 +1,3 @@
-// import { combineReducers } from 'redux';
-// import { ADD_SECTION, REMOVE_SECTION } from '../actions'
-
-// const section = (state = {}, action) => {
-// 	switch(action.type) {
-// 		case 'ADD_SECTION':
-// 			return {
-// 				id: action.id,
-// 				name: action.name,
-// 				numMeasures: action.numMeasures,
-// 				clicked: false
-// 			}
-// 		case 'REMOVE_SECTION':
-// 			return null
-// 		default:
-// 			return state
-// 	}
-// }
-
-
-
-
 function sections(state = [], action) {
 	switch(action.type) {
 		case 'ADD_SECTION':
@@ -29,6 +7,7 @@ function sections(state = [], action) {
 					id: action.id,
 					name: action.name,
 					numMeasures: action.numMeasures,
+					measures: new Array(8),
 					clicked: false					
 				}
 			]
@@ -42,6 +21,49 @@ function sections(state = [], action) {
 			})
 			const cleanClone = clone.filter(function(ele) { return ele !== null })
 			return cleanClone;
+		case 'ADD_MEASURE':
+			const measures = state.map((section, index) => {
+				if(action.sectionId === section.id) {
+					let sectionClone = {
+						id: section.id,
+						name: section.name,
+						numMeasures: section.numMeasures+1,
+						measures: section.measures.concat([{
+							id: action.id,
+							sectionId: action.sectionId,
+							numBeats: action.numBeats,
+							beats: new Array(4),
+							clicked: false
+						}]),
+						clicked: false							
+					}
+					return sectionClone
+				}
+				return section
+			})
+			return measures;
+		case 'REMOVE_MEASURE':
+			const newMeasures = state.map((section, index) => {
+				if(action.sectionId === section.id) {
+					const measuresClone = section.measures.map(function(measure) {
+						if(action.id === measure.id) {
+							return null
+						}
+						return measure
+					})
+					const cleanMeasuresClone = measuresClone.filter(function(ele) { return ele !== null })
+					let sectionClone = {
+						id: section.id,
+						name: section.name,
+						numMeasures: section.numMeasures+1,
+						measures: cleanMeasuresClone,
+						clicked: section.clicked							
+					}
+					return sectionClone
+				}
+				return section
+			})
+			return newMeasures;
 		default:
 			return state
 	}
@@ -49,33 +71,4 @@ function sections(state = [], action) {
 
 export default sections
 
-// const chartMakerApp = combineReducers({
-// 	sections
-// })
-
-// export default chartMakerApp
-
-// const chart = (state = {}, action) => {
-// 	switch(action.type) {
-// 		case 'ADD_SECTION':
-// 			return false
-// 		case 'REMOVE_SECTION':
-// 			return false
-// 		case 'RENAME_SECTION':
-// 			return false
-// 		case 'ADD_MEASURE':
-// 			return false
-// 		case 'REMOVE_MEASURE':
-// 			return false
-// 		case 'EDIT_BEAT':
-// 			return false
-
-// 		default:
-// 			return state
-// 	}
-// }
-
-// const charts = {state = [], action} => {
-// 	switch(action.type)
-// }
 

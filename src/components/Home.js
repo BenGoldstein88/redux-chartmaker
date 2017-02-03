@@ -13,8 +13,8 @@ export default class Home extends React.Component {
   }
 
 
-  render() {   
-        console.log("this.props.sections: ", this.props.sections);
+  render() {
+  console.log("this: ", this);   
     return (
       <div>
         HOME
