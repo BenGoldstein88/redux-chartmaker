@@ -18,7 +18,7 @@ export default class Section extends React.Component {
         if(measure === null || measure === undefined) {
           return null
         }
-        return <Measure removeMeasure={that.props.removeMeasure} key={measure.id} id={measure.id} sectionId={that.props.id} numBeats={measure.numBeats} beats={measure.beats} />
+        return <Measure removeMeasure={that.props.removeMeasure} index={measure.index} key={measure.id} id={measure.id} sectionId={that.props.id} numBeats={measure.numBeats} beats={measure.beats} markBeatAsClicked={that.props.markBeatAsClicked} />
     })
     return (
       <div style={{

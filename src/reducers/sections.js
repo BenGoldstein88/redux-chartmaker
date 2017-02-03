@@ -7,7 +7,7 @@ function sections(state = [], action) {
 					id: action.id,
 					name: action.name,
 					numMeasures: action.numMeasures,
-					measures: new Array(8),
+					measures: [],
 					clicked: false					
 				}
 			]
@@ -30,9 +30,10 @@ function sections(state = [], action) {
 						numMeasures: section.numMeasures+1,
 						measures: section.measures.concat([{
 							id: action.id,
+							index: section.measures.length,
 							sectionId: action.sectionId,
 							numBeats: action.numBeats,
-							beats: new Array(4),
+							beats: [{chord: "", clicked: false, id: 0, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 1, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 2, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 3, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}],
 							clicked: false
 						}]),
 						clicked: false							
@@ -51,7 +52,18 @@ function sections(state = [], action) {
 						}
 						return measure
 					})
-					const cleanMeasuresClone = measuresClone.filter(function(ele) { return ele !== null })
+					var cleanMeasuresClone = measuresClone.filter(function(ele) { return ele !== null })
+					cleanMeasuresClone = cleanMeasuresClone.map(function(measure, index) {
+						return {
+							id: measure.id,
+							index: index,
+							sectionId: measure.sectionId,
+							numBeats: measure.numBeats,
+							beats: measure.beats,
+							clicked: measure.clicked
+						}
+					})
+
 					let sectionClone = {
 						id: section.id,
 						name: section.name,
@@ -63,7 +75,64 @@ function sections(state = [], action) {
 				}
 				return section
 			})
-			return newMeasures;
+			return newMeasures
+		case 'MARK_BEAT_AS_CLICKED':
+
+			console.log("action: ", action);
+			var updatedSections = []
+			for(var i in state) {
+				var currentSection = state[i]
+
+				var currentMeasures = []
+				for(var j in currentSection.measures) {
+					var currentMeasure = currentSection.measures[j]
+
+					var currentBeats = []
+					for(var k in currentMeasure.beats) {
+						var currentBeat = currentMeasure.beats[k]
+
+						if(currentBeat.id === action.id && currentBeat.measureIndex === action.measureIndex && currentBeat.sectionId === action.sectionId) {
+							var currentBeatClone = {
+								id: currentBeat.id,
+								measureIndex: currentMeasure.index,
+								sectionId: currentBeat.sectionId,
+								chord: currentBeat.chord,
+								clicked: !currentBeat.clicked
+							}
+						} else {
+							var currentBeatClone = {
+								id: currentBeat.id,
+								measureIndex: currentMeasure.index,
+								sectionId: currentBeat.sectionId,
+								chord: currentBeat.chord,
+								clicked: false
+							}
+						}
+						currentBeats.push(currentBeatClone)
+					}
+					var currentMeasureClone = {
+						id: currentMeasure.id,
+						index: currentMeasure.index,
+						sectionId: currentMeasure.sectionId,
+						numBeats: currentMeasure.numBeats,
+						clicked: currentMeasure.clicked,
+						beats: currentBeats
+					}
+					currentMeasures.push(currentMeasureClone)
+
+				}
+
+				var currentSectionClone = {
+					id: currentSection.id,
+					name: currentSection.name,
+					numMeasures: currentSection.numMeasures,
+					clicked: currentSection.clicked,
+					measures: currentMeasures
+				}
+				updatedSections.push(currentSectionClone)
+			}
+			return updatedSections
+
 		default:
 			return state
 	}

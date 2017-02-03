@@ -41,7 +41,6 @@ export default class Beat extends React.Component {
     if(e.key === 'Enter') {
       this.props.markAsSelected('-1');
     }
-
   }
 
   handleKeyDown(e) {

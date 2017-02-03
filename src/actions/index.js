@@ -56,3 +56,12 @@ export const removeMeasure = (sectionId, id) => {
 
 	}
 }
+
+export const markBeatAsClicked = (sectionId, measureIndex, id) => {
+	return {
+		type: 'MARK_BEAT_AS_CLICKED',
+		sectionId,
+		measureIndex,
+		id
+	}
+}
