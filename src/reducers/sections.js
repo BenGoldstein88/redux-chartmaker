@@ -178,6 +178,7 @@ function sections(state = [], action) {
 			sanitizedChord = sanitizedChord.replace(/([a-g])/g, function replacer(match) {
 				return match.toUpperCase()
 			})
+			sanitizedChord = sanitizedChord.replace("o", "°")
 			if(sanitizedChord === "♭") {
 				sanitizedChord = "B"
 			}

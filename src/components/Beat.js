@@ -16,7 +16,8 @@ export default class Beat extends React.Component {
           border: '1px dashed purple',
           display: 'inline-block' ,
           backgroundColor: 'lightblue',
-          opacity: '.5'
+          opacity: '.5',
+          position: 'relative'
         },
         clickedStyle: {
           height: '50%',
@@ -25,7 +26,8 @@ export default class Beat extends React.Component {
           display: 'inline-block' ,
           backgroundColor: 'darkblue',
           color: 'hotpink',
-          opacity: '.9'
+          opacity: '.9',
+          position: 'relative'
         },
         chordStyle: {
           height: '50%',
@@ -34,7 +36,9 @@ export default class Beat extends React.Component {
           display: 'inline-block' ,
           backgroundColor: 'royalblue',
           color: 'goldenrod',
-          opacity: '1'
+          textAlign: 'center',
+          opacity: '1',
+          position: 'relative'
         },
         omitStyle: {}
 
@@ -85,7 +89,12 @@ export default class Beat extends React.Component {
 
 
   render() {
-    var thingToDisplay = this.props.chord;
+    var thingToDisplay = <p style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)'
+    }}>{this.props.chord} </p>;
     var style = this.state.styles.chordStyle
     if(this.props.chord.split('').length < 1) {
       style = this.state.styles.emptyStyle
