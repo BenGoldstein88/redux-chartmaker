@@ -174,12 +174,15 @@ function sections(state = [], action) {
 			var sanitizedChord = action.chord.replace("*", "𝄪")
 			sanitizedChord = sanitizedChord.replace("#", "♯")
 			sanitizedChord = sanitizedChord.replace(/(b{2})/, "𝄫")
-			sanitizedChord = sanitizedChord.replace("b", "♭")
+			sanitizedChord = sanitizedChord.replace(/([b])/, "♭")
 			sanitizedChord = sanitizedChord.replace(/([a-g])/g, function replacer(match) {
 				return match.toUpperCase()
 			})
 			if(sanitizedChord === "♭") {
 				sanitizedChord = "B"
+			}
+			if(sanitizedChord === '𝄫') {
+				sanitizedChord = "B♭"
 			}
 			for(var i in state) {
 				var currentSection = state[i]

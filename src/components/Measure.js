@@ -19,7 +19,7 @@ export default class Measure extends React.Component {
     return (
       <div style={{
       	height: '100px',
-      	width: '100px',
+      	width: '200px',
       	border: '1px solid pink',
       	display: 'inline-block'
       }}>

@@ -23,7 +23,7 @@ export default class Section extends React.Component {
     })
     return (
       <div style={{
-      	height: '400px',
+      	height: '300px',
       	width: '800px',
       	border: '1px solid blue'
       }}>
