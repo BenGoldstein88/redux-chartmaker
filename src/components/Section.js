@@ -1,6 +1,5 @@
 import React from 'react';
-import RemoveSectionButton from './RemoveSectionButton'
-import AddMeasureButton from './AddMeasureButton';
+import SectionButtonToolbar from './SectionButtonToolbar';
 import Measure from './Measure';
 import SectionName from './SectionName';
 
@@ -25,13 +24,13 @@ export default class Section extends React.Component {
       <div style={{
       	height: '300px',
       	width: '800px',
-      	border: '1px solid blue'
+      	border: '1px solid blue',
+        position: 'relative'
       }}>
         <SectionName name={this.props.name} sectionId={this.props.id} setSectionName={this.props.setSectionName} clicked={this.props.clicked} markSectionAsClicked={this.props.markSectionAsClicked}/>
         {measuresToRender}
-        <AddMeasureButton sectionId={this.props.id} addMeasure={this.props.addMeasure} />
-      	<RemoveSectionButton removeSection={this.props.removeSection} id={this.props.id} />
-        
+        <SectionButtonToolbar sectionId={this.props.id} addMeasure={this.props.addMeasure} removeSection={this.props.removeSection} id={this.props.id} moveSectionUp={this.props.moveSectionUp} moveSectionDown={this.props.moveSectionDown} />
+   
       </div>
     );
   }

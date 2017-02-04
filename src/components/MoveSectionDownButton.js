@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class AddMeasureButton extends React.Component {
+export default class MoveSectionDownButton extends React.Component {
   // static propTypes = {
   //   name: React.PropTypes.string,
   // };
@@ -12,17 +12,16 @@ export default class AddMeasureButton extends React.Component {
   }
 
   handleClick(e) {
-  	e.preventDefault();
-  	this.props.addMeasure(this.props.sectionId)
+  	e.preventDefault()
+    this.props.moveSectionDown(this.props.sectionId)
   }
-
   render() {
     return (
       <div style={{
-        display: 'inline-block'
+      	display: 'inline-block'
       }}>
-      	<button onClick={this.handleClick} >
-      		+
+      	<button onClick={this.handleClick}>
+      		↓
       	</button>
       </div>
     );

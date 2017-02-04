@@ -16,7 +16,9 @@ export default class RemoveSectionButton extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{
+        display: 'inline-block'
+      }}>
         <button onClick={this.handleClick} >
           REMOVE SECTION
         </button>

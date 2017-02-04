@@ -90,3 +90,18 @@ export const markSectionAsClicked = (sectionId) => {
 		sectionId
 	}
 }
+
+export const moveSectionUp = (sectionId) => {
+	return {
+		type: 'MOVE_SECTION_UP',
+		sectionId
+	}
+}
+
+export const moveSectionDown = (sectionId) => {
+	return {
+		type: 'MOVE_SECTION_DOWN',
+		sectionId
+	}
+}
+

@@ -1,53 +1,41 @@
-// function measure(state = {}, action) {
+
+// function section(state = {}, action) {
 // 	switch(action.type) {
-// 		case 'ADD_MEASURE':
+// 		case 'ADD_SECTION':
 // 			return Object.assign(state, {
 // 				id: action.id,
-// 				index: section.measures.length,
-// 				sectionId: action.sectionId,
-// 				numBeats: action.numBeats,
-// 				beats: [{chord: "", clicked: false, id: 0, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 1, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 2, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 3, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}],
-// 				clicked: false
+// 				name: action.name,
+// 				numMeasures: action.numMeasures,
+// 				measures: [],
+// 				clicked: false					
 // 			})
-// 		case 'REMOVE_MEASURE':
 
+// 		case 'REMOVE_SECTION':
 // 			return state
+
+// 		// case 'SET_SECTION_NAME':
+// 		// 	return Object.assign(state, {name: action.name})
+// 		// case 'MARK_SECTION_AS_CLICKED':
+// 		// 	return Object.assign(state, {clicked: true})
+// 		// case 'UNMARK_SECTION':
+// 		// 	return Object.assign(state, {clicked: false})
 // 		default:
 // 			return state
 // 	}
 // }
- 
-function section(state = {}, action) {
-	switch(action.type) {
-		case 'ADD_SECTION':
-			return Object.assign(state, {
-				id: action.id,
-				name: action.name,
-				numMeasures: action.numMeasures,
-				measures: [],
-				clicked: false					
-			})
-
-		case 'REMOVE_SECTION':
-			return state
-
-		// case 'SET_SECTION_NAME':
-		// 	return Object.assign(state, {name: action.name})
-		// case 'MARK_SECTION_AS_CLICKED':
-		// 	return Object.assign(state, {clicked: true})
-		// case 'UNMARK_SECTION':
-		// 	return Object.assign(state, {clicked: false})
-		default:
-			return state
-	}
-}
 
 function sections(state = [], action) {
 	switch(action.type) {
 		case 'ADD_SECTION':
 			return [
 				...state,
-				section(undefined, action)
+				{
+					id: action.id,
+					name: action.name,
+					numMeasures: action.numMeasures,
+					measures: [],
+					clicked: false		
+				}
 			]
 		case 'REMOVE_SECTION':
 			const clone = state.map((section, index) => {
@@ -57,7 +45,8 @@ function sections(state = [], action) {
 				return section
 				// section !== null && section.id !== action.id ? return section
 			})
-			const cleanClone = clone.filter(function(ele) { return ele !== null })
+			var cleanClone = clone.filter(function(ele) { return ele !== null })
+			cleanClone = cleanClone.filter(function(ele) { return ele !== undefined })
 			return cleanClone;
 		case 'ADD_MEASURE':
 			const measures = state.map((section, index) => {
@@ -173,18 +162,23 @@ function sections(state = [], action) {
 			var updatedSections = []
 			var sanitizedChord = action.chord.replace("*", "𝄪")
 			sanitizedChord = sanitizedChord.replace("#", "♯")
-			sanitizedChord = sanitizedChord.replace(/(b{2})/, "𝄫")
-			sanitizedChord = sanitizedChord.replace(/([b])/, "♭")
+			sanitizedChord = sanitizedChord.replace(/[A-Za-z0-9](b{2})/, function(match) {
+				var matchArray = match.split('')
+				var rootNote = matchArray[0]
+				return rootNote+"𝄫"
+			})
+			sanitizedChord = sanitizedChord.replace(/([b])/g, "♭")
 			sanitizedChord = sanitizedChord.replace(/([a-g])/g, function replacer(match) {
 				return match.toUpperCase()
 			})
 			sanitizedChord = sanitizedChord.replace("o", "°")
-			if(sanitizedChord === "♭") {
-				sanitizedChord = "B"
-			}
-			if(sanitizedChord === '𝄫') {
-				sanitizedChord = "B♭"
-			}
+			// if(sanitizedChord[0] === "♭") {
+			// 	var chordArray = sanitizedChord.split('')
+			// 	chordArray[0] =  'B'
+			// 	sanitizedChord = chordArray.join('')
+			// }
+			sanitizedChord = sanitizedChord.replace("BB", "B♭")
+
 			for(var i in state) {
 				var currentSection = state[i]
 
@@ -253,7 +247,31 @@ function sections(state = [], action) {
 				}
 				return Object.assign(currentSection, {clicked: false})
 			})
-			return clone			
+			return clone
+		case 'MOVE_SECTION_UP':
+			var sectionsClone = state
+			var sectionToMove = sectionsClone.find(function(section) {
+				return section.id === action.sectionId
+			})
+			var sectionToMoveIndex = sectionsClone.indexOf(sectionToMove)
+			if(sectionToMoveIndex === 0) { return state }
+			var sectionAbove = sectionsClone[sectionToMoveIndex-1]
+			sectionsClone[sectionToMoveIndex-1] = sectionToMove
+			sectionsClone[sectionToMoveIndex] = sectionAbove
+			return sectionsClone
+
+		case 'MOVE_SECTION_DOWN':
+			var sectionsClone = state
+			var movingSection = sectionsClone.find(function(section) {
+				return section.id === action.sectionId
+			})
+			var movingSectionIndex = sectionsClone.indexOf(movingSection)
+			if(movingSectionIndex === sectionsClone.length-1) { return state }
+			var sectionBelow = sectionsClone[movingSectionIndex+1]
+			sectionsClone[movingSectionIndex+1] = movingSection
+			sectionsClone[movingSectionIndex] = sectionBelow
+			return sectionsClone
+
 		default:
 			return state
 	}
