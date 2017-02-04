@@ -13,6 +13,16 @@ export default class SectionButtonToolbar extends React.Component {
   }
 
   render() {
+    var thingToDisplay = <div>
+        <AddMeasureButton sectionId={this.props.sectionId} addMeasure={this.props.addMeasure} />
+        <MoveSectionUpButton moveSectionUp={this.props.moveSectionUp} sectionId={this.props.sectionId}/>
+        <MoveSectionDownButton moveSectionDown={this.props.moveSectionDown} sectionId={this.props.sectionId}/>
+        <RemoveSectionButton removeSection={this.props.removeSection} id={this.props.id} />
+      </div>
+    if(this.props.filter==='SHOW') {
+      thingToDisplay = null
+    }
+
     return (
       <div style={{
       	display: 'inline-block',
@@ -20,10 +30,7 @@ export default class SectionButtonToolbar extends React.Component {
         bottom: '0',
         left: '0'
       }}>
-        <AddMeasureButton sectionId={this.props.sectionId} addMeasure={this.props.addMeasure} />
-        <MoveSectionUpButton moveSectionUp={this.props.moveSectionUp} sectionId={this.props.sectionId}/>
-        <MoveSectionDownButton moveSectionDown={this.props.moveSectionDown} sectionId={this.props.sectionId}/>
-      	<RemoveSectionButton removeSection={this.props.removeSection} id={this.props.id} />
+        {thingToDisplay}
       </div>
     );
   }

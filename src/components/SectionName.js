@@ -18,6 +18,7 @@ export default class SectionName extends React.Component {
   handleClick(e) {
   	e.stopPropagation();
   	e.preventDefault();
+  	this.props.markBeatAsClicked(-1, -1, -1)
   	this.props.markSectionAsClicked(this.props.sectionId);
 
   }

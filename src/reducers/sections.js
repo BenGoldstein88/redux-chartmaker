@@ -123,7 +123,7 @@ function sections(state = [], action) {
 								measureIndex: currentMeasure.index,
 								sectionId: currentBeat.sectionId,
 								chord: currentBeat.chord,
-								clicked: !currentBeat.clicked
+								clicked: true
 							}
 						} else {
 							var currentBeatClone = {

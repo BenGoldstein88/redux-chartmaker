@@ -46,7 +46,20 @@ export default class Beat extends React.Component {
           opacity: '1',
           position: 'relative'
         },
-        omitStyle: {}
+        omitStyle: {},
+        showStyle: {
+          height: '80%',
+          minHeight: '80px',
+          margin: '1%',
+          width: '22.5%',
+          // border: '1px solid black',
+          display: 'inline-block' ,
+          backgroundColor: 'royalblue',
+          color: 'white',
+          textAlign: 'center',
+          opacity: '1',
+          position: 'relative'          
+        }
 
       }
     }
@@ -61,6 +74,7 @@ export default class Beat extends React.Component {
     e.stopPropagation();
   	e.preventDefault();
   	this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex, this.props.id);
+    this.props.markSectionAsClicked(-1)
   }
 
   handleKeyDown(e) {
@@ -77,6 +91,12 @@ export default class Beat extends React.Component {
       } else {
         this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex, this.props.id-1)
       }
+    }
+    if(e.key === 'ArrowUp') {
+        this.props.markBeatAsClicked(this.props.sectionId, Math.max(0, this.props.measureIndex-4), this.props.id)
+    }
+    if(e.key === 'ArrowDown') {
+        this.props.markBeatAsClicked(this.props.sectionId, Math.min(this.props.sectionLength-1, this.props.measureIndex+4), this.props.id)
     }
       
   }
@@ -108,7 +128,10 @@ export default class Beat extends React.Component {
 
     if(this.props.clicked) {
       style = this.state.styles.clickedStyle
-      thingToDisplay = <input ref={'input'} className={'chord-input'} type={'text'} onKeyDown={this.handleKeyDown} onKeyPress={this.handleKeyPress} onChange={this.handleChange} placeholder={this.props.chord} style={{color: 'inherit'}}autoFocus/>
+      thingToDisplay = <input ref={'input'} className={'chord-input'} type={'text'} onKeyDown={this.handleKeyDown} onKeyPress={this.handleKeyPress} onChange={this.handleChange} placeholder={this.props.chord} style={{color: 'inherit', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%'}}autoFocus/>
+    }
+    if(this.props.filter === 'SHOW') {
+      style = this.state.styles.showStyle
     }
 
     return (
