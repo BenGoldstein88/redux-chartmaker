@@ -18,12 +18,21 @@ export default class Measure extends React.Component {
   	})
     return (
       <div style={{
-      	height: '100px',
-      	width: '200px',
+      	height: '40%',
+        minHeight: '100px',
+        maxHeight: '150px',
+      	width: '24%',
       	border: '1px solid pink',
-      	display: 'inline-block'
+      	display: 'inline-block',
+        margin: '2px'
       }}>
-      	{beatsToRender}
+        <div style={{
+          margin: '0 auto',
+          display: 'relative',
+          width: '95%'
+        }}>
+      	 {beatsToRender}
+        </div>
       	<br />
       	<RemoveMeasureButton removeMeasure={this.props.removeMeasure} id={this.props.id} sectionId={this.props.sectionId} />
       </div>

@@ -11,8 +11,10 @@ export default class Beat extends React.Component {
     this.state = {
       styles: {
         emptyStyle: {
-          height: '50%',
-          width: '24%',
+          height: '80%',
+          minHeight: '80px',
+          margin: '1%',
+          width: '22.5%',
           border: '1px dashed purple',
           display: 'inline-block' ,
           backgroundColor: 'lightblue',
@@ -20,8 +22,10 @@ export default class Beat extends React.Component {
           position: 'relative'
         },
         clickedStyle: {
-          height: '50%',
-          width: '24%',
+          height: '80%',
+          minHeight: '80px',
+          margin: '1%',
+          width: '22.5%',
           border: '1px dotted darkgray',
           display: 'inline-block' ,
           backgroundColor: 'darkblue',
@@ -30,8 +34,10 @@ export default class Beat extends React.Component {
           position: 'relative'
         },
         chordStyle: {
-          height: '50%',
-          width: '24%',
+          height: '80%',
+          minHeight: '80px',
+          margin: '1%',
+          width: '22.5%',
           border: '1px solid black',
           display: 'inline-block' ,
           backgroundColor: 'royalblue',
@@ -96,7 +102,7 @@ export default class Beat extends React.Component {
         transform: 'translate(-50%, -50%)'
     }}>{this.props.chord} </p>;
     var style = this.state.styles.chordStyle
-    if(this.props.chord.split('').length < 1) {
+    if(this.props.chord.split('').length < 1 || this.props.chord === ' ') {
       style = this.state.styles.emptyStyle
     }
 
