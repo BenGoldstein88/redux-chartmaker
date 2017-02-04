@@ -5,6 +5,19 @@ export default class SectionName extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+    	styles: {
+    		editStyle: {
+          fontSize: '1em'
+
+    		},
+    		showStyle: {
+          fontSize: '2em'
+
+    		}
+    	}
+    }
     
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -35,13 +48,21 @@ export default class SectionName extends React.Component {
   }
 
   render() {
+  	var style
+
+ 	if(this.props.filter==='SHOW') {
+ 		style = this.state.styles.showStyle
+ 	} else {
+ 		style = this.state.styles.editStyle
+ 	}
+
     var thingToDisplay = <p className={'section-name'}>{this.props.name}</p>
 
     if(this.props.clicked) {
       thingToDisplay = <input ref={'input'} className={'section-name-input'} type={'text'} onKeyPress={this.handleKeyPress} onChange={this.handleChange} placeholder={this.props.name} autoFocus/>
     } 
     return (
-      <div className={'section-name-wrapper'} onContextMenu={this.handleRightClick} onClick={this.handleClick} >
+      <div style={style} onContextMenu={this.handleRightClick} onClick={this.handleClick} >
       	{thingToDisplay}
       </div>
     );

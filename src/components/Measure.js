@@ -13,10 +13,11 @@ export default class Measure extends React.Component {
     this.state = {
       styles: {
         showStyle: {
-          height: '40%',
+          height: '45%',
           minHeight: '100px',
           maxHeight: '150px',
-          width: '24%',
+          minWidth: '80px',
+          width: '24.5%',
           // border: '1px solid pink',
           display: 'inline-block',
           margin: '2px'
@@ -66,7 +67,6 @@ export default class Measure extends React.Component {
         }}>
       	 {beatsToRender}
         </div>
-      	<br />
       	<RemoveMeasureButton removeMeasure={this.props.removeMeasure} id={this.props.id} sectionId={this.props.sectionId} filter={that.props.filter}/>
       </div>
     );

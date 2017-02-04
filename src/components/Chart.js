@@ -36,7 +36,14 @@ export default class Chart extends React.Component {
           filter={that.props.filter} />
   	})
     return (
-      <div>
+      <div style={{
+        height: '90%',
+        width: '100%',
+        minWidth: '900px',
+        minHeight: '600px',
+        padding: '10px',
+        position: 'relative'
+      }}>
       	{sectionsToRender}
       </div>
     );

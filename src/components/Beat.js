@@ -14,51 +14,55 @@ export default class Beat extends React.Component {
           height: '80%',
           minHeight: '80px',
           margin: '1%',
-          width: '22.5%',
+          width: '23%',
           border: '1px dashed purple',
           display: 'inline-block' ,
           backgroundColor: 'lightblue',
           opacity: '.5',
-          position: 'relative'
+          position: 'relative',
+          fontSize: '1em'
         },
         clickedStyle: {
           height: '80%',
           minHeight: '80px',
           margin: '1%',
-          width: '22.5%',
+          width: '23%',
           border: '1px dotted darkgray',
           display: 'inline-block' ,
           backgroundColor: 'darkblue',
           color: 'hotpink',
           opacity: '.9',
-          position: 'relative'
+          position: 'relative',
+          fontSize: '1em'
         },
         chordStyle: {
           height: '80%',
           minHeight: '80px',
           margin: '1%',
-          width: '22.5%',
+          width: '23%',
           border: '1px solid black',
           display: 'inline-block' ,
           backgroundColor: 'royalblue',
           color: 'goldenrod',
           textAlign: 'center',
           opacity: '1',
-          position: 'relative'
+          position: 'relative',
+          fontSize: '1em'
         },
         omitStyle: {},
         showStyle: {
           height: '80%',
           minHeight: '80px',
           margin: '1%',
-          width: '22.5%',
+          width: '23%',
           // border: '1px solid black',
           display: 'inline-block' ,
-          backgroundColor: 'royalblue',
+          backgroundColor: '#0c0c6d',
           color: 'white',
           textAlign: 'center',
           opacity: '1',
-          position: 'relative'          
+          position: 'relative',
+          fontSize: '1.3em'          
         }
 
       }
@@ -73,6 +77,9 @@ export default class Beat extends React.Component {
   handleClick(e) {
     e.stopPropagation();
   	e.preventDefault();
+    if(this.props.filter === 'SHOW') {
+      return
+    }
   	this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex, this.props.id);
     this.props.markSectionAsClicked(-1)
   }
@@ -128,10 +135,14 @@ export default class Beat extends React.Component {
 
     if(this.props.clicked) {
       style = this.state.styles.clickedStyle
-      thingToDisplay = <input ref={'input'} className={'chord-input'} type={'text'} onKeyDown={this.handleKeyDown} onKeyPress={this.handleKeyPress} onChange={this.handleChange} placeholder={this.props.chord} style={{color: 'inherit', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%'}}autoFocus/>
+      thingToDisplay = <input ref={'input'} className={'chord-input'} type={'text'} onKeyDown={this.handleKeyDown} onKeyPress={this.handleKeyPress} onChange={this.handleChange} placeholder={this.props.chord} style={{color: 'inherit', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%'}} autoFocus/>
     }
     if(this.props.filter === 'SHOW') {
-      style = this.state.styles.showStyle
+      // if(this.props.chord.split('').length < 1 || this.props.chord === ' ') {
+      //   style = Object.assign(this.state.styles.showStyle, {backgroundColor: '#020235'})
+      // } else {
+        style = this.state.styles.showStyle
+      // }
     }
 
     return (
