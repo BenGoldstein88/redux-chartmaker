@@ -22,7 +22,7 @@ export default class Beat extends React.Component {
           opacity: '.5',
           position: 'relative',
           fontSize: '1em',
-          transition: 'background-color .6s'
+          transition: 'background-color .6s, border-radius .6s'
         },
         clickedStyle: {
           height: '80%',
@@ -37,7 +37,7 @@ export default class Beat extends React.Component {
           opacity: '.9',
           position: 'relative',
           fontSize: '1em',
-          transition: 'background-color .6s'
+          transition: 'background-color .6s, border-radius .6s'
         },
         chordStyle: {
           height: '80%',
@@ -53,7 +53,7 @@ export default class Beat extends React.Component {
           opacity: '1',
           position: 'relative',
           fontSize: '1em',
-          transition: 'background-color .6s'
+          transition: 'background-color .6s, border-radius .6s'
         },
         omitStyle: {},
         showStyle: {
@@ -70,7 +70,8 @@ export default class Beat extends React.Component {
           opacity: '1',
           position: 'relative',
           fontSize: '1.3em',
-          transition: 'background-color .6s'          
+          borderRadius: '5px',
+          transition: 'background-color .6s, border-radius .6s'          
         },
         emptyShowStyle: {
           height: '80%',
@@ -86,7 +87,8 @@ export default class Beat extends React.Component {
           opacity: '.7',
           position: 'relative',
           fontSize: '1.3em',
-          transition: 'background-color .6s'             
+          borderRadius: '5px',            
+          transition: 'background-color .6s, border-radius .6s' 
         }
 
       }
