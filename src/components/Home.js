@@ -3,6 +3,8 @@ import {FocusStyleManager} from '@blueprintjs/core';
 import Chart from './Chart';
 import AddSectionButton from './AddSectionButton';
 import SetFilterButton from './SetFilterButton';
+import Favicon from 'react-favicon'
+import icon from '../favicon.ico'
 
 export default class Home extends React.Component {
 
@@ -48,6 +50,7 @@ export default class Home extends React.Component {
         <SetFilterButton setVisibilityFilter={this.props.actions.setVisibilityFilter} filter={this.props.filter} />
         <AddSectionButton addSection={this.props.actions.addSection} filter={this.props.filter}/>
         <Chart sections={this.props.sections} actions={this.props.actions} filter={this.props.filter} />
+        <Favicon url={[icon]} />
       </div>
     );
   }

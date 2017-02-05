@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "931857a978aac2b399c1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7a3438baead1bccce2ea"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -12620,8 +12620,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	// import Chart from './Chart'
-
 
 	var Home = function (_React$Component) {
 	  _inherits(Home, _React$Component);
@@ -22592,48 +22590,55 @@
 	        emptyStyle: {
 	          height: '80%',
 	          minHeight: '80px',
-	          margin: '1%',
-	          width: '23%',
+	          minWidth: '22px',
+	          // margin: '1px',
+	          width: '23.5%',
 	          border: '1px dashed purple',
 	          display: 'inline-block',
 	          backgroundColor: 'lightblue',
 	          opacity: '.5',
 	          position: 'relative',
-	          fontSize: '1em'
+	          fontSize: '1em',
+	          transition: 'background-color .6s, border-radius .6s, height .6s'
 	        },
 	        clickedStyle: {
 	          height: '80%',
 	          minHeight: '80px',
-	          margin: '1%',
-	          width: '23%',
+	          minWidth: '22px',
+	          // margin: '1px',
+	          width: '23.5%',
 	          border: '1px dotted darkgray',
 	          display: 'inline-block',
 	          backgroundColor: 'darkblue',
 	          color: 'hotpink',
 	          opacity: '.9',
 	          position: 'relative',
-	          fontSize: '1em'
+	          fontSize: '1em',
+	          transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'
 	        },
 	        chordStyle: {
 	          height: '80%',
 	          minHeight: '80px',
-	          margin: '1%',
-	          width: '23%',
+	          minWidth: '22px',
+	          // margin: '1px',
+	          width: '23.5%',
 	          border: '1px solid black',
 	          display: 'inline-block',
 	          backgroundColor: 'royalblue',
-	          color: 'goldenrod',
+	          // color: 'goldenrod',
 	          textAlign: 'center',
 	          opacity: '1',
 	          position: 'relative',
-	          fontSize: '1em'
+	          fontSize: '1em',
+	          transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'
 	        },
 	        omitStyle: {},
 	        showStyle: {
-	          height: '80%',
+	          height: '90%',
 	          minHeight: '80px',
-	          margin: '1%',
-	          width: '23%',
+	          minWidth: '22px',
+	          // margin: '1px',
+	          width: '23.5%',
 	          // border: '1px solid black',
 	          display: 'inline-block',
 	          backgroundColor: '#0c0c6d',
@@ -22641,7 +22646,26 @@
 	          textAlign: 'center',
 	          opacity: '1',
 	          position: 'relative',
-	          fontSize: '1.3em'
+	          fontSize: '1.3em',
+	          borderRadius: '5px',
+	          transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'
+	        },
+	        emptyShowStyle: {
+	          height: '90%',
+	          minHeight: '80px',
+	          minWidth: '22px',
+	          // margin: '1px',
+	          width: '23.5%',
+	          // border: '1px solid black',
+	          display: 'inline-block',
+	          backgroundColor: '#0c0c6d',
+	          color: 'white',
+	          textAlign: 'center',
+	          opacity: '.7',
+	          position: 'relative',
+	          fontSize: '1.3em',
+	          borderRadius: '5px',
+	          transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'
 	        }
 
 	      }
@@ -22709,28 +22733,51 @@
 	        'p',
 	        { style: {
 	            position: 'absolute',
+	            margin: '0 auto',
 	            top: '50%',
 	            left: '50%',
 	            transform: 'translate(-50%, -50%)'
 	          } },
-	        this.props.chord,
-	        ' '
+	        this.props.chord
 	      );
+
 	      var style = this.state.styles.chordStyle;
+
 	      if (this.props.chord.split('').length < 1 || this.props.chord === ' ') {
 	        style = this.state.styles.emptyStyle;
 	      }
 
 	      if (this.props.clicked) {
 	        style = this.state.styles.clickedStyle;
-	        thingToDisplay = _react2.default.createElement('input', { ref: 'input', className: 'chord-input', type: 'text', onKeyDown: this.handleKeyDown, onKeyPress: this.handleKeyPress, onChange: this.handleChange, placeholder: this.props.chord, style: { color: 'inherit', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%' }, autoFocus: true });
+	        thingToDisplay = _react2.default.createElement('input', {
+	          ref: 'input',
+	          className: 'chord-input',
+	          type: 'text',
+	          onKeyDown: this.handleKeyDown,
+	          onKeyPress: this.handleKeyPress,
+	          onChange: this.handleChange,
+	          placeholder: this.props.chord,
+	          style: {
+	            backgroundColor: 'inherit',
+	            height: '25%',
+	            width: '25%',
+	            border: 'none',
+	            outerWidth: '0',
+	            textAlign: 'center',
+	            color: 'inherit',
+	            position: 'absolute',
+	            top: '50%',
+	            left: '50%',
+	            transform: 'translate(-50%, -50%)'
+	          },
+	          autoFocus: true });
 	      }
 	      if (this.props.filter === 'SHOW') {
-	        // if(this.props.chord.split('').length < 1 || this.props.chord === ' ') {
-	        //   style = Object.assign(this.state.styles.showStyle, {backgroundColor: '#020235'})
-	        // } else {
-	        style = this.state.styles.showStyle;
-	        // }
+	        if (this.props.chord.split('').length < 1 || this.props.chord === ' ') {
+	          style = this.state.styles.emptyShowStyle;
+	        } else {
+	          style = this.state.styles.showStyle;
+	        }
 	      }
 
 	      return _react2.default.createElement(
@@ -22819,10 +22866,11 @@
 	        'div',
 	        { style: {
 	            height: '90%',
-	            width: '100%',
+	            width: '98%',
 	            minWidth: '900px',
 	            minHeight: '600px',
 	            // padding: '10px',
+	            border: '1px dotted red',
 	            position: 'relative'
 	          } },
 	        sectionsToRender
@@ -22937,9 +22985,10 @@
 	          height: '45%',
 	          minHeight: '100px',
 	          maxHeight: '150px',
-	          minWidth: '80px',
+	          minWidth: '150px',
 	          width: '24.5%',
 	          // border: '1px solid pink',
+	          // padding: '1px',
 	          display: 'inline-block',
 	          margin: '2px'
 	        },
@@ -22947,8 +22996,10 @@
 	          height: '40%',
 	          minHeight: '100px',
 	          maxHeight: '150px',
-	          width: '24%',
+	          minWidth: '150px',
+	          width: '24.25%',
 	          border: '1px solid pink',
+	          // padding: '1px',
 	          display: 'inline-block',
 	          margin: '2px'
 	        }
@@ -22990,7 +23041,7 @@
 	          { style: {
 	              margin: '0 auto',
 	              display: 'relative',
-	              width: '95%'
+	              width: '99%'
 	            } },
 	          beatsToRender
 	        ),
@@ -23192,7 +23243,7 @@
 	      var thingToDisplay = _react2.default.createElement(
 	        'button',
 	        { onClick: this.handleClick },
-	        '--'
+	        'DELETE'
 	      );
 	      if (this.props.filter === 'SHOW') {
 	        thingToDisplay = null;
@@ -23200,7 +23251,11 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { style: {
+	            width: '25%',
+	            margin: '0 auto',
+	            marginBottom: '2px'
+	          } },
 	        thingToDisplay
 	      );
 	    }
@@ -23329,7 +23384,8 @@
 	      styles: {
 	        showStyle: {
 	          minHeight: '40px',
-	          width: '100%',
+	          width: '98%',
+	          minWidth: '420px',
 	          margin: '0 auto',
 	          // border: '1px solid blue',
 	          position: 'relative',
@@ -23339,11 +23395,14 @@
 	          minHeight: '150px',
 	          width: '97%',
 	          margin: '0 auto',
+	          minWidth: '420px',
 	          // display: 'inline-block',
 	          border: '1px solid blue',
 	          // overflow: 'scroll',
 	          position: 'relative',
-	          paddingBottom: '5%'
+	          paddingBottom: '5%',
+	          marginTop: '5px',
+	          marginBottom: '5px'
 	        }
 	      }
 	    };

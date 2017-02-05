@@ -22,7 +22,7 @@ export default class Beat extends React.Component {
           opacity: '.5',
           position: 'relative',
           fontSize: '1em',
-          transition: 'background-color .6s, border-radius .6s'
+          transition: 'background-color .6s, border-radius .6s, height .6s'
         },
         clickedStyle: {
           height: '80%',
@@ -37,7 +37,7 @@ export default class Beat extends React.Component {
           opacity: '.9',
           position: 'relative',
           fontSize: '1em',
-          transition: 'background-color .6s, border-radius .6s'
+          transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'
         },
         chordStyle: {
           height: '80%',
@@ -48,16 +48,16 @@ export default class Beat extends React.Component {
           border: '1px solid black',
           display: 'inline-block' ,
           backgroundColor: 'royalblue',
-          color: 'goldenrod',
+          // color: 'goldenrod',
           textAlign: 'center',
           opacity: '1',
           position: 'relative',
           fontSize: '1em',
-          transition: 'background-color .6s, border-radius .6s'
+          transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'
         },
         omitStyle: {},
         showStyle: {
-          height: '80%',
+          height: '90%',
           minHeight: '80px',
           minWidth: '22px',
           // margin: '1px',
@@ -71,10 +71,10 @@ export default class Beat extends React.Component {
           position: 'relative',
           fontSize: '1.3em',
           borderRadius: '5px',
-          transition: 'background-color .6s, border-radius .6s'          
+          transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'          
         },
         emptyShowStyle: {
-          height: '80%',
+          height: '90%',
           minHeight: '80px',
           minWidth: '22px',
           // margin: '1px',
@@ -88,7 +88,7 @@ export default class Beat extends React.Component {
           position: 'relative',
           fontSize: '1.3em',
           borderRadius: '5px',            
-          transition: 'background-color .6s, border-radius .6s' 
+          transition: 'background-color .6s, border-radius .6s, height .6s, color .6s' 
         }
 
       }
