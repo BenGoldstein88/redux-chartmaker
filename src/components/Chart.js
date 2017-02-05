@@ -39,7 +39,7 @@ export default class Chart extends React.Component {
       <div style={{
         height: '90%',
         width: '98%',
-        minWidth: '1125px',
+        minWidth: '900px',
         minHeight: '600px',
         // padding: '10px',
         border: '1px dotted red',

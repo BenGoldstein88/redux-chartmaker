@@ -16,7 +16,8 @@ export default class Section extends React.Component {
       styles: {
         showStyle: {
           minHeight: '40px',
-          width: '100%',
+          width: '98%',
+          minWidth: '420px',
           margin: '0 auto',
           // border: '1px solid blue',
           position: 'relative',
@@ -26,6 +27,7 @@ export default class Section extends React.Component {
           minHeight: '150px',
           width: '97%',
           margin: '0 auto',
+          minWidth: '420px',
           // display: 'inline-block',
           border: '1px solid blue',
           // overflow: 'scroll',

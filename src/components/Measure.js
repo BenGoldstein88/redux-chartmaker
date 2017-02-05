@@ -16,23 +16,23 @@ export default class Measure extends React.Component {
           height: '45%',
           minHeight: '100px',
           maxHeight: '150px',
-          minWidth: '100px',
+          minWidth: '150px',
           width: '24.5%',
           // border: '1px solid pink',
+          // padding: '1px',
           display: 'inline-block',
-          margin: '2px',
-          padding: '1px'
+          margin: '2px'
         },
         editStyle: {
           height: '40%',
           minHeight: '100px',
           maxHeight: '150px',
-          minWidth: '264px',
+          minWidth: '150px',
           width: '24.25%',
           border: '1px solid pink',
+          // padding: '1px',
           display: 'inline-block',
-          margin: '2px',
-          padding: '1px'
+          margin: '2px'
         }
       }
     }
@@ -66,7 +66,7 @@ export default class Measure extends React.Component {
         <div style={{
           margin: '0 auto',
           display: 'relative',
-          width: '95%'
+          width: '99%'
         }}>
       	 {beatsToRender}
         </div>

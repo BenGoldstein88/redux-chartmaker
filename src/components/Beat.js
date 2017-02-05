@@ -13,8 +13,9 @@ export default class Beat extends React.Component {
         emptyStyle: {
           height: '80%',
           minHeight: '80px',
-          margin: '1px',
-          width: '23.3%',
+          minWidth: '22px',
+          // margin: '1px',
+          width: '23.5%',
           border: '1px dashed purple',
           display: 'inline-block' ,
           backgroundColor: 'lightblue',
@@ -26,8 +27,9 @@ export default class Beat extends React.Component {
         clickedStyle: {
           height: '80%',
           minHeight: '80px',
-          margin: '1px',
-          width: '23.3%',
+          minWidth: '22px',
+          // margin: '1px',
+          width: '23.5%',
           border: '1px dotted darkgray',
           display: 'inline-block' ,
           backgroundColor: 'darkblue',
@@ -40,8 +42,9 @@ export default class Beat extends React.Component {
         chordStyle: {
           height: '80%',
           minHeight: '80px',
-          margin: '1px',
-          width: '23.3%',
+          minWidth: '22px',
+          // margin: '1px',
+          width: '23.5%',
           border: '1px solid black',
           display: 'inline-block' ,
           backgroundColor: 'royalblue',
@@ -56,8 +59,9 @@ export default class Beat extends React.Component {
         showStyle: {
           height: '80%',
           minHeight: '80px',
-          margin: '1px',
-          width: '23.3%',
+          minWidth: '22px',
+          // margin: '1px',
+          width: '23.5%',
           // border: '1px solid black',
           display: 'inline-block' ,
           backgroundColor: '#0c0c6d',
@@ -71,8 +75,9 @@ export default class Beat extends React.Component {
         emptyShowStyle: {
           height: '80%',
           minHeight: '80px',
-          margin: '1px',
-          width: '23.3%',
+          minWidth: '22px',
+          // margin: '1px',
+          width: '23.5%',
           // border: '1px solid black',
           display: 'inline-block' ,
           backgroundColor: '#0c0c6d',
@@ -166,6 +171,12 @@ export default class Beat extends React.Component {
         onChange={this.handleChange}
         placeholder={this.props.chord}
         style={{
+          backgroundColor: 'inherit',
+          height: '25%',
+          width: '25%',
+          border: 'none',
+          outerWidth: '0',
+          textAlign: 'center',
           color: 'inherit',
           position: 'absolute',
           top: '50%',
