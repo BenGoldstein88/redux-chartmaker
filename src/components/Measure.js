@@ -16,20 +16,23 @@ export default class Measure extends React.Component {
           height: '45%',
           minHeight: '100px',
           maxHeight: '150px',
-          minWidth: '80px',
+          minWidth: '100px',
           width: '24.5%',
           // border: '1px solid pink',
           display: 'inline-block',
-          margin: '2px'
+          margin: '2px',
+          padding: '1px'
         },
         editStyle: {
           height: '40%',
           minHeight: '100px',
           maxHeight: '150px',
-          width: '24%',
+          minWidth: '264px',
+          width: '24.25%',
           border: '1px solid pink',
           display: 'inline-block',
-          margin: '2px'
+          margin: '2px',
+          padding: '1px'
         }
       }
     }

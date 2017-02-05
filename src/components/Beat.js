@@ -13,33 +13,35 @@ export default class Beat extends React.Component {
         emptyStyle: {
           height: '80%',
           minHeight: '80px',
-          margin: '1%',
-          width: '23%',
+          margin: '1px',
+          width: '23.3%',
           border: '1px dashed purple',
           display: 'inline-block' ,
           backgroundColor: 'lightblue',
           opacity: '.5',
           position: 'relative',
-          fontSize: '1em'
+          fontSize: '1em',
+          transition: 'background-color .6s'
         },
         clickedStyle: {
           height: '80%',
           minHeight: '80px',
-          margin: '1%',
-          width: '23%',
+          margin: '1px',
+          width: '23.3%',
           border: '1px dotted darkgray',
           display: 'inline-block' ,
           backgroundColor: 'darkblue',
           color: 'hotpink',
           opacity: '.9',
           position: 'relative',
-          fontSize: '1em'
+          fontSize: '1em',
+          transition: 'background-color .6s'
         },
         chordStyle: {
           height: '80%',
           minHeight: '80px',
-          margin: '1%',
-          width: '23%',
+          margin: '1px',
+          width: '23.3%',
           border: '1px solid black',
           display: 'inline-block' ,
           backgroundColor: 'royalblue',
@@ -47,14 +49,15 @@ export default class Beat extends React.Component {
           textAlign: 'center',
           opacity: '1',
           position: 'relative',
-          fontSize: '1em'
+          fontSize: '1em',
+          transition: 'background-color .6s'
         },
         omitStyle: {},
         showStyle: {
           height: '80%',
           minHeight: '80px',
-          margin: '1%',
-          width: '23%',
+          margin: '1px',
+          width: '23.3%',
           // border: '1px solid black',
           display: 'inline-block' ,
           backgroundColor: '#0c0c6d',
@@ -62,7 +65,23 @@ export default class Beat extends React.Component {
           textAlign: 'center',
           opacity: '1',
           position: 'relative',
-          fontSize: '1.3em'          
+          fontSize: '1.3em',
+          transition: 'background-color .6s'          
+        },
+        emptyShowStyle: {
+          height: '80%',
+          minHeight: '80px',
+          margin: '1px',
+          width: '23.3%',
+          // border: '1px solid black',
+          display: 'inline-block' ,
+          backgroundColor: '#0c0c6d',
+          color: 'white',
+          textAlign: 'center',
+          opacity: '.7',
+          position: 'relative',
+          fontSize: '1.3em',
+          transition: 'background-color .6s'             
         }
 
       }
@@ -124,25 +143,43 @@ export default class Beat extends React.Component {
   render() {
     var thingToDisplay = <p style={{
         position: 'absolute',
+        margin: '0 auto',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)'
-    }}>{this.props.chord} </p>;
+    }}>{this.props.chord}</p>;
+
     var style = this.state.styles.chordStyle
+
     if(this.props.chord.split('').length < 1 || this.props.chord === ' ') {
       style = this.state.styles.emptyStyle
     }
 
     if(this.props.clicked) {
       style = this.state.styles.clickedStyle
-      thingToDisplay = <input ref={'input'} className={'chord-input'} type={'text'} onKeyDown={this.handleKeyDown} onKeyPress={this.handleKeyPress} onChange={this.handleChange} placeholder={this.props.chord} style={{color: 'inherit', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%'}} autoFocus/>
+      thingToDisplay = <input 
+        ref={'input'}
+        className={'chord-input'}
+        type={'text'}
+        onKeyDown={this.handleKeyDown}
+        onKeyPress={this.handleKeyPress}
+        onChange={this.handleChange}
+        placeholder={this.props.chord}
+        style={{
+          color: 'inherit',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)'
+        }}
+        autoFocus/>
     }
     if(this.props.filter === 'SHOW') {
-      // if(this.props.chord.split('').length < 1 || this.props.chord === ' ') {
-      //   style = Object.assign(this.state.styles.showStyle, {backgroundColor: '#020235'})
-      // } else {
+      if(this.props.chord.split('').length < 1 || this.props.chord === ' ') {
+        style = this.state.styles.emptyShowStyle
+      } else {
         style = this.state.styles.showStyle
-      // }
+      }
     }
 
     return (

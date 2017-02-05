@@ -38,10 +38,11 @@ export default class Chart extends React.Component {
     return (
       <div style={{
         height: '90%',
-        width: '100%',
-        minWidth: '900px',
+        width: '98%',
+        minWidth: '1125px',
         minHeight: '600px',
-        padding: '10px',
+        // padding: '10px',
+        border: '1px dotted red',
         position: 'relative'
       }}>
       	{sectionsToRender}

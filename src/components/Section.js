@@ -16,7 +16,7 @@ export default class Section extends React.Component {
       styles: {
         showStyle: {
           minHeight: '40px',
-          width: '99%',
+          width: '100%',
           margin: '0 auto',
           // border: '1px solid blue',
           position: 'relative',
@@ -24,13 +24,15 @@ export default class Section extends React.Component {
         },
         editStyle: {
           minHeight: '150px',
-          width: '95%',
+          width: '97%',
           margin: '0 auto',
           // display: 'inline-block',
           border: '1px solid blue',
           // overflow: 'scroll',
           position: 'relative',
-          paddingBottom: '5%'
+          paddingBottom: '5%',
+          marginTop: '5px',
+          marginBottom: '5px'
         }
       }
     }
