@@ -110,3 +110,13 @@ export const setVisibilityFilter = (filter) => ({
   filter
 })
 
+export const setCurrentKey = (key) => ({
+	type: 'SET_CURRENT_KEY',
+	key
+})
+
+export const setChordDisplay = (display) => ({
+	type: 'SET_CHORD_DISPLAY',
+	display
+})
+

@@ -64,7 +64,9 @@ export default class Section extends React.Component {
           markSectionAsClicked={that.props.markSectionAsClicked}
           setChord={that.props.setChord}
           filter={that.props.filter}
-          sectionLength={that.props.measures.length} />
+          sectionLength={that.props.measures.length}
+          currentKey={that.props.currentKey}
+          display={that.props.display} />
     })
     return (
         <div style={style} className=''>

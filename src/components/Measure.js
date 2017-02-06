@@ -59,7 +59,9 @@ export default class Measure extends React.Component {
         measureIndex={that.props.index}
         setChord={that.props.setChord}
         filter={that.props.filter}
-        sectionLength={that.props.sectionLength} />
+        sectionLength={that.props.sectionLength}
+        currentKey={that.props.currentKey}
+        display={that.props.display} />
   	})
     return (
       <div style={style}>

@@ -33,7 +33,9 @@ export default class Chart extends React.Component {
           markSectionAsClicked={that.props.actions.markSectionAsClicked}
           moveSectionUp={that.props.actions.moveSectionUp}
           moveSectionDown={that.props.actions.moveSectionDown}
-          filter={that.props.filter} />
+          filter={that.props.filter}
+          currentKey={that.props.currentKey}
+          display={that.props.display} />
   	})
     return (
       <div style={{

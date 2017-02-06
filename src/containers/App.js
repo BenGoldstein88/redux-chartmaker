@@ -17,7 +17,9 @@ import * as ChartActions from '../actions'
 
 const mapStateToProps = state => ({
   sections: state.sections,
-  filter: state.visibilityFilter
+  filter: state.visibilityFilter,
+  currentKey: state.currentKey,
+  display: state.chordDisplay
 })
 
 const mapDispatchToProps = dispatch => ({
