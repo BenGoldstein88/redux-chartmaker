@@ -49,7 +49,7 @@ export default class Home extends React.Component {
         var i = (sharpScale.indexOf(match) + amount) % sharpScale.length;
         return sharpScale[ i < 0 ? i + sharpScale.length : i ];
       });
-      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
+      return transposedChord.replace(/(([#][b])|([b][#]))/g, '♮')
     }
     if(flatScale.includes(newKey) && flatScale.includes(key)) {
       amount = flatScale.indexOf(newKey) - flatScale.indexOf(key)
@@ -58,7 +58,7 @@ export default class Home extends React.Component {
         var i = (flatScale.indexOf(match) + amount) % flatScale.length;
         return flatScale[ i < 0 ? i + flatScale.length : i ];
       });
-      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
+      return transposedChord.replace(/(([#][b])|([b][#]))/g, '♮')
     }
     if(flatScale.includes(newKey) && sharpScale.includes(key)) {
       amount = flatScale.indexOf(newKey) - sharpScale.indexOf(key)
@@ -67,7 +67,7 @@ export default class Home extends React.Component {
         var i = (sharpScale.indexOf(match) + amount) % sharpScale.length;
         return flatScale[ i < 0 ? i + flatScale.length : i ];
       });
-      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
+      return transposedChord.replace(/(([#][b])|([b][#]))/g, '♮')
     }
     if(sharpScale.includes(newKey) && flatScale.includes(key)) {
       amount = sharpScale.indexOf(newKey) - flatScale.indexOf(key)
@@ -76,7 +76,7 @@ export default class Home extends React.Component {
         var i = (flatScale.indexOf(match) + amount) % flatScale.length;
         return sharpScale[ i < 0 ? i + sharpScale.length : i ];
       });
-      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
+      return transposedChord.replace(/(([#][b])|([b][#]))/g, '♮')
     }
   }
 
@@ -104,7 +104,7 @@ export default class Home extends React.Component {
       <div style={style} onClick={this.handleClick}>
         <SetFilterButton setVisibilityFilter={this.props.actions.setVisibilityFilter} filter={this.props.filter} />
         <SetDisplayButton setChordDisplay={this.props.actions.setChordDisplay} filter ={this.props.filter} display={this.props.display} />
-        <ChooseKey currentKey={this.props.currentKey} setCurrentKey={this.props.actions.setCurrentKey}/>
+        <ChooseKey currentKey={this.props.currentKey} setCurrentKey={this.props.actions.setCurrentKey} transposeAllChords={this.props.actions.transposeAllChords}/>
         <AddSectionButton addSection={this.props.actions.addSection} filter={this.props.filter}/>
         <Chart sections={this.props.sections} actions={this.props.actions} filter={this.props.filter} currentKey={this.props.currentKey} display={this.props.display} />
         <Favicon url={[icon]} />

@@ -1,4 +1,5 @@
 import React from 'react';
+import RootDisplay from './RootDisplay';
 
 export default class ChooseKey extends React.Component {
   // static propTypes = {
@@ -40,7 +41,8 @@ export default class ChooseKey extends React.Component {
   render() {
   	var thingToDisplay
   	if(this.state.clicked) {
-  		thingToDisplay = <input onChange={this.handleChange} onKeyPress={this.handleKeyPress} placeholder={this.props.currentKey} autoFocus />
+  		// thingToDisplay = <input onChange={this.handleChange} onKeyPress={this.handleKeyPress} placeholder={this.props.currentKey} autoFocus />
+  		thingToDisplay = <RootDisplay currentKey={this.props.currentKey} setCurrentKey={this.props.setCurrentKey} transposeAllChords={this.props.transposeAllChords}/>
   	} else {
   		thingToDisplay = <p> {this.props.currentKey}</p>
   	}

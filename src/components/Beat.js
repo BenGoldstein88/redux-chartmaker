@@ -100,8 +100,7 @@ export default class Beat extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getTransposedChord = this.getTransposedChord.bind(this);
-    this.getNumber = this.getNumber.bind(this);
-    this.transposeChord = this.transposeChord.bind(this);
+    // this.transposeChord = this.transposeChord.bind(this);
   }
 
   handleClick(e) {

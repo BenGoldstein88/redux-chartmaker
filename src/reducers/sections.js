@@ -24,6 +24,74 @@
 // 	}
 // }
 
+function transposeChord(chord, key, newKey) {
+	var cSharpScale = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+
+    var sharpScale = ["C", "C#", "D", "D#", "E", "E#", "F#", "G", "G#", "A", "A#", "B"]
+    var flatScale = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "Cb" ]
+    // var flatScale = ["Dbb", "Db", "Ebb", "Eb", "Fb", "F", "Gb", "Abb", "Ab","Bbb", "Bb", "Cb"]
+    var amount
+    var transposedChord
+
+    if(sharpScale.includes(newKey) && sharpScale.includes(key)) {
+    	if(newKey === 'C') {
+	      amount = cSharpScale.indexOf(newKey) - cSharpScale.indexOf(key)
+	      transposedChord =  chord.replace(/([CDEFGAB]#?)/g,
+	      function(match) {
+	        var i = (cSharpScale.indexOf(match) + amount) % cSharpScale.length;
+	        return cSharpScale[ i < 0 ? i + cSharpScale.length : i ];
+	      });
+	      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
+    	} else {
+    		if(key === 'C') {
+		      amount = sharpScale.indexOf(newKey) - cSharpScale.indexOf(key)
+		      transposedChord =  chord.replace(/([CDEFGAB]#?)/g,
+		      function(match) {
+		        var i = (cSharpScale.indexOf(match) + amount) % cSharpScale.length;
+		        return sharpScale[ i < 0 ? i + sharpScale.length : i ];
+		      });
+		      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')    			
+
+    		} else {
+		      amount = sharpScale.indexOf(newKey) - sharpScale.indexOf(key)
+		      transposedChord =  chord.replace(/([CDEFGAB]#?)/g,
+		      function(match) {
+		        var i = (sharpScale.indexOf(match) + amount) % sharpScale.length;
+		        return sharpScale[ i < 0 ? i + sharpScale.length : i ];
+		      });
+		      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
+		  }
+	  	}
+    }
+    if(flatScale.includes(newKey) && flatScale.includes(key)) {
+      amount = flatScale.indexOf(newKey) - flatScale.indexOf(key)
+      transposedChord =  chord.replace(/([CDEFGAB]b*)/g,
+      function(match) {
+        var i = (flatScale.indexOf(match) + amount) % flatScale.length;
+        return flatScale[ i < 0 ? i + flatScale.length : i ];
+      });
+      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
+    }
+    if(flatScale.includes(newKey) && sharpScale.includes(key)) {
+      amount = flatScale.indexOf(newKey) - sharpScale.indexOf(key)
+      transposedChord =  chord.replace(/([CDEFGAB]#?)/g,
+      function(match) {
+        var i = (sharpScale.indexOf(match) + amount) % sharpScale.length;
+        return flatScale[ i < 0 ? i + flatScale.length : i ];
+      });
+      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
+    }
+    if(sharpScale.includes(newKey) && flatScale.includes(key)) {
+      amount = sharpScale.indexOf(newKey) - flatScale.indexOf(key)
+      transposedChord =  chord.replace(/([CDEFGAB]b*)/g,
+      function(match) {
+        var i = (flatScale.indexOf(match) + amount) % flatScale.length;
+        return sharpScale[ i < 0 ? i + sharpScale.length : i ];
+      });
+      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
+    }
+  }
+
 function sections(state = [], action) {
 	switch(action.type) {
 		case 'ADD_SECTION':
@@ -160,24 +228,26 @@ function sections(state = [], action) {
 			return updatedSections
 		case 'SET_CHORD':
 			var updatedSections = []
-			var sanitizedChord = action.chord.replace("*", "𝄪")
-			sanitizedChord = sanitizedChord.replace("#", "♯")
-			sanitizedChord = sanitizedChord.replace(/[A-Za-z0-9](b{2})/, function(match) {
-				var matchArray = match.split('')
-				var rootNote = matchArray[0]
-				return rootNote+"𝄫"
-			})
-			sanitizedChord = sanitizedChord.replace(/([b])/g, "♭")
-			sanitizedChord = sanitizedChord.replace(/([a-g])/g, function replacer(match) {
-				return match.toUpperCase()
-			})
-			sanitizedChord = sanitizedChord.replace("o", "°")
-			// if(sanitizedChord[0] === "♭") {
-			// 	var chordArray = sanitizedChord.split('')
-			// 	chordArray[0] =  'B'
-			// 	sanitizedChord = chordArray.join('')
-			// }
-			sanitizedChord = sanitizedChord.replace("BB", "B♭")
+			var sanitizedChord = action.chord[0].toUpperCase() + action.chord.substring(1, action.chord.length)
+
+			// var sanitizedChord = action.chord.replace("*", "𝄪")
+			// sanitizedChord = sanitizedChord.replace("#", "♯")
+			// sanitizedChord = sanitizedChord.replace(/[A-Za-z0-9](b{2})/, function(match) {
+			// 	var matchArray = match.split('')
+			// 	var rootNote = matchArray[0]
+			// 	return rootNote+"𝄫"
+			// })
+			// sanitizedChord = sanitizedChord.replace(/([b])/g, "♭")
+			// sanitizedChord = sanitizedChord.replace(/([a-g])/g, function replacer(match) {
+			// 	return match.toUpperCase()
+			// })
+			// sanitizedChord = sanitizedChord.replace("o", "°")
+			// // if(sanitizedChord[0] === "♭") {
+			// // 	var chordArray = sanitizedChord.split('')
+			// // 	chordArray[0] =  'B'
+			// // 	sanitizedChord = chordArray.join('')
+			// // }
+			// sanitizedChord = sanitizedChord.replace("BB", "B♭")
 
 			for(var i in state) {
 				var currentSection = state[i]
@@ -232,6 +302,52 @@ function sections(state = [], action) {
 				updatedSections.push(currentSectionClone)
 			}
 			return updatedSections
+		case 'TRANSPOSE_ALL_CHORDS':
+			var transposedSections = []
+			var untransposedChord = action.chord
+			var oldKey = action.oldKey
+			var newKey = action.newKey
+			if(oldKey === newKey) {
+				return state
+			}
+
+			for(var i in state) {
+				var currentSection = state[i]
+
+				var currentMeasures = []
+				for(var j in currentSection.measures) {
+					var currentMeasure = currentSection.measures[j]
+
+					var currentBeats = []
+					for(var k in currentMeasure.beats) {
+						var currentBeat = currentMeasure.beats[k]
+						// var transposedChord =
+						var currentBeatClone = Object.assign(currentBeat, {chord: transposeChord(currentBeat.chord, oldKey, newKey)})
+						// var currentBeatClone = 
+						currentBeats.push(currentBeatClone)
+					}
+					var currentMeasureClone = {
+						id: currentMeasure.id,
+						index: currentMeasure.index,
+						sectionId: currentMeasure.sectionId,
+						numBeats: currentMeasure.numBeats,
+						clicked: currentMeasure.clicked,
+						beats: currentBeats
+					}
+					currentMeasures.push(currentMeasureClone)
+
+				}
+
+				var currentSectionClone = {
+					id: currentSection.id,
+					name: currentSection.name,
+					numMeasures: currentSection.numMeasures,
+					clicked: currentSection.clicked,
+					measures: currentMeasures
+				}
+				transposedSections.push(currentSectionClone)
+			}
+			return transposedSections			
 		case 'SET_SECTION_NAME':
 			var tempClone = state.map((section, index) => {
 				if(section.id === action.sectionId) {

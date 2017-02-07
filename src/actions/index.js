@@ -120,3 +120,9 @@ export const setChordDisplay = (display) => ({
 	display
 })
 
+export const transposeAllChords = (oldKey, newKey) => ({
+	type: 'TRANSPOSE_ALL_CHORDS',
+	oldKey,
+	newKey
+})
+
