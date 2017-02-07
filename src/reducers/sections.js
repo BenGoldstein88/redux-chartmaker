@@ -27,47 +27,42 @@
 function transposeChord(chord, key, newKey) {
 	var cSharpScale = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
 
-    var sharpScale = ["C", "C#", "D", "D#", "E", "E#", "F#", "G", "G#", "A", "A#", "B"]
+    var sharpScale = ["B#", "C#", "D", "D#", "E", "E#", "F#", "G", "G#", "A", "A#", "B"]
     var flatScale = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "Cb" ]
     // var flatScale = ["Dbb", "Db", "Ebb", "Eb", "Fb", "F", "Gb", "Abb", "Ab","Bbb", "Bb", "Cb"]
     var amount
     var transposedChord
 
-    if(sharpScale.includes(newKey) && sharpScale.includes(key)) {
-    	if(newKey === 'C') {
-	      amount = cSharpScale.indexOf(newKey) - cSharpScale.indexOf(key)
-	      transposedChord =  chord.replace(/([CDEFGAB]#?)/g,
-	      function(match) {
-	      	if(flatScale.includes(match)) {
-      			var i = (flatScale.indexOf(match) + amount) % flatScale.length
-      			return flatScale[ i < 0 ? i + cSharpScale.length : i ]
-	      	} else {
-	      		var i = (sharpScale.indexOf(match) + amount) % sharpScale.length
-	      		return cSharpScale[ i < 0 ? i + cSharpScale.length : i ]
-	      	}
 
-	      });
-	      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
-    	} else {
-    		if(key === 'C') {
-		      amount = sharpScale.indexOf(newKey) - cSharpScale.indexOf(key)
-		      transposedChord =  chord.replace(/([CDEFGAB]#?)/g,
-		      function(match) {
-		        var i = (cSharpScale.indexOf(match) + amount) % cSharpScale.length;
-		        return sharpScale[ i < 0 ? i + sharpScale.length : i ];
-		      });
-		      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')    			
-
-    		} else {
-		      amount = sharpScale.indexOf(newKey) - sharpScale.indexOf(key)
-		      transposedChord =  chord.replace(/([CDEFGAB]#?)/g,
-		      function(match) {
-		        var i = (sharpScale.indexOf(match) + amount) % sharpScale.length;
-		        return sharpScale[ i < 0 ? i + sharpScale.length : i ];
-		      });
-		      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
-		  }
-	  	}
+    if(cSharpScale.includes(newKey) && cSharpScale.includes(key)) {
+		amount = cSharpScale.indexOf(newKey) - cSharpScale.indexOf(key)
+		transposedChord =  chord.replace(/([CDEFGAB]#?)/g,
+			function(match) {
+				if(cSharpScale.includes(match)) {
+					var i = (cSharpScale.indexOf(match) + amount) % cSharpScale.length;
+					if(newKey === 'C' || newKey === 'G') {
+						return cSharpScale[ i < 0 ? i + cSharpScale.length : i ];
+					} else {
+						if(newKey === 'F') {
+							return flatScale[ i < 0 ? i + flatScale.length : i ]
+						} else {
+							return sharpScale[ i < 0 ? i + sharpScale.length : i ]
+						}
+					}					
+				} else {
+					var i = (sharpScale.indexOf(match) + amount) % sharpScale.length;
+					if(newKey === 'C' || newKey === 'G') {
+						return cSharpScale[ i < 0 ? i + cSharpScale.length : i ];
+					} else {
+						if(newKey === 'F') {
+							return flatScale[ i < 0 ? i + flatScale.length : i ]
+						} else {
+							return sharpScale[ i < 0 ? i + sharpScale.length : i ]
+						}
+					}					
+				}
+			});
+		return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
     }
     if(flatScale.includes(newKey) && flatScale.includes(key)) {
       amount = flatScale.indexOf(newKey) - flatScale.indexOf(key)

@@ -36,7 +36,7 @@ export default class RootDisplay extends React.Component {
     return (
       <div style={{
       	width: '500px',
-      	height: '300px',
+      	height: '140px',
       	border: '1px solid orange'
       }}>
       	{rootBoxes}

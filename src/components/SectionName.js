@@ -9,11 +9,13 @@ export default class SectionName extends React.Component {
     this.state = {
     	styles: {
     		editStyle: {
-          fontSize: '1em'
+          fontSize: '1em',
+          transition: 'font-size .7s'
 
     		},
     		showStyle: {
-          fontSize: '2em'
+          fontSize: '2em',
+          transition: 'font-size .7s'
 
     		}
     	}
