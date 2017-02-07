@@ -15,7 +15,7 @@ export default class Section extends React.Component {
     this.state = {
       styles: {
         showStyle: {
-          minHeight: '40px',
+          minHeight: '30px',
           width: '98%',
           minWidth: '420px',
           margin: '0 auto',
@@ -78,7 +78,7 @@ export default class Section extends React.Component {
             markSectionAsClicked={this.props.markSectionAsClicked}
             filter={this.props.filter}
             markBeatAsClicked={this.props.markBeatAsClicked}/>
-          <div style={{margin: '0 auto', width: '100%', height: '80%', position: 'relative'}}>
+          <div style={{margin: '0 auto', width: '100%', maxHeight: '80%', position: 'relative'}}>
             {measuresToRender}
           </div>
           <SectionButtonToolbar sectionId={this.props.id} addMeasure={this.props.addMeasure} removeSection={this.props.removeSection} id={this.props.id} moveSectionUp={this.props.moveSectionUp} moveSectionDown={this.props.moveSectionDown} filter={this.props.filter} />

@@ -134,6 +134,10 @@ export default class Beat extends React.Component {
     if(e.key === 'ArrowDown') {
         this.props.markBeatAsClicked(this.props.sectionId, Math.min(this.props.sectionLength-1, this.props.measureIndex+4), this.props.id)
     }
+    if(e.key === 'Tab') {
+      e.preventDefault()
+        this.props.markBeatAsClicked(this.props.sectionId, Math.min(this.props.sectionLength-1, this.props.measureIndex+1), this.props.id)
+    }
       
   }
 

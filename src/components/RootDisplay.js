@@ -6,7 +6,11 @@ export default class RootDisplay extends React.Component {
     super(props);
 
     this.state = {
-    	roots: ["C", "D", "E", "F", "G", "A", "B", "C#", "D#", "F#", "G#", "A#", "Db", "Eb", "Gb", "Ab", "Bb"]
+    	roots: {
+    		naturals: ["C", "D", "E", "F", "G", "A", "B"],
+    		sharps: ["C#", "D#", "F#", "G#", "A#"],
+    		flats: ["Db", "Eb", "Gb", "Ab", "Bb"]
+    	}
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -19,27 +23,36 @@ export default class RootDisplay extends React.Component {
   	this.props.transposeAllChords(currentKey, e.target.innerHTML)
   	// console.log("e.target: ", e.target);
   	// console.log("e.target.innerHTML: ", e.target.innerHTML);
+
   }
 
   render() {
   	var that = this
-  	var rootBoxes = this.state.roots.map(function(rootNote, index) {
-  		return <div key={index} style={{
-  			border: '1px solid black',
-  			display: 'inline-block',
-  			width: '50px',
-  			height: '50px'
-  		}} onClick={that.handleClick}>
-  			{rootNote}
-  		</div>
+  	var naturalBoxes = this.state.roots.naturals.map(function(rootNote, index) {
+  		return <div key={index} className={'root-box natural-box ' + 'root-box-' + rootNote}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
   	})
+  	var naturalBoxesToDisplay = <div className={'natural-boxes'} >{naturalBoxes}</div>
+
+  	var sharpBoxes = this.state.roots.sharps.map(function(rootNote, index) {
+  		return <div key={index} className={'root-box sharp-box ' + 'root-box-' + rootNote[0] + 'sharp'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  	})
+  	var sharpBoxesToDisplay = <div className={'sharp-boxes'} >{sharpBoxes}</div>
+  	var flatBoxes = this.state.roots.flats.map(function(rootNote, index) {
+  		return <div key={index} className={'root-box flat-box ' + 'root-box-' + rootNote[0] + 'flat'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  	})
+  	var flatBoxesToDisplay = <div className={'flat-boxes'} >{flatBoxes}</div>
     return (
       <div style={{
-      	width: '500px',
-      	height: '140px',
+      	width: '85%',
+      	margin: '0 auto',
+      	height: '15%',
       	border: '1px solid orange'
       }}>
-      	{rootBoxes}
+      	<div className={'root-boxes-wrapper'}>
+	      	{sharpBoxesToDisplay}
+	      	{naturalBoxesToDisplay}
+	      	{flatBoxesToDisplay}
+	    </div>
       </div>
     );
   }

@@ -28,3 +28,66 @@ body {
 	/*min-height: 1000px;*/
 
 }
+
+.root-box-p {
+	text-align: center;
+	position: absolute;
+	margin: 0 auto;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.natural-box {
+	color: black;
+	background-color: white;
+}
+.sharp-box {
+	color: white;
+	background-color: black;
+}
+.flat-box {
+	color: white;
+	background-color: black;
+}
+.natural-boxes {
+	display: block;
+}
+.sharp-boxes {
+	display: block;
+	margin-left: 25px;
+}
+.flat-boxes {
+	display: block;
+	margin-left: 25px;
+}
+
+.root-box-Fsharp, .root-box-Gflat {
+	margin-left: 50px;
+}
+
+.root-boxes-wrapper {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.root-box {
+	height: 50px;
+	width: 50px;
+	border: 1px solid black;
+	border-radius: 5%;
+	opacity: .7;
+	font-size: 1em;
+	position: relative;
+	display: inline-block;
+	transition: opacity .3s, font-size .3s, font-weight .3s;
+}
+
+.root-box:hover {
+	opacity: 1;
+	font-weight: bold;
+	font-size: 1.6em;
+	transition: opacity .3s, font-size .3s, font-weight .3s;
+
+
+}

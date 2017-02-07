@@ -35,6 +35,20 @@ export default class Home extends React.Component {
     // this.transposeChord = this.transposeChord.bind(this);
 
   }
+
+  componentDidMount() {
+    var that = this
+   document.body.addEventListener('keydown', function(e) {
+      if(e.key==='`') {
+        if(that.props.filter==='EDIT') {
+          that.props.actions.setVisibilityFilter('SHOW')
+        } else {
+          that.props.actions.setVisibilityFilter('EDIT')
+        }
+      }
+    })   
+  }
+
   // transposeChord(chord, key, newKey) {
   //   var sharpScale = ["C", "C#", "D", "D#", "E", "E#", "F#", "G", "G#", "A", "A#", "B"]
   //   var flatScale = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "Cb" ]
