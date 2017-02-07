@@ -38,8 +38,14 @@ function transposeChord(chord, key, newKey) {
 	      amount = cSharpScale.indexOf(newKey) - cSharpScale.indexOf(key)
 	      transposedChord =  chord.replace(/([CDEFGAB]#?)/g,
 	      function(match) {
-	        var i = (cSharpScale.indexOf(match) + amount) % cSharpScale.length;
-	        return cSharpScale[ i < 0 ? i + cSharpScale.length : i ];
+	      	if(flatScale.includes(match)) {
+      			var i = (flatScale.indexOf(match) + amount) % flatScale.length
+      			return flatScale[ i < 0 ? i + cSharpScale.length : i ]
+	      	} else {
+	      		var i = (sharpScale.indexOf(match) + amount) % sharpScale.length
+	      		return cSharpScale[ i < 0 ? i + cSharpScale.length : i ]
+	      	}
+
 	      });
 	      return transposedChord.replace(/(([#][b])|([b][#]))/g, '')
     	} else {
@@ -228,6 +234,7 @@ function sections(state = [], action) {
 			return updatedSections
 		case 'SET_CHORD':
 			var updatedSections = []
+			if(!action.chord) { return state }
 			var sanitizedChord = action.chord[0].toUpperCase() + action.chord.substring(1, action.chord.length)
 
 			// var sanitizedChord = action.chord.replace("*", "𝄪")
