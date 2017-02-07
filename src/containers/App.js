@@ -19,7 +19,10 @@ const mapStateToProps = state => ({
   sections: state.sections,
   filter: state.visibilityFilter,
   currentKey: state.currentKey,
-  display: state.chordDisplay
+  display: state.chordDisplay,
+  title: state.title,
+  arranger: state.arranger,
+  composer: state.composer
 })
 
 const mapDispatchToProps = dispatch => ({

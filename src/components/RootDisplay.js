@@ -46,7 +46,10 @@ export default class RootDisplay extends React.Component {
       	width: '85%',
       	margin: '0 auto',
       	height: '15%',
-      	border: '1px solid orange'
+      	// border: '1px solid orange',
+      	position: 'absolute',
+      	top: '0',
+      	left: '-100px'
       }}>
       	<div className={'root-boxes-wrapper'}>
 	      	{sharpBoxesToDisplay}

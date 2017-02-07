@@ -5,6 +5,7 @@ import AddSectionButton from './AddSectionButton';
 import SetFilterButton from './SetFilterButton';
 import SetDisplayButton from './SetDisplayButton';
 import ChooseKey from './ChooseKey';
+import ChartInfo from './ChartInfo';
 import Favicon from 'react-favicon'
 import icon from '../favicon.ico'
 
@@ -109,8 +110,9 @@ export default class Home extends React.Component {
     }
     return (
       <div style={style} onClick={this.handleClick}>
+        <ChartInfo title={this.props.title} composer={this.props.composer} arranger={this.props.arranger} setTitle={this.props.actions.setTitle} setComposer={this.props.actions.setComposer} setArranger={this.props.actions.setArranger} filter={this.props.filter} />
         <SetFilterButton setVisibilityFilter={this.props.actions.setVisibilityFilter} filter={this.props.filter} />
-        <ChooseKey currentKey={this.props.currentKey} setCurrentKey={this.props.actions.setCurrentKey} transposeAllChords={this.props.actions.transposeAllChords}/>
+        <ChooseKey currentKey={this.props.currentKey} setCurrentKey={this.props.actions.setCurrentKey} transposeAllChords={this.props.actions.transposeAllChords} filter={this.props.filter}/>
         <AddSectionButton addSection={this.props.actions.addSection} filter={this.props.filter}/>
         <Chart sections={this.props.sections} actions={this.props.actions} filter={this.props.filter} currentKey={this.props.currentKey} display={this.props.display} />
         <Favicon url={[icon]} />

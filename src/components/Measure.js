@@ -29,7 +29,7 @@ export default class Measure extends React.Component {
           maxHeight: '150px',
           minWidth: '150px',
           width: '24.25%',
-          border: '1px solid pink',
+          // border: '1px solid pink',
           // padding: '1px',
           display: 'inline-block',
           margin: '2px'

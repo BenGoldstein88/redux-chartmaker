@@ -1,6 +1,6 @@
 import React from 'react';
 import RootDisplay from './RootDisplay';
-
+import Modal from 'react-bootstrap'
 export default class ChooseKey extends React.Component {
   // static propTypes = {
   //   name: React.PropTypes.string,
@@ -10,12 +10,33 @@ export default class ChooseKey extends React.Component {
     super(props);
 
     this.state = {
-    	clicked: false
+    	clicked: false,
+    	styles: {
+    		editStyle: {
+    			position: 'absolute',
+    			top: '5px',
+    			left: '5px',
+    			border: '1px solid black',
+    			height: '50px',
+    			width: '50px',
+    			textAlign: 'center'
+    		},
+    		showStyle: {
+    			position: 'absolute',
+    			top: '5px',
+    			left: '5px',
+    			border: '1px solid black',
+    			height: '50px',
+    			width: '50px',
+    			textAlign: 'center',
+
+    		}
+    	}
     }
 
     this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.hideModal = this.hideModal.bind(this);
   }
 
   handleClick(e) {
@@ -23,11 +44,6 @@ export default class ChooseKey extends React.Component {
   	this.setState({
   		clicked: !this.state.clicked
   	})
-  }
-
-  handleChange(e) {
-  	e.preventDefault()
-  	this.props.setCurrentKey(e.target.value)
   }
 
   handleKeyPress(e) {
@@ -38,17 +54,28 @@ export default class ChooseKey extends React.Component {
   	}
   }
 
+  hideModal() {
+  	this.setState({
+  		clicked: false
+  	})
+  }
+
   render() {
   	var thingToDisplay
-  	if(this.state.clicked) {
-  		// thingToDisplay = <input onChange={this.handleChange} onKeyPress={this.handleKeyPress} placeholder={this.props.currentKey} autoFocus />
-  		thingToDisplay = <RootDisplay currentKey={this.props.currentKey} setCurrentKey={this.props.setCurrentKey} transposeAllChords={this.props.transposeAllChords}/>
+  	var style
+  	if(this.props.filter==='EDIT') {
+  		style = this.state.styles.editStyle
   	} else {
-  		thingToDisplay = <p> {this.props.currentKey}</p>
+  		style = this.state.styles.showStyle
+  	}
+  	if(this.state.clicked) {
+  		thingToDisplay = <RootDisplay currentKey={this.props.currentKey} setCurrentKey={this.props.setCurrentKey} transposeAllChords={this.props.transposeAllChords} className={'root-display'}/>
+  	} else {
+  		thingToDisplay = <div style={style}> <p style={{}} >{this.props.currentKey}</p> </div>
   	}
 
     return (
-      <div onClick={this.handleClick} >
+      <div onClick={this.handleClick}>
       	{thingToDisplay}
       </div>
     );

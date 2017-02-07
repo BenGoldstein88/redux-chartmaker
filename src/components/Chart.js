@@ -44,7 +44,7 @@ export default class Chart extends React.Component {
         minWidth: '900px',
         minHeight: '600px',
         // padding: '10px',
-        border: '1px dotted red',
+        // border: '1px dotted red',
         position: 'relative'
       }}>
       	{sectionsToRender}

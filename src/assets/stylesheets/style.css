@@ -29,11 +29,19 @@ body {
 
 }
 
+.title-input {}
+
+.root-display {
+	z-index: 10;
+}
+
 .root-box-p {
 	text-align: center;
 	position: absolute;
 	margin: 0 auto;
-	top: 50%;
+	height: 100%;
+	width: 100%;
+	top: 70%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
@@ -90,4 +98,29 @@ body {
 	transition: opacity .3s, font-size .3s, font-weight .3s;
 
 
+}
+
+#slide {
+    position: absolute;
+    left: -1000px;
+    /*width: 100%;*/
+/*    width: 100px;
+    height: 100px;*/
+    /*background: blue;*/
+    -webkit-animation: slide 0.5s forwards;
+    /*-webkit-animation-delay: .5s;*/
+    animation: slide 0.5s forwards;
+    /*animation-delay: .5s;*/
+}
+
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
+}
+
+.section-toolbar-button {
+	display: inline-block;
 }

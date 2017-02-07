@@ -126,3 +126,18 @@ export const transposeAllChords = (oldKey, newKey) => ({
 	newKey
 })
 
+export const setTitle = (title) => ({
+	type: 'SET_TITLE',
+	title
+})
+
+export const setComposer = (composer) => ({
+	type: 'SET_COMPOSER',
+	composer
+})
+
+export const setArranger = (arranger) => ({
+	type: 'SET_ARRANGER',
+	arranger
+})
+

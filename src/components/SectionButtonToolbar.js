@@ -13,11 +13,11 @@ export default class SectionButtonToolbar extends React.Component {
   }
 
   render() {
-    var thingToDisplay = <div>
-        <AddMeasureButton sectionId={this.props.sectionId} addMeasure={this.props.addMeasure} />
-        <MoveSectionUpButton moveSectionUp={this.props.moveSectionUp} sectionId={this.props.sectionId}/>
-        <MoveSectionDownButton moveSectionDown={this.props.moveSectionDown} sectionId={this.props.sectionId}/>
-        <RemoveSectionButton removeSection={this.props.removeSection} id={this.props.id} />
+    var thingToDisplay = <div id={'slide'}>
+        <AddMeasureButton className={'section-toolbar-button'} sectionId={this.props.sectionId} addMeasure={this.props.addMeasure} />
+        <MoveSectionUpButton className={'section-toolbar-button'} moveSectionUp={this.props.moveSectionUp} sectionId={this.props.sectionId}/>
+        <MoveSectionDownButton className={'section-toolbar-button'} moveSectionDown={this.props.moveSectionDown} sectionId={this.props.sectionId}/>
+        <RemoveSectionButton className={'section-toolbar-button'} removeSection={this.props.removeSection} id={this.props.id} />
       </div>
     if(this.props.filter==='SHOW') {
       thingToDisplay = null
@@ -27,9 +27,12 @@ export default class SectionButtonToolbar extends React.Component {
       <div style={{
       	display: 'inline-block',
         position: 'absolute',
-        bottom: '0',
-        left: '0'
-      }}>
+        top: '5px',
+        left: '100%',
+        width: '80%',
+        margin: '0 auto',
+        transform: 'translate(-50%, 0)'
+      }} >
         {thingToDisplay}
       </div>
     );
