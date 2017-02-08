@@ -17,9 +17,13 @@ export default class Beat extends React.Component {
           minWidth: '22px',
           // margin: '1px',
           width: '23.8%',
-          border: '1px dashed purple',
-          display: 'inline-block' ,
-          backgroundColor: 'lightblue',
+          borderTop: 'none',
+          borderLeft: 'none',
+          borderRight: 'none',
+          borderBottom: '1px solid blue',
+          display: 'inline-block',
+          borderRadius: '10px',
+          backgroundColor: 'inherit',
           opacity: '.5',
           position: 'relative',
           fontSize: '1em',
@@ -31,8 +35,12 @@ export default class Beat extends React.Component {
           minWidth: '22px',
           // margin: '1px',
           width: '23.8%',
-          border: '1px dotted darkgray',
-          display: 'inline-block' ,
+          borderTop: 'none',
+          borderLeft: 'none',
+          borderRight: 'none',
+          borderBottom: '1px solid blue',
+          display: 'inline-block',
+          borderRadius: '10px',
           backgroundColor: 'darkblue',
           color: 'hotpink',
           opacity: '.9',
@@ -46,8 +54,13 @@ export default class Beat extends React.Component {
           minWidth: '22px',
           // margin: '1px',
           width: '23.8%',
-          border: '1px solid black',
-          display: 'inline-block' ,
+          fontWeight: 'bold',
+          borderTop: 'none',
+          borderLeft: 'none',
+          borderRight: 'none',
+          borderBottom: '1px solid blue',
+          display: 'inline-block',
+          borderRadius: '10px',
           backgroundColor: 'royalblue',
           // color: 'goldenrod',
           textAlign: 'center',
@@ -118,12 +131,20 @@ export default class Beat extends React.Component {
       if(this.props.id < 3) {
         this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex, this.props.id+1)
       } else {
-        this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex+1, 0)
+        if(this.props.measureIndex===this.props.sectionLength-1) {
+          return
+        } else {
+          this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex+1, 0)
+        }
       }
     }
     if(e.key === 'ArrowLeft') {
       if(this.props.id < 1) {
-        this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex-1, 3)
+        if(this.props.measureIndex < 1) {
+          return
+        } else {
+          this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex-1, 3)
+        }
       } else {
         this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex, this.props.id-1)
       }
@@ -136,7 +157,7 @@ export default class Beat extends React.Component {
     }
     if(e.key === 'Tab') {
       e.preventDefault()
-        this.props.markBeatAsClicked(this.props.sectionId, Math.min(this.props.sectionLength-1, this.props.measureIndex+1), this.props.id)
+        this.props.markBeatAsClicked(this.props.sectionId, Math.min(this.props.sectionLength-1, this.props.measureIndex+1), 0)
     }
       
   }
@@ -171,7 +192,8 @@ export default class Beat extends React.Component {
         margin: '0 auto',
         top: '50%',
         left: '50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        transition: 'background-color .6s'
     }}>{displayChord}</p>;
 
     var style = this.state.styles.chordStyle
@@ -189,9 +211,9 @@ export default class Beat extends React.Component {
         onKeyDown={this.handleKeyDown}
         onKeyPress={this.handleKeyPress}
         onChange={this.handleChange}
-        placeholder={this.props.chord}
+
         style={{
-          backgroundColor: 'inherit',
+          backgroundColor: 'transparent',
           height: '25%',
           width: '25%',
           border: 'none',

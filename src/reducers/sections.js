@@ -61,6 +61,9 @@ function trueTransposeChord(chord, key, newKey) {
 		case "A#":
 			oldKeyScale = aSharpScale
 			break
+		case "D#":
+			oldKeyScale = dSharpScale
+			break
 		case "F":
 			oldKeyScale = fScale
 			break
@@ -113,6 +116,9 @@ function trueTransposeChord(chord, key, newKey) {
 			break
 		case "A#":
 			newKeyScale = aSharpScale
+			break
+		case "D#":
+			newKeyScale = dSharpScale
 			break
 		case "F":
 			newKeyScale = fScale

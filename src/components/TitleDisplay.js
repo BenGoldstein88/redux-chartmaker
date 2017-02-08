@@ -26,15 +26,14 @@ export default class TitleDisplay extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   handleClick(e) {
+  	e.stopPropagation()
   	e.preventDefault()
   	if(this.props.filter === "EDIT") {	
-	  	this.setState({
-	  		clicked: !this.state.clicked
-	  	})
+  		this.props.markChartInfoAsClicked("TITLE")
   	}
   }
 
@@ -42,11 +41,17 @@ export default class TitleDisplay extends React.Component {
   	this.props.setTitle(e.target.value)
   }
 
-  handleKeyPress(e) {
-  	if(e.key==='Enter' || e.key==='Tab') {
-  		this.setState({
-  			clicked: !this.state.clicked
-  		})
+  handleKeyDown(e) {
+  	if(e.key==='Enter') {
+  		this.props.markChartInfoAsClicked("NONE")
+  	}
+  	if(e.key==='Tab') {
+  		e.preventDefault()
+  		this.props.markChartInfoAsClicked("COMPOSER")
+  	}
+  	if(e.key==='ArrowDown') {
+  		e.preventDefault()
+  		this.props.markChartInfoAsClicked("COMPOSER")
   	}
   }
 
@@ -58,8 +63,13 @@ export default class TitleDisplay extends React.Component {
   	} else {
   		style = this.state.styles.showStyle
   	}
-  	if(this.state.clicked) {
-  		thingToDisplay = <input className={'title-input'} onKeyPress={this.handleKeyPress} onChange={this.handleChange} placeholder={this.props.title} autoFocus/>
+  	if(this.props.currentChartInfo==='TITLE') {
+  		thingToDisplay = <input style={{
+  			fontSize: '1.3em',
+  			textAlign: 'center',
+  			border: 'none',
+  			backgroundColor: 'inherit'
+  		}}className={'title-input'} onKeyDown={this.handleKeyDown} onChange={this.handleChange} placeholder={this.props.title} autoFocus/>
   	} else {
   		thingToDisplay = <p className={'title-p'}>{this.props.title}</p>
   	}

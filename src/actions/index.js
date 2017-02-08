@@ -141,3 +141,8 @@ export const setArranger = (arranger) => ({
 	arranger
 })
 
+export const markChartInfoAsClicked = (chartInfo) => ({
+	type: 'MARK_CHART_INFO_AS_CLICKED',
+	chartInfo
+})
+

@@ -18,7 +18,9 @@ export default class SaveButton extends React.Component {
       data: {
         title: that.props.title,
         composer: that.props.composer,
-        arranger: that.props.arranger
+        arranger: that.props.arranger,
+        sections: that.props.sections,
+        currentKey: that.props.currentKey
       }
     })
     .then(function(response) {

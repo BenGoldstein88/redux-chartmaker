@@ -6,6 +6,7 @@ import chordDisplay from './chordDisplay'
 import title from './title';
 import arranger from './arranger';
 import composer from './composer';
+import chartInfo from './chartInfo';
 
 const chartMakerApp = combineReducers({
 	sections,
@@ -14,7 +15,8 @@ const chartMakerApp = combineReducers({
 	chordDisplay,
 	title,
 	arranger,
-	composer
+	composer,
+	chartInfo
 })
 
 export default chartMakerApp

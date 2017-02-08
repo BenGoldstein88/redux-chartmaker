@@ -21,8 +21,13 @@ export default class AddMeasureButton extends React.Component {
       <div style={{
         display: 'inline-block'
       }}>
-      	<button onClick={this.handleClick} >
-      		+
+      	<button className={'add-measure-button'} onClick={this.handleClick} >
+      		<p style={{
+            position: 'absolute',
+            top: '20%',
+            left: '22.5%',
+            transform: 'translate(-50%, -50%)'
+          }}>ADD MEASURE</p>
       	</button>
       </div>
     );

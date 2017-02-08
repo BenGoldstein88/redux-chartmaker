@@ -29,16 +29,28 @@ export default class RootDisplay extends React.Component {
   render() {
   	var that = this
   	var naturalBoxes = this.state.roots.naturals.map(function(rootNote, index) {
-  		return <div key={index} className={'root-box natural-box ' + 'root-box-' + rootNote}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  		if(rootNote===that.props.currentKey) {
+  			return <div key={index} className={'root-box natural-box ' + 'root-box-' + rootNote + ' current-key-box'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  		} else {
+  			return <div key={index} className={'root-box natural-box ' + 'root-box-' + rootNote}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  		}
   	})
   	var naturalBoxesToDisplay = <div className={'natural-boxes'} >{naturalBoxes}</div>
 
   	var sharpBoxes = this.state.roots.sharps.map(function(rootNote, index) {
-  		return <div key={index} className={'root-box sharp-box ' + 'root-box-' + rootNote[0] + 'sharp'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  		if(rootNote===that.props.currentKey) {
+  			return <div key={index} className={'root-box sharp-box ' + 'root-box-' + rootNote[0] + 'sharp' + ' current-key-box'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  		} else {
+  			return <div key={index} className={'root-box sharp-box ' + 'root-box-' + rootNote[0] + 'sharp'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  		}
   	})
   	var sharpBoxesToDisplay = <div className={'sharp-boxes'} >{sharpBoxes}</div>
   	var flatBoxes = this.state.roots.flats.map(function(rootNote, index) {
-  		return <div key={index} className={'root-box flat-box ' + 'root-box-' + rootNote[0] + 'flat'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  		if(rootNote===that.props.currentKey) {
+  			return <div key={index} className={'root-box flat-box ' + 'root-box-' + rootNote[0] + 'flat' + 'current-key-box'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  		} else {
+  			return <div key={index} className={'root-box flat-box ' + 'root-box-' + rootNote[0] + 'flat'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  		}
   	})
   	var flatBoxesToDisplay = <div className={'flat-boxes'} >{flatBoxes}</div>
     return (

@@ -19,8 +19,14 @@ export default class RemoveSectionButton extends React.Component {
       <div style={{
         display: 'inline-block'
       }}>
-        <button onClick={this.handleClick} >
-          REMOVE SECTION
+        <button className={'remove-section-button'}onClick={this.handleClick} >
+          <p style={{
+            position: 'absolute',
+            top: '20%',
+            left: '50%',
+            width: '100%',
+            transform: 'translate(-50%, -50%)'
+          }}>REMOVE SECTION</p>
         </button>
       </div>
     );

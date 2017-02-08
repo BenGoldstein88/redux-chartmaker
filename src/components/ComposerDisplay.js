@@ -26,15 +26,14 @@ export default class ComposerDisplay extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   handleClick(e) {
   	e.preventDefault()
+  	e.stopPropagation()
   	if(this.props.filter === "EDIT") {	
-	  	this.setState({
-	  		clicked: !this.state.clicked
-	  	})
+  		this.props.markChartInfoAsClicked("COMPOSER")
   	}
   }
 
@@ -42,12 +41,19 @@ export default class ComposerDisplay extends React.Component {
   	this.props.setComposer(e.target.value)
   }
 
-  handleKeyPress(e) {
-  	if(e.key==='Enter' || e.key==='Tab') {
-  		this.setState({
-  			clicked: !this.state.clicked
-  		})
+  handleKeyDown(e) {
+  	if(e.key==='Enter') {
+  		this.props.markChartInfoAsClicked("NONE")
   	}
+
+  	if(e.key==='ArrowDown' || e.key==='Tab') {
+  		e.preventDefault()
+  		this.props.markChartInfoAsClicked("ARRANGER")
+  	}
+  	if(e.key==='ArrowUp') {
+  		this.props.markChartInfoAsClicked("TITLE")
+  	}
+
   }
 
   render() {
@@ -58,8 +64,13 @@ export default class ComposerDisplay extends React.Component {
   	} else {
   		style = this.state.styles.showStyle
   	}
-  	if(this.state.clicked) {
-  		thingToDisplay = <input className={'composer-input'} onKeyPress={this.handleKeyPress} onChange={this.handleChange} placeholder={this.props.composer} autoFocus/>
+  	if(this.props.currentChartInfo==='COMPOSER') {
+  		thingToDisplay = <input style={{
+  			fontSize: '1.1em',
+  			textAlign: 'center',
+  			border: 'none',
+  			backgroundColor: 'inherit'
+  		}} className={'composer-input'} onKeyDown={this.handleKeyDown} onChange={this.handleChange} placeholder={this.props.composer} autoFocus/>
   	} else {
   		thingToDisplay = <p className={'composer-p'}>{this.props.composer}</p>
   	}

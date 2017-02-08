@@ -27,10 +27,11 @@ export default class SectionButtonToolbar extends React.Component {
       <div style={{
       	display: 'inline-block',
         position: 'absolute',
-        top: '5px',
-        left: '100%',
+        top: '-10px',
+        right: '-68%',
         width: '80%',
         margin: '0 auto',
+        height: '25px',
         transform: 'translate(-50%, 0)'
       }} >
         {thingToDisplay}

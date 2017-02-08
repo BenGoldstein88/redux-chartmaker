@@ -26,26 +26,28 @@ export default class ArrangerDisplay extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   handleClick(e) {
   	e.preventDefault()
+  	e.stopPropagation()
   	if(this.props.filter === "EDIT") {	
-	  	this.setState({
-	  		clicked: !this.state.clicked
-	  	})
+  		this.props.markChartInfoAsClicked("ARRANGER")
   	}
   }
   handleChange(e) {
   	this.props.setArranger(e.target.value)
   }
 
-  handleKeyPress(e) {
+  handleKeyDown(e) {
   	if(e.key==='Enter' || e.key==='Tab') {
-  		this.setState({
-  			clicked: !this.state.clicked
-  		})
+  		e.preventDefault()
+  		this.props.markChartInfoAsClicked("NONE")
+  	}
+
+  	if(e.key==='ArrowUp') {
+  		this.props.markChartInfoAsClicked("COMPOSER")
   	}
   }
 
@@ -57,8 +59,13 @@ export default class ArrangerDisplay extends React.Component {
   	} else {
   		style = this.state.styles.showStyle
   	}
-  	if(this.state.clicked) {
-  		thingToDisplay = <input className={'arranger-input'} onKeyPress={this.handleKeyPress} onChange={this.handleChange} placeholder={this.props.arranger} autoFocus/>
+  	if(this.props.currentChartInfo==="ARRANGER") {
+  		thingToDisplay = <input style={{
+  			fontSize: '1.1em',
+  			textAlign: 'center',
+  			border: 'none',
+  			backgroundColor: 'inherit'
+  		}} className={'arranger-input'} onKeyDown={this.handleKeyDown} onChange={this.handleChange} placeholder={this.props.arranger} autoFocus/>
   	} else {
   		thingToDisplay = <p className={'arranger-p'}><em>arr:</em> {this.props.arranger}</p>
   	}

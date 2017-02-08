@@ -34,7 +34,8 @@ const mapStateToProps = state => ({
   display: state.chordDisplay,
   title: state.title,
   arranger: state.arranger,
-  composer: state.composer
+  composer: state.composer,
+  currentChartInfo: state.chartInfo
 })
 
 const mapDispatchToProps = dispatch => ({

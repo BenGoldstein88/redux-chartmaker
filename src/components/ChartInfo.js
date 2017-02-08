@@ -32,9 +32,9 @@ export default class ChartInfo extends React.Component {
   	}
     return (
       <div style={style}>
-      	<TitleDisplay title={this.props.title} setTitle={this.props.setTitle} filter={this.props.filter}/>
-      	<ComposerDisplay composer={this.props.composer} setComposer={this.props.setComposer} filter={this.props.filter}/>
-      	<ArrangerDisplay arranger={this.props.arranger} setArranger={this.props.setArranger} filter={this.props.filter}/>
+      	<TitleDisplay title={this.props.title} setTitle={this.props.setTitle} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markChartInfoAsClicked={this.props.markChartInfoAsClicked}/>
+      	<ComposerDisplay composer={this.props.composer} setComposer={this.props.setComposer} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markChartInfoAsClicked={this.props.markChartInfoAsClicked}/>
+      	<ArrangerDisplay arranger={this.props.arranger} setArranger={this.props.setArranger} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markChartInfoAsClicked={this.props.markChartInfoAsClicked}/>
       </div>
     );
   }

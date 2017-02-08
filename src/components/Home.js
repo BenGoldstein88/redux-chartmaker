@@ -55,6 +55,7 @@ export default class Home extends React.Component {
     e.preventDefault()
     this.props.actions.markBeatAsClicked(-1, -1, -1)
     this.props.actions.markSectionAsClicked(-1)
+    this.props.actions.markChartInfoAsClicked('NONE')
   }
         // <SetDisplayButton setChordDisplay={this.props.actions.setChordDisplay} filter ={this.props.filter} display={this.props.display} />
   render() {
@@ -66,12 +67,12 @@ export default class Home extends React.Component {
     }
     return (
       <div style={style} onClick={this.handleClick}>
-        <ChartInfo title={this.props.title} composer={this.props.composer} arranger={this.props.arranger} setTitle={this.props.actions.setTitle} setComposer={this.props.actions.setComposer} setArranger={this.props.actions.setArranger} filter={this.props.filter} />
+        <ChartInfo title={this.props.title} composer={this.props.composer} arranger={this.props.arranger} setTitle={this.props.actions.setTitle} setComposer={this.props.actions.setComposer} setArranger={this.props.actions.setArranger} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markChartInfoAsClicked={this.props.actions.markChartInfoAsClicked}/>
         <SetFilterButton setVisibilityFilter={this.props.actions.setVisibilityFilter} filter={this.props.filter} />
         <ChooseKey currentKey={this.props.currentKey} setCurrentKey={this.props.actions.setCurrentKey} transposeAllChords={this.props.actions.transposeAllChords} filter={this.props.filter}/>
         <AddSectionButton addSection={this.props.actions.addSection} filter={this.props.filter}/>
         <Chart sections={this.props.sections} actions={this.props.actions} filter={this.props.filter} currentKey={this.props.currentKey} display={this.props.display} />
-        <SaveButton title={this.props.title} composer={this.props.composer} arranger={this.props.arranger}/>
+        <SaveButton title={this.props.title} composer={this.props.composer} arranger={this.props.arranger} sections={this.props.sections} currentKey={this.props.currentKey}/>
         <Favicon url={[icon]} />
       </div>
     );

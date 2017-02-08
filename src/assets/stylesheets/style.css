@@ -3,7 +3,11 @@
 }
 
 * {
-	font-family: 'Overpass Mono', monospace;
+	/*font-family: 'Overpass Mono', monospace;*/
+	/*font-family: 'Sahitya', serif;*/
+	font-family: 'Gloria Hallelujah', cursive;
+	/*font-family: 'Lateef', cursive;*/
+	/*font-family: 'Reenie Beanie', cursive;*/
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -102,6 +106,107 @@ body {
 	transition: opacity .3s, font-size .3s, font-weight .3s;
 
 
+}
+
+.section-name-input {
+	background: transparent;
+	border: none;
+	font-size: 1.3em;
+	margin-top: 10px;
+	/*text-align: center;*/
+}
+
+.section-name {
+	font-size: 1.3em;
+}
+
+.move-section-up-button {}
+.move-section-down-button {}
+
+.move-section-up-button:hover {}
+.move-section-down-button:hover {}
+
+.move-section-up-button:active {}
+.move-section-down-button:active {}
+
+.remove-measure-button {}
+.remove-measure-button:hover {}
+.remove-measure-button:active {}
+
+.add-measure-button {
+          border: none;
+          background-color: green;
+          color: white;
+          font-size: 1em;
+          font-weight: normal;
+          height: 50px;
+          width: 200px;
+          margin: 2px;
+          border-radius: 10px;
+          /*position: relative;*/
+          text-align: 'center';	
+    	  box-shadow: 10px 8px 10px #888888;
+    	  transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;
+}
+
+.add-measure-button:hover {
+	font-size: 1.1em;
+	font-weight: bold;
+    box-shadow: 12px 10px 10px #888888;
+    transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;	
+}
+.add-measure-button:active {
+	background-color: darkgreen;
+	transition: background-color .3s;
+}
+
+.remove-section-button {
+          border: none;
+          background-color: red;
+          color: white;
+          font-size: 1em;
+          font-weight: normal;
+          height: 50px;
+          width: 200px;
+          margin: 2px;
+          border-radius: 10px;
+          position: relative;
+          text-align: 'center';	
+    	  box-shadow: 10px 8px 10px #888888;
+    	  transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;
+}
+
+.remove-section-button:hover {
+	font-size: 1.1em;
+	font-weight: bold;
+    box-shadow: 12px 10px 10px #888888;
+    transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;	
+}
+.remove-section-button:active {
+	background-color: darkred;
+	transition: background-color .3s;
+}
+.current-key-box {
+	color: hotpink;
+	border-radius: 50%;
+}
+
+.current-key-p {
+	position: absolute;
+/*	height: 80%;
+	width: 80%;*/
+	font-size: 1em;
+	font-weight: normal;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -100%);
+	transition: font-size .2s, font-weight .2s;
+}
+
+.current-key-p:hover {
+	font-size: 1.2em;
+	font-weight: bold;
+	transition: font-size .2s, font-weight .2s;
 }
 
 #slide {

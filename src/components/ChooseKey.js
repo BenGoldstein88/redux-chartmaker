@@ -17,6 +17,7 @@ export default class ChooseKey extends React.Component {
     			top: '5px',
     			left: '5px',
     			border: '1px solid black',
+    			borderRadius: '50%',
     			height: '50px',
     			width: '50px',
     			textAlign: 'center'
@@ -26,6 +27,7 @@ export default class ChooseKey extends React.Component {
     			top: '5px',
     			left: '5px',
     			border: '1px solid black',
+    			borderRadius: '50%',
     			height: '50px',
     			width: '50px',
     			textAlign: 'center',
@@ -71,7 +73,7 @@ export default class ChooseKey extends React.Component {
   	if(this.state.clicked) {
   		thingToDisplay = <RootDisplay currentKey={this.props.currentKey} setCurrentKey={this.props.setCurrentKey} transposeAllChords={this.props.transposeAllChords} className={'root-display'}/>
   	} else {
-  		thingToDisplay = <div style={style}> <p style={{}} >{this.props.currentKey}</p> </div>
+  		thingToDisplay = <div style={style}> <p className={'current-key-p'} >{this.props.currentKey}</p></div>
   	}
 
     return (
