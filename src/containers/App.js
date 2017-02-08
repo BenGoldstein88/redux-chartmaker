@@ -15,6 +15,18 @@ import * as ChartActions from '../actions'
 //   actions: PropTypes.object.isRequired
 // }
 
+// var MongoClient = require('mongodb').MongoClient
+//   , assert = require('assert');
+
+// var url = 'mongodb://localhost:3030/redux-chartmaker';
+// console.log('hello')
+// MongoClient.connect(url, function(err, db) {
+//   assert.equal(null, err);
+//   console.log("Connected successfully to server");
+
+//   db.close();
+// });
+
 const mapStateToProps = state => ({
   sections: state.sections,
   filter: state.visibilityFilter,

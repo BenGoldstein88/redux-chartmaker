@@ -6,6 +6,7 @@ import SetFilterButton from './SetFilterButton';
 import SetDisplayButton from './SetDisplayButton';
 import ChooseKey from './ChooseKey';
 import ChartInfo from './ChartInfo';
+import SaveButton from './SaveButton';
 import Favicon from 'react-favicon'
 import icon from '../favicon.ico'
 
@@ -50,51 +51,6 @@ export default class Home extends React.Component {
     })   
   }
 
-  // transposeChord(chord, key, newKey) {
-  //   var sharpScale = ["C", "C#", "D", "D#", "E", "E#", "F#", "G", "G#", "A", "A#", "B"]
-  //   var flatScale = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "Cb" ]
-  //   // var flatScale = ["Dbb", "Db", "Ebb", "Eb", "Fb", "F", "Gb", "Abb", "Ab","Bbb", "Bb", "Cb"]
-  //   var amount
-  //   var transposedChord
-
-  //   if(sharpScale.includes(newKey) && sharpScale.includes(key)) {
-  //     amount = sharpScale.indexOf(newKey) - sharpScale.indexOf(key)
-  //     transposedChord =  chord.replace(/([CDEFGAB]#?)/g,
-  //     function(match) {
-  //       var i = (sharpScale.indexOf(match) + amount) % sharpScale.length;
-  //       return sharpScale[ i < 0 ? i + sharpScale.length : i ];
-  //     });
-  //     return transposedChord.replace(/(([#][b])|([b][#]))/g, '♮')
-  //   }
-  //   if(flatScale.includes(newKey) && flatScale.includes(key)) {
-  //     amount = flatScale.indexOf(newKey) - flatScale.indexOf(key)
-  //     transposedChord =  chord.replace(/([CDEFGAB]b*)/g,
-  //     function(match) {
-  //       var i = (flatScale.indexOf(match) + amount) % flatScale.length;
-  //       return flatScale[ i < 0 ? i + flatScale.length : i ];
-  //     });
-  //     return transposedChord.replace(/(([#][b])|([b][#]))/g, '♮')
-  //   }
-  //   if(flatScale.includes(newKey) && sharpScale.includes(key)) {
-  //     amount = flatScale.indexOf(newKey) - sharpScale.indexOf(key)
-  //     transposedChord =  chord.replace(/([CDEFGAB]#?)/g,
-  //     function(match) {
-  //       var i = (sharpScale.indexOf(match) + amount) % sharpScale.length;
-  //       return flatScale[ i < 0 ? i + flatScale.length : i ];
-  //     });
-  //     return transposedChord.replace(/(([#][b])|([b][#]))/g, '♮')
-  //   }
-  //   if(sharpScale.includes(newKey) && flatScale.includes(key)) {
-  //     amount = sharpScale.indexOf(newKey) - flatScale.indexOf(key)
-  //     transposedChord =  chord.replace(/([CDEFGAB]b*)/g,
-  //     function(match) {
-  //       var i = (flatScale.indexOf(match) + amount) % flatScale.length;
-  //       return sharpScale[ i < 0 ? i + sharpScale.length : i ];
-  //     });
-  //     return transposedChord.replace(/(([#][b])|([b][#]))/g, '♮')
-  //   }
-  // }
-
   handleClick(e) {
     e.preventDefault()
     this.props.actions.markBeatAsClicked(-1, -1, -1)
@@ -115,6 +71,7 @@ export default class Home extends React.Component {
         <ChooseKey currentKey={this.props.currentKey} setCurrentKey={this.props.actions.setCurrentKey} transposeAllChords={this.props.actions.transposeAllChords} filter={this.props.filter}/>
         <AddSectionButton addSection={this.props.actions.addSection} filter={this.props.filter}/>
         <Chart sections={this.props.sections} actions={this.props.actions} filter={this.props.filter} currentKey={this.props.currentKey} display={this.props.display} />
+        <SaveButton title={this.props.title} composer={this.props.composer} arranger={this.props.arranger}/>
         <Favicon url={[icon]} />
       </div>
     );
