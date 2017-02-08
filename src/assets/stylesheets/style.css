@@ -1,3 +1,7 @@
+@media print {
+	body {-webkit-print-color-adjust: exact;}
+}
+
 * {
 	font-family: 'Overpass Mono', monospace;
     -webkit-touch-callout: none;
@@ -24,7 +28,7 @@ body {
 	height: 100%;
 	width: 100%;
 	min-width: 950px;
-	border: 1px dotted gold;
+	/*border: 1px dotted gold;*/
 	/*min-height: 1000px;*/
 
 }

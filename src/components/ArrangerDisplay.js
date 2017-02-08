@@ -31,13 +31,14 @@ export default class ArrangerDisplay extends React.Component {
 
   handleClick(e) {
   	e.preventDefault()
-  	this.setState({
-  		clicked: !this.state.clicked
-  	})
+  	if(this.props.filter === "EDIT") {	
+	  	this.setState({
+	  		clicked: !this.state.clicked
+	  	})
+  	}
   }
-
   handleChange(e) {
-  	this.props.setComposer(e.target.value)
+  	this.props.setArranger(e.target.value)
   }
 
   handleKeyPress(e) {

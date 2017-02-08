@@ -1,28 +1,149 @@
 
-// function section(state = {}, action) {
-// 	switch(action.type) {
-// 		case 'ADD_SECTION':
-// 			return Object.assign(state, {
-// 				id: action.id,
-// 				name: action.name,
-// 				numMeasures: action.numMeasures,
-// 				measures: [],
-// 				clicked: false					
-// 			})
+function trueTransposeChord(chord, key, newKey) {
+	// scale_form = [1-7, #1-7, b1-7, *1-7, bb1-7]
+	var cScale = ["C", "D", "E", "F", "G", "A", "B", "C#", "D#", "E#", "F#", "G#", "A#", "B#", "Cb", "Db", "Eb", "Fb", "Gb", "Ab", "Bb", "C*", "D*", "E*", "F*", "G*", "A*", "B*", "Cbb", "Dbb", "Ebb", "Fbb", "Gbb", "Abb", "Bbb"]
+	var gScale = ["G", "A", "B", "C", "D", "E", "F#", "G#", "A#", "B#", "C#", "D#", "E#", "F*", "Gb", "Ab", "Bb", "Cb", "Db", "Eb", "F", "G*", "A*", "B*", "C*", "D*", "E*", "F#*", "Gbb", "Abb", "Bbb", "Cbb", "Dbb", "Ebb", "Fb"]
+	var dScale = ["D", "E", "F#", "G", "A", "B", "C#", "D#", "E#", "F*", "G#", "A#", "B#", "C*", "Db", "Eb", "F", "Gb", "Ab", "Bb", "C", "D*", "E*", "F#*", "G*", "A*", "B*", "C#*", "Dbb", "Ebb", "Fb", "Gbb", "Abb", "Bbb", "Cb"]
+	var aScale = ["A", "B", "C#", "D", "E", "F#", "G#", "A#", "B#", "C*", "D#", "E#", "F*", "G*", "Ab", "Bb", "C", "Db", "Eb", "F", "G", "A*", "B*", "C#*", "D*", "E*", "F#*", "G#*", "Abb", "Bbb", "Cb", "Dbb", "Ebb", "Fb", "Gb"]
+	var eScale = ["E", "F#", "G#", "A", "B", "C#", "D#", "E#", "F*", "G*", "A#", "B#", "C*", "D*", "Eb", "F", "G", "Ab", "Bb", "C", "D", "E*", "F#*", "G#*", "A*", "B*", "C#*", "D#*", "Ebb", "Fb", "Gb", "Abb", "Bbb", "Cb", "Db"]
+	var bScale = ["B", "C#", "D#", "E", "F#", "G#", "A#", "B#", "C*", "D*", "E#", "F*", "G*", "A*", "Bb", "C", "D", "Eb", "F", "G", "A", "B*", "C#*", "D#*", "E*", "F#*", "G#*", "A#*", "Bbb", "Cb", "Db", "Ebb", "Fb", "Gb", "Ab"]
+	var fSharpScale = ["F#", "G#", "A#", "B", "C#", "D#", "E#", "F*", "G*", "A*", "B#", "C*", "D*", "E*", "F", "G", "A", "Bb", "C", "D", "E", "F#*", "G#*", "A#*", "B*", "C#*", "D#*", "E#*", "Fb", "Gb", "Ab", "Bbb", "Cb", "Db", "Eb"]
+	var cSharpScale = ["C#", "D#", "E#", "F#", "G#", "A#", "B#", "C*", "D*", "E*", "F*", "G*", "A*", "B*", "C", "D", "E", "F", "G", "A", "B", "C#*", "D#*", "E#*", "F#*", "G#*", "A#*", "B#*", "Cb", "Db", "Eb", "Fb", "Gb", "Ab", "Bb"]
+	var gSharpScale = ["G#", "A#", "B#", "C#", "D#", "E#", "F*", "G*", "A*", "B*", "C*", "D*", "E*", "F#*", "G", "A", "B", "C", "D", "E", "F#", "G#*", "A#*", "B#*", "C#*", "D#*", "E#*", "F**", "Gb", "Ab", "Bb", "Cb", "Db", "Eb", "F"]
+	var dSharpScale = ["D#", "E#", "F*", "G#", "A#", "B#", "C*", "D*", "E*", "F#*", "G*", "A*", "B*", "C#*", "D", "E", "F#", "G", "A", "B", "C#", "D#*", "E#*", "F**", "G#*", "A#*", "B#*", "C**", "Db", "Eb", "F", "Gb", "Ab", "Bb", "C"]
+	var aSharpScale = ["A#", "B#", "C*", "D#", "E#", "F*", "G*", "A*", "B*", "C#*", "D*", "E*", "F#*", "G#*", "A", "B", "C#", "D", "E", "F#", "G#", "A#*", "B#*", "C**", "D#*", "E#*", "F**", "G**", "Ab", "Bb", "C", "D#", "Eb", "F", "G"]
+	// var eSharpScale
+	// var bSharpScale
+	var fScale = ["F", "G", "A", "Bb", "C", "D", "E", "F#", "G#", "A#", "B", "C#", "D#", "E#", "Fb", "Gb", "Ab", "Bbb", "Cb", "Db", "Eb", "F*", "G*", "A*", "B#", "C*", "D*", "E*", "Fbb", "Gbb", "Abb", "Bbbb", "Cbb", "Dbb", "Ebb"]
+	var bFlatScale = ["Bb", "C", "D", "Eb", "F", "G", "A", "B", "C#", "D#", "E", "F#", "G#", "A#", "Bbb", "Cb", "Db", "Ebb", "Fb", "Gb", "Ab", "B#", "C*", "D*", "E#", "F*", "G*", "A*", "Bbbb", "Cbb", "Dbb", "Ebbb", "Fbb", "Gbb", "Abb"]
+	var eFlatScale = ["Eb", "F", "G", "Ab", "Bb", "C", "D", "E", "F#", "G#", "A", "B", "C#", "D#", "Ebb", "Fb", "Gb", "Abb", "Bbb", "Cb", "Db", "E#", "F*", "G*", "A#", "B#", "C*", "D*", "Ebbb", "Fbb", "Gbb", "Abbb", "Bbbb", "Cbb", "Dbb"]
+	var aFlatScale = ["Ab", "Bb", "C", "Db", "Eb", "F", "G", "A", "B", "C#", "D", "E", "F#", "G#", "Abb", "Bbb", "Cb", "Dbb", "Ebb", "Fb", "Gb", "A#", "B#", "C*", "D#", "E#", "F*", "G*", "Abbb", "Bbbb", "Cbb", "Dbbb", "Ebbb", "Fbb", "Gbb"]
+	var dFlatScale = ["Db", "Eb", "F", "Gb", "Ab", "Bb", "C", "D", "E", "F#", "G", "A", "B", "C#", "Dbb", "Ebb", "Fb", "Gbb", "Abb", "Bbb", "Cb", "D#", "E#", "F*", "G#", "A#", "B#", "C*", "Dbbb", "Ebbb", "Fbb", "Gbbb", "Abbb", "Bbbb", "Cbb"]
+	var gFlatScale = ["Gb", "Ab", "Bb", "Cb", "Db", "Eb", "F", "G", "A", "B", "C", "D", "E", "F#", "Gbb", "Abb", "Bbb", "Cbb", "Dbb", "Ebb", "Fb", "G#", "A#", "B#", "C#", "D#", "E#", "F*", "Gbbb", "Abbb", "Bbbb", "Cbbb", "Dbbb", "Ebbb", "Fbb"]
+	// var cFlatScale
+	// var fFlatScale
+	// var bDoubleFlatScale...	
 
-// 		case 'REMOVE_SECTION':
-// 			return state
 
-// 		// case 'SET_SECTION_NAME':
-// 		// 	return Object.assign(state, {name: action.name})
-// 		// case 'MARK_SECTION_AS_CLICKED':
-// 		// 	return Object.assign(state, {clicked: true})
-// 		// case 'UNMARK_SECTION':
-// 		// 	return Object.assign(state, {clicked: false})
-// 		default:
-// 			return state
-// 	}
-// }
+	var oldKeyScale
+	var newKeyScale
+
+
+
+	switch(key) {
+		case "C":
+			oldKeyScale = cScale
+			break
+		case "G":
+			oldKeyScale = gScale
+			break
+		case "D":
+			oldKeyScale = dScale
+			break
+		case "A":
+			oldKeyScale = aScale
+			break
+		case "E":
+			oldKeyScale = eScale
+			break
+		case "B":
+			oldKeyScale = bScale
+			break
+		case "F#":
+			oldKeyScale = fSharpScale
+			break
+		case "C#":
+			oldKeyScale = cSharpScale
+			break
+		case "G#":
+			oldKeyScale = gSharpScale
+			break
+		case "A#":
+			oldKeyScale = aSharpScale
+			break
+		case "F":
+			oldKeyScale = fScale
+			break
+		case "Bb":
+			oldKeyScale = bFlatScale
+			break
+		case "Eb":
+			oldKeyScale = eFlatScale
+			break
+		case "Ab":
+			oldKeyScale = aFlatScale
+			break
+		case "Db":
+			oldKeyScale = dFlatScale
+			break
+		case "Gb":
+			oldKeyScale = gFlatScale
+			break
+		default:
+			oldKeyScale = cScale
+	}
+
+	switch(newKey) {
+		case "C":
+			newKeyScale = cScale
+			break
+		case "G":
+			newKeyScale = gScale
+			break
+		case "D":
+			newKeyScale = dScale
+			break
+		case "A":
+			newKeyScale = aScale
+			break
+		case "E":
+			newKeyScale = eScale
+			break
+		case "B":
+			newKeyScale = bScale
+			break
+		case "F#":
+			newKeyScale = fSharpScale
+			break
+		case "C#":
+			newKeyScale = cSharpScale
+			break
+		case "G#":
+			newKeyScale = gSharpScale
+			break
+		case "A#":
+			newKeyScale = aSharpScale
+			break
+		case "F":
+			newKeyScale = fScale
+			break
+		case "Bb":
+			newKeyScale = bFlatScale
+			break
+		case "Eb":
+			newKeyScale = eFlatScale
+			break
+		case "Ab":
+			newKeyScale = aFlatScale
+			break
+		case "Db":
+			newKeyScale = dFlatScale
+			break
+		case "Gb":
+			newKeyScale = gFlatScale
+			break
+		default:
+			newKeyScale = cScale
+	}
+
+	var transposedChord
+	transposedChord = chord.replace(/(([CDEFGAB]#\*)|([CDEFGAB]#)|([CDEFGAB]b+)|([CDEFGAB]\**))/g, function(match) {
+		var i = oldKeyScale.indexOf(match)
+		return newKeyScale[i]
+	})
+	return transposedChord
+
+}
 
 function transposeChord(chord, key, newKey) {
 	var cSharpScale = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
@@ -324,7 +445,7 @@ function sections(state = [], action) {
 					for(var k in currentMeasure.beats) {
 						var currentBeat = currentMeasure.beats[k]
 						// var transposedChord =
-						var currentBeatClone = Object.assign(currentBeat, {chord: transposeChord(currentBeat.chord, oldKey, newKey)})
+						var currentBeatClone = Object.assign(currentBeat, {chord: trueTransposeChord(currentBeat.chord, oldKey, newKey)})
 						// var currentBeatClone = 
 						currentBeats.push(currentBeatClone)
 					}

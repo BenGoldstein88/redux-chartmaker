@@ -31,9 +31,11 @@ export default class TitleDisplay extends React.Component {
 
   handleClick(e) {
   	e.preventDefault()
-  	this.setState({
-  		clicked: !this.state.clicked
-  	})
+  	if(this.props.filter === "EDIT") {	
+	  	this.setState({
+	  		clicked: !this.state.clicked
+	  	})
+  	}
   }
 
   handleChange(e) {
