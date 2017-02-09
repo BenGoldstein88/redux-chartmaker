@@ -23,7 +23,7 @@ export default class RemoveSectionButton extends React.Component {
           <p style={{
             position: 'absolute',
             top: '20%',
-            left: '50%',
+            left: '52%',
             width: '100%',
             transform: 'translate(-50%, -50%)'
           }}>REMOVE SECTION</p>

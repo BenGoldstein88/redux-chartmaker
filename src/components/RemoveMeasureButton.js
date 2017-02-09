@@ -17,15 +17,8 @@ export default class RemoveMeasureButton extends React.Component {
   }
 
   render() {
-    var thingToDisplay = <button style={{
-      border: 'none',
-      backgroundColor: 'red',
-      color: 'white',
-      borderRadius: '10px',
-      fontWeight: 'bold',
-      margin: '0 auto'
-    }} onClick={this.handleClick} >
-          DELETE
+    var thingToDisplay = <button className={'remove-measure-button'} onClick={this.handleClick} >
+          X
         </button>
     if(this.props.filter==='SHOW') {
       thingToDisplay = null

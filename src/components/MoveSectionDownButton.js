@@ -20,19 +20,10 @@ export default class MoveSectionDownButton extends React.Component {
       <div style={{
       	display: 'inline-block'
       }}>
-      	<button style={{
-          border: 'none',
-          backgroundColor: 'darkblue',
-          color: 'white',
-          fontSize: '1.2em',
-          height: '25px',
-          width: '25px',
-          margin: '2px'
-
-        }} onClick={this.handleClick}>
+      	<button className={'move-section-down-button'} onClick={this.handleClick}>
       		<p style={{
             position: 'absolute',
-            top: '-40%'
+            top: '-30%'
           }}>↓</p>
       	</button>
       </div>

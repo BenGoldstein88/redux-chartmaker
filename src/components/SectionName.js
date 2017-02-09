@@ -10,6 +10,8 @@ export default class SectionName extends React.Component {
     	styles: {
     		editStyle: {
           fontSize: '1em',
+          minWidth: '50px',
+          minHeight: '50px',
           marginLeft: '5%',
           marginBottom: '15px',
           transition: 'font-size .7s'

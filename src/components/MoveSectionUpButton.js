@@ -22,16 +22,7 @@ export default class MoveSectionUpButton extends React.Component {
       <div style={{
       	display: 'inline-block'
       }}>
-      	<button style={{
-          border: 'none',
-          backgroundColor: 'white',
-          color: 'darkblue',
-          fontSize: '1.2em',
-          height: '25px',
-          width: '25px',
-          margin: '2px'
-
-        }}onClick={this.handleClick} >
+      	<button className={'move-section-up-button'} onClick={this.handleClick} >
       		<p style={{
             position: 'absolute',
             top: '-40%'
