@@ -263,6 +263,75 @@ body {
 	transition: font-size .2s, font-weight .2s;
 }
 
+.set-filter-button-edit{
+	position: absolute;
+	top: 10px;
+	right: 50px;
+	border-radius: 50%;
+	border: none;
+	box-shadow: 5px 5px 5px darkgray;
+	background-color: darkblue;
+	color: white;
+	transition: color .2s, box-shadow .2s;
+}
+
+.set-filter-button-show{
+	position: absolute;
+	top: 10px;
+	right: 50px;
+	border-radius: 50%;
+	border: none;
+	box-shadow: 5px 5px 5px darkgray;
+	background-color: darkblue;
+	color: white;
+	transition: color .2s, box-shadow .2s;
+}
+
+.set-filter-button-edit:hover{
+	color: hotpink;
+	box-shadow: 5px 10px 5px darkgray;
+	transition: color .2s, box-shadow .2s;
+}
+.set-filter-button-edit:active{
+	color: cyan;
+	box-shadow: 5px 5px 5px darkgray;
+	transition: color .2s, box-shadow .2s;	
+}
+
+.set-filter-button-show:hover{
+	color: hotpink;
+	box-shadow: 5px 10px 5px darkgray;
+	transition: color .2s, box-shadow .2s;
+}
+.set-filter-button-show:active{
+	color: cyan;
+	box-shadow: 5px 5px 5px darkgray;
+	transition: color .2s, box-shadow .2s;	
+}
+
+.add-section-button {
+	/*position: absolute;*/
+/*	top: 10px;
+	right: 50px;*/
+	margin-right: 5%;
+	border-radius: 10px;
+	border: none;
+	box-shadow: 5px 5px 5px darkgray;
+	background-color: darkblue;
+	color: white;
+	transition: color .2s, box-shadow .2s;
+}
+.add-section-button:hover {
+	color: hotpink;
+	box-shadow: 5px 10px 5px darkgray;
+	transition: color .2s, box-shadow .2s;	
+}
+.add-section-button:active {
+	color: cyan;
+	box-shadow: 5px 5px 5px darkgray;
+	transition: color .2s, box-shadow .2s;		
+}
+
 #slide {
     position: absolute;
     left: -1000px;

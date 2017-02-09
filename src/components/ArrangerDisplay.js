@@ -14,12 +14,16 @@ export default class ArrangerDisplay extends React.Component {
     		editStyle: {
     			margin: '0 auto',
     			fontSize: '1em',
-    			textAlign: 'center'
+    			textAlign: 'center',
+    			marginBottom: '5px',
+    			transition: 'font-size .3s'
     		},
     		showStyle: {
     			margin: '0 auto',
     			fontSize: '1.2em',
-    			textAlign: 'center'
+    			textAlign: 'center',
+    			marginBottom: '5px',
+    			transition: 'font-size .3s'
     		}
     	}
     }

@@ -60,17 +60,20 @@ export default class Home extends React.Component {
         // <SetDisplayButton setChordDisplay={this.props.actions.setChordDisplay} filter ={this.props.filter} display={this.props.display} />
   render() {
     var style;
+    var addSectionButton
     if(this.props.filter==='SHOW') {
       style = this.state.styles.showStyle
     } else {
       style = this.state.styles.editStyle
+      addSectionButton = <AddSectionButton addSection={this.props.actions.addSection} filter={this.props.filter}/>
     }
+
     return (
       <div style={style} onClick={this.handleClick}>
         <ChartInfo title={this.props.title} composer={this.props.composer} arranger={this.props.arranger} setTitle={this.props.actions.setTitle} setComposer={this.props.actions.setComposer} setArranger={this.props.actions.setArranger} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markChartInfoAsClicked={this.props.actions.markChartInfoAsClicked}/>
         <SetFilterButton setVisibilityFilter={this.props.actions.setVisibilityFilter} filter={this.props.filter} />
         <ChooseKey currentKey={this.props.currentKey} setCurrentKey={this.props.actions.setCurrentKey} transposeAllChords={this.props.actions.transposeAllChords} filter={this.props.filter}/>
-        <AddSectionButton addSection={this.props.actions.addSection} filter={this.props.filter}/>
+        {addSectionButton}
         <Chart sections={this.props.sections} actions={this.props.actions} filter={this.props.filter} currentKey={this.props.currentKey} display={this.props.display} />
         <SaveButton title={this.props.title} composer={this.props.composer} arranger={this.props.arranger} sections={this.props.sections} currentKey={this.props.currentKey}/>
         <Favicon url={[icon]} />

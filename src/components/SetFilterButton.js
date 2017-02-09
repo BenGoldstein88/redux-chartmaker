@@ -23,14 +23,17 @@ export default class SetFilterButton extends React.Component {
 
   render() {
   	var buttonString = ''
+    var className=''
   	if(this.props.filter === 'EDIT') {
   		buttonString = 'SHOW'
+      className = 'set-filter-button-edit'
   	} else {
   		buttonString = 'EDIT'
+      className = 'set-filter-button-show'
   	}
     return (
       <div>
-      	<button onClick={this.handleClick} >
+      	<button className={className} onClick={this.handleClick} >
       		{buttonString}
       	</button>
       </div>

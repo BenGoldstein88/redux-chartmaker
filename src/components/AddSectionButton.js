@@ -20,7 +20,7 @@ export default class AddSectionButton extends React.Component {
   render() {
     return (
       <div>
-      	<button onClick={this.handleClick} >
+      	<button className={'add-section-button'} onClick={this.handleClick} >
       		ADD SECTION
       	</button>
       </div>

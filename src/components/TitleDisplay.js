@@ -14,12 +14,16 @@ export default class TitleDisplay extends React.Component {
     		editStyle: {
     			margin: '0 auto',
     			fontSize: '1.5em',
-    			textAlign: 'center'
+    			textAlign: 'center',
+    			marginBottom: '0',
+    			transition: 'font-size .3s'
     		},
     		showStyle: {
     			margin: '0 auto',
     			fontSize: '2em',
-    			textAlign: 'center'
+    			textAlign: 'center',
+    			marginBottom: '0',
+    			transition: 'font-size .3s'
     		}
     	}
     }
