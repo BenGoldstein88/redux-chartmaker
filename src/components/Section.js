@@ -2,6 +2,7 @@ import React from 'react';
 import SectionButtonToolbar from './SectionButtonToolbar';
 import Measure from './Measure';
 import SectionName from './SectionName';
+import SectionMultiplier from './SectionMultiplier';
 // import Draggable from 'react-draggable'
 
 export default class Section extends React.Component {
@@ -90,6 +91,7 @@ export default class Section extends React.Component {
             {measuresToRender}
           </div>
           <SectionButtonToolbar sectionId={this.props.id} addMeasure={this.props.addMeasure} removeSection={this.props.removeSection} id={this.props.id} moveSectionUp={this.props.moveSectionUp} moveSectionDown={this.props.moveSectionDown} filter={this.props.filter} />
+          <SectionMultiplier filter={this.props.filter} multiplier={this.props.multiplier}/>
         </div>
     );
   }

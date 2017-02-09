@@ -356,3 +356,31 @@ body {
 .section-toolbar-button {
 	display: inline-block;
 }
+
+.section-multiplier-edit {
+	position: absolute;
+	bottom: 10px;
+	right: 50px;
+	border: 1px solid black;
+	border-radius: 10px;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+}
+
+.section-multiplier-show {
+
+}
+
+.section-multiplier-p-edit {
+	font-size: 1.2em;
+	font-weight: bold;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -100%);
+}
+
+.section-multiplier-p-show {
+
+}

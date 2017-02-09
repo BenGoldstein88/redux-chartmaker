@@ -230,7 +230,8 @@ function sections(state = [], action) {
 					name: action.name,
 					numMeasures: action.numMeasures,
 					measures: [],
-					clicked: false		
+					clicked: false,
+					multiplier: 1		
 				}
 			]
 		case 'REMOVE_SECTION':
@@ -259,7 +260,8 @@ function sections(state = [], action) {
 							beats: [{chord: "", clicked: false, id: 0, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 1, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 2, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}, {chord: "", clicked: false, id: 3, sectionId: action.sectionId, measureId: action.id, measureIndex: action.id}],
 							clicked: false
 						}]),
-						clicked: false							
+						clicked: false,
+						multiplier: section.multiplier							
 					}
 					return sectionClone
 				}
@@ -292,7 +294,8 @@ function sections(state = [], action) {
 						name: section.name,
 						numMeasures: section.numMeasures+1,
 						measures: cleanMeasuresClone,
-						clicked: section.clicked							
+						clicked: section.clicked,
+						multiplier: section.multiplier							
 					}
 					return sectionClone
 				}
@@ -349,7 +352,8 @@ function sections(state = [], action) {
 					name: currentSection.name,
 					numMeasures: currentSection.numMeasures,
 					clicked: currentSection.clicked,
-					measures: currentMeasures
+					measures: currentMeasures,
+					multiplier: currentSection.multiplier
 				}
 				updatedSections.push(currentSectionClone)
 			}
@@ -426,7 +430,8 @@ function sections(state = [], action) {
 					name: currentSection.name,
 					numMeasures: currentSection.numMeasures,
 					clicked: currentSection.clicked,
-					measures: currentMeasures
+					measures: currentMeasures,
+					multiplier: currentSection.multiplier
 				}
 				updatedSections.push(currentSectionClone)
 			}
@@ -472,7 +477,8 @@ function sections(state = [], action) {
 					name: currentSection.name,
 					numMeasures: currentSection.numMeasures,
 					clicked: currentSection.clicked,
-					measures: currentMeasures
+					measures: currentMeasures,
+					multiplier: currentSection.multiplier
 				}
 				transposedSections.push(currentSectionClone)
 			}

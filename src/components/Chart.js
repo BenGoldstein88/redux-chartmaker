@@ -25,6 +25,7 @@ export default class Chart extends React.Component {
           numMeasures={section.numMeasures}
           measures={section.measures}
           clicked={section.clicked}
+          multiplier={section.multiplier}
           addMeasure={that.props.actions.addMeasure}
           removeMeasure={that.props.actions.removeMeasure}
           markBeatAsClicked={that.props.actions.markBeatAsClicked}
