@@ -18,7 +18,9 @@ export default class SectionName extends React.Component {
     		showStyle: {
           fontSize: '2em',
           marginLeft: '5%',
-          transition: 'font-size .7s'
+          transition: 'font-size .7s',
+          height: '50px',
+          marginBottom: '20px'
 
     		}
     	}

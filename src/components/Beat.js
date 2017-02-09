@@ -26,7 +26,8 @@ export default class Beat extends React.Component {
           backgroundColor: 'inherit',
           opacity: '.5',
           position: 'relative',
-          fontSize: '1em',
+          fontSize: '1.1em',
+          fontWeight: 'bold',
           transition: 'background-color .6s, border-radius .6s, height .6s'
         },
         clickedStyle: {
@@ -45,7 +46,8 @@ export default class Beat extends React.Component {
           color: 'hotpink',
           opacity: '.9',
           position: 'relative',
-          fontSize: '1em',
+          fontSize: '1.1em',
+          fontWeight: 'bold',
           transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'
         },
         chordStyle: {
@@ -56,17 +58,18 @@ export default class Beat extends React.Component {
           width: '23.8%',
           fontWeight: 'bold',
           borderTop: 'none',
-          borderLeft: 'none',
+          borderBottom: 'none',
           borderRight: 'none',
-          borderBottom: '1px solid blue',
+          borderLeft: '1px solid blue',
           display: 'inline-block',
           borderRadius: '10px',
-          backgroundColor: 'royalblue',
+          // backgroundColor: 'royalblue',
           // color: 'goldenrod',
           textAlign: 'center',
           opacity: '1',
           position: 'relative',
-          fontSize: '1em',
+          fontSize: '1.1em',
+          fontWeight: 'bold',
           transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'
         },
         omitStyle: {},
@@ -84,6 +87,7 @@ export default class Beat extends React.Component {
           opacity: '1',
           position: 'relative',
           fontSize: '1.3em',
+          fontWeight: 'bold',
           borderRadius: '5px',
           transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'          
         },
@@ -101,6 +105,7 @@ export default class Beat extends React.Component {
           opacity: '.7',
           position: 'relative',
           fontSize: '1.3em',
+          fontWeight: 'bold',
           borderRadius: '5px',            
           transition: 'background-color .6s, border-radius .6s, height .6s, color .6s' 
         }
