@@ -34,7 +34,7 @@ export default class Section extends React.Component {
           borderTop: 'none',
           borderLeft: 'none',
           borderRight: 'none',
-          borderBottom: '1px solid black',
+          borderBottom: '4px solid black',
           borderRadius: '10%',
           // overflow: 'scroll',
           position: 'relative',

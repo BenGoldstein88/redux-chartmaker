@@ -29,6 +29,8 @@ export default class Measure extends React.Component {
           maxHeight: '150px',
           minWidth: '150px',
           width: '24.25%',
+          // boxShadow: '5px 5px 20px darkgray',
+          borderRadius: '10px',
           // border: '1px solid pink',
           // padding: '1px',
           display: 'inline-block',
