@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5f20c10196a15106a2d0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e1e7ae76552a49985df1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -31339,6 +31339,7 @@
 	      transposedChord: _this.props.chord,
 	      styles: {
 	        emptyStyle: {
+	          cursor: "url('/assets/images/edit.png'), text",
 	          height: '80%',
 	          minHeight: '80px',
 	          minWidth: '22px',
@@ -31379,6 +31380,7 @@
 	          transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'
 	        },
 	        chordStyle: (_chordStyle = {
+	          cursor: "url('/assets/images/edit.png'), text",
 	          height: '80%',
 	          minHeight: '80px',
 	          minWidth: '22px',
@@ -31826,7 +31828,8 @@
 	          borderRadius: '50%',
 	          height: '50px',
 	          width: '50px',
-	          textAlign: 'center'
+	          textAlign: 'center',
+	          cursor: 'alias'
 	        },
 	        showStyle: {
 	          position: 'absolute',
@@ -32834,7 +32837,8 @@
 	          // border: '1px solid blue',
 	          position: 'relative',
 	          padding: '1%',
-	          transition: 'width .5s, border .5s, padding .5s'
+	          borderRadius: '25px',
+	          transition: 'width .5s, border .5s, padding .5s, box-shadow .5s, background-color .5s'
 	        },
 	        editStyle: {
 	          minHeight: '150px',
@@ -32847,7 +32851,7 @@
 	          borderLeft: 'none',
 	          borderRight: 'none',
 	          borderBottom: '4px solid black',
-	          borderRadius: '10%',
+	          borderRadius: '25px',
 	          // overflow: 'scroll',
 	          position: 'relative',
 	          paddingBottom: '5%',
@@ -32856,7 +32860,7 @@
 	          marginBottom: '5px',
 	          boxShadow: '5px 5px 5px darkgray',
 	          backgroundColor: '#c0cbdb',
-	          transition: 'width .5s, border .5s, padding .5s'
+	          transition: 'width .5s, border .5s, padding .5s, box-shadow .5s, background-color .5s'
 	        }
 	      }
 	    };
@@ -33229,7 +33233,7 @@
 
 	      var thingToDisplay = _react2.default.createElement(
 	        'p',
-	        { className: 'section-name' },
+	        { className: 'section-name-p' },
 	        this.props.name
 	      );
 
@@ -33509,12 +33513,7 @@
 	        style = this.state.styles.showStyle;
 	      }
 	      if (this.props.currentChartInfo === 'TITLE') {
-	        thingToDisplay = _react2.default.createElement('input', { style: {
-	            fontSize: '1.3em',
-	            textAlign: 'center',
-	            border: 'none',
-	            backgroundColor: 'inherit'
-	          }, className: 'title-input', onKeyDown: this.handleKeyDown, onChange: this.handleChange, placeholder: this.props.title, autoFocus: true });
+	        thingToDisplay = _react2.default.createElement('input', { className: 'title-input', onKeyDown: this.handleKeyDown, onChange: this.handleChange, placeholder: this.props.title, autoFocus: true });
 	      } else {
 	        thingToDisplay = _react2.default.createElement(
 	          'p',

@@ -71,12 +71,7 @@ export default class TitleDisplay extends React.Component {
   		style = this.state.styles.showStyle
   	}
   	if(this.props.currentChartInfo==='TITLE') {
-  		thingToDisplay = <input style={{
-  			fontSize: '1.3em',
-  			textAlign: 'center',
-  			border: 'none',
-  			backgroundColor: 'inherit'
-  		}}className={'title-input'} onKeyDown={this.handleKeyDown} onChange={this.handleChange} placeholder={this.props.title} autoFocus/>
+  		thingToDisplay = <input className={'title-input'} onKeyDown={this.handleKeyDown} onChange={this.handleChange} placeholder={this.props.title} autoFocus/>
   	} else {
   		thingToDisplay = <p className={'title-p'}>{this.props.title}</p>
   	}

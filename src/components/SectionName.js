@@ -69,7 +69,7 @@ export default class SectionName extends React.Component {
  		style = this.state.styles.editStyle
  	}
 
-    var thingToDisplay = <p className={'section-name'}>{this.props.name}</p>
+    var thingToDisplay = <p className={'section-name-p'}>{this.props.name}</p>
 
     if(this.props.clicked) {
       thingToDisplay = <input ref={'input'} className={'section-name-input'} type={'text'} onKeyPress={this.handleKeyPress} onChange={this.handleChange} placeholder={this.props.name} autoFocus/>

@@ -23,7 +23,8 @@ export default class Section extends React.Component {
           // border: '1px solid blue',
           position: 'relative',
           padding: '1%',
-          transition: 'width .5s, border .5s, padding .5s'
+          borderRadius: '25px',
+          transition: 'width .5s, border .5s, padding .5s, box-shadow .5s, background-color .5s'
         },
         editStyle: {
           minHeight: '150px',
@@ -36,7 +37,7 @@ export default class Section extends React.Component {
           borderLeft: 'none',
           borderRight: 'none',
           borderBottom: '4px solid black',
-          borderRadius: '10%',
+          borderRadius: '25px',
           // overflow: 'scroll',
           position: 'relative',
           paddingBottom: '5%',
@@ -45,7 +46,7 @@ export default class Section extends React.Component {
           marginBottom: '5px',
           boxShadow: '5px 5px 5px darkgray',
           backgroundColor: '#c0cbdb',
-          transition: 'width .5s, border .5s, padding .5s'
+          transition: 'width .5s, border .5s, padding .5s, box-shadow .5s, background-color .5s'
         }
       }
     }

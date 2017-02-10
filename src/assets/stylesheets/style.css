@@ -22,9 +22,15 @@ html {
 	padding: 0;
 }
 
-*:focus {
+input:focus {
 	outline-width: 0
 }
+
+button:focus {
+	outline-width: 0;
+}
+
+* {}
 
 body {
 	/*min-width: 500px;*/
@@ -40,7 +46,45 @@ body {
 
 }
 
-.title-input {}
+.title-input {
+	font-size: 1.3em;
+	text-align: center;
+	border: none;
+	background-color: inherit;
+
+/*	cursor: url('../images/edit.png'), text;*/
+
+}
+
+.composer-input {
+	/*cursor: url('../images/edit.png'), text;*/
+
+}
+
+.arranger-input {
+	/*cursor: url('../images/edit.png'), text;*/
+
+}
+
+.title-p {
+	cursor: url('../images/edit.png'), text;
+	width: 25%;
+	margin: 0 auto;
+
+}
+.composer-p {
+	cursor: url('../images/edit.png'), text;
+	width: 25%;
+	margin: 0 auto;
+
+}
+.arranger-p {
+	cursor: url('../images/edit.png'), text;
+	width: 25%;
+	margin: 0 auto;
+
+}
+
 
 .root-display {
 	z-index: 10;
@@ -91,6 +135,7 @@ body {
 }
 
 .root-box {
+	cursor: pointer;
 	height: 50px;
 	width: 50px;
 	border: 1px solid black;
@@ -112,7 +157,8 @@ body {
 }
 
 .section-name-input {
-	background: transparent;
+/*	cursor: url('../images/edit.png'), text;
+*/	background: transparent;
 	border: none;
 	font-size: 1.3em;
 	margin-top: 10px;
@@ -120,10 +166,18 @@ body {
 }
 
 .section-name {
+/*	cursor: url('../images/edit.png'), text;
+	width: 100px;	*/
+}
+
+.section-name-p {
 	font-size: 1.3em;
+	width: 150px;
+	cursor: url('../images/edit.png'), text;
 }
 
 .move-section-up-button {
+	cursor: pointer;
 	border: none;
 	background-color: transparent;
 	color: darkblue;
@@ -135,6 +189,7 @@ body {
 	transition: font-size .3s, color .3s;
 }
 .move-section-down-button {
+	cursor: pointer;
 	border: none;
 	background-color: transparent;
 	color: white;
@@ -167,15 +222,16 @@ body {
 }
 
 .remove-measure-button {
-      border: none;
-      background-color: red;
-      color: white;
-      border-radius: 10px;
-      font-weight: bold;
-      margin: 0 auto;
-      font-size: 1.1em;
-      box-shadow: 10px 8px 10px #888888;
-      transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;
+	cursor: pointer;
+	border: none;
+	background-color: red;
+	color: white;
+	border-radius: 10px;
+	font-weight: bold;
+	margin: 0 auto;
+	font-size: 1.1em;
+	box-shadow: 10px 8px 10px #888888;
+	transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;
 }
 .remove-measure-button:hover {
 	/*font-size: 1.1em;*/
@@ -189,19 +245,20 @@ body {
 }
 
 .add-measure-button {
-      border: none;
-      background-color: green;
-      color: white;
-      font-size: 1em;
-      font-weight: normal;
-      height: 50px;
-      width: 200px;
-      margin: 2px;
-      border-radius: 10px;
-      /*position: relative;*/
-      text-align: 'center';	
-	  box-shadow: 10px 8px 10px #888888;
-	  transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;
+	cursor: pointer;
+	border: none;
+	background-color: green;
+	color: white;
+	font-size: 1em;
+	font-weight: normal;
+	height: 50px;
+	width: 200px;
+	margin: 2px;
+	border-radius: 10px;
+	/*position: relative;*/
+	text-align: 'center';	
+	box-shadow: 10px 8px 10px #888888;
+	transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;
 }
 
 .add-measure-button:hover {
@@ -217,19 +274,20 @@ body {
 }
 
 .remove-section-button {
-          border: none;
-          background-color: red;
-          color: white;
-          font-size: 1em;
-          font-weight: normal;
-          height: 50px;
-          width: 200px;
-          margin: 2px;
-          border-radius: 10px;
-          position: relative;
-          text-align: 'center';	
-    	  box-shadow: 10px 8px 10px #888888;
-    	  transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;
+	cursor: pointer;
+	border: none;
+	background-color: red;
+	color: white;
+	font-size: 1em;
+	font-weight: normal;
+	height: 50px;
+	width: 200px;
+	margin: 2px;
+	border-radius: 10px;
+	position: relative;
+	text-align: 'center';	
+	box-shadow: 10px 8px 10px #888888;
+	transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;
 }
 
 .remove-section-button:hover {
@@ -267,6 +325,7 @@ body {
 }
 
 .set-filter-button-edit{
+	cursor: pointer;
 	position: absolute;
 	top: 10px;
 	right: 50px;
@@ -279,6 +338,7 @@ body {
 }
 
 .set-filter-button-show{
+	cursor: pointer;
 	position: absolute;
 	top: 10px;
 	right: 50px;
@@ -313,6 +373,7 @@ body {
 }
 
 .add-section-button {
+	cursor: pointer;
 	/*position: absolute;*/
 /*	top: 10px;
 	right: 50px;*/
@@ -361,6 +422,7 @@ body {
 }
 
 .section-multiplier-edit {
+	cursor: url('../images/edit.png'), text;
 	position: absolute;
 	bottom: 10px;
 	right: 50px;
@@ -376,6 +438,7 @@ body {
 }
 
 .section-multiplier-p-edit {
+	
 	font-size: 1.2em;
 	font-weight: bold;
 	position: absolute;
@@ -395,6 +458,8 @@ body {
 }
 
 .multiplier-input {
+	cursor: url('../images/edit.png'), text;
+
 	background: transparent;
 	text-align: center;
 	font-size: 1.2em;

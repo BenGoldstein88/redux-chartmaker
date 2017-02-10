@@ -12,6 +12,7 @@ export default class Beat extends React.Component {
       transposedChord: this.props.chord,
       styles: {
         emptyStyle: {
+          cursor: "url('/assets/images/edit.png'), text",
           height: '80%',
           minHeight: '80px',
           minWidth: '22px',
@@ -52,6 +53,7 @@ export default class Beat extends React.Component {
           transition: 'background-color .6s, border-radius .6s, height .6s, color .6s'
         },
         chordStyle: {
+          cursor: "url('/assets/images/edit.png'), text",
           height: '80%',
           minHeight: '80px',
           minWidth: '22px',

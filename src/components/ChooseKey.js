@@ -20,7 +20,8 @@ export default class ChooseKey extends React.Component {
     			borderRadius: '50%',
     			height: '50px',
     			width: '50px',
-    			textAlign: 'center'
+    			textAlign: 'center',
+          cursor: 'alias'
     		},
     		showStyle: {
     			position: 'absolute',
