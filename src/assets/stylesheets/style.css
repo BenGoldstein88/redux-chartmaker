@@ -67,19 +67,19 @@ body {
 }
 
 .title-p {
-	cursor: url('../images/edit.png'), text;
+	/*cursor: url('../images/edit.png'), text;*/
 	width: 25%;
 	margin: 0 auto;
 
 }
 .composer-p {
-	cursor: url('../images/edit.png'), text;
+	/*cursor: url('../images/edit.png'), text;*/
 	width: 25%;
 	margin: 0 auto;
 
 }
 .arranger-p {
-	cursor: url('../images/edit.png'), text;
+	/*cursor: url('../images/edit.png'), text;*/
 	width: 25%;
 	margin: 0 auto;
 
@@ -173,7 +173,7 @@ body {
 .section-name-p {
 	font-size: 1.3em;
 	width: 150px;
-	cursor: url('../images/edit.png'), text;
+	/*cursor: url('../images/edit.png'), text;*/
 }
 
 .move-section-up-button {

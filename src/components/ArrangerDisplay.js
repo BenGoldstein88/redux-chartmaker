@@ -16,14 +16,17 @@ export default class ArrangerDisplay extends React.Component {
     			fontSize: '1em',
     			textAlign: 'center',
     			marginBottom: '5px',
-    			transition: 'font-size .3s'
+    			transition: 'font-size .3s',
+          cursor: "url('/assets/images/edit.png'), text"
+
     		},
     		showStyle: {
     			margin: '0 auto',
     			fontSize: '1.2em',
     			textAlign: 'center',
     			marginBottom: '5px',
-    			transition: 'font-size .3s'
+    			transition: 'font-size .3s',
+          cursor: 'default'
     		}
     	}
     }

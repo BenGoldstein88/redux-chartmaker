@@ -16,6 +16,7 @@ export default class Home extends React.Component {
     super(props);
 
     this.state = {
+      shifted: false,
       styles: {
         editStyle: {
           padding: '10px',
@@ -41,6 +42,7 @@ export default class Home extends React.Component {
   componentDidMount() {
     var that = this
    document.body.addEventListener('keydown', function(e) {
+      var pressed = ''
       if(e.key==='`') {
         if(that.props.filter==='EDIT') {
           that.props.actions.setVisibilityFilter('SHOW')
@@ -48,7 +50,27 @@ export default class Home extends React.Component {
           that.props.actions.setVisibilityFilter('EDIT')
         }
       }
-    })   
+      if(e.key==='Shift') {
+        that.setState({
+          shifted: true
+        })
+      }
+      if(e.key==='Enter') {
+        if(that.state.shifted) {
+          that.props.actions.addSection()
+        }
+      }
+
+    })
+   document.body.addEventListener('keyup', function(e) {
+      var pressed = ''
+      if(e.key==='Shift') {
+        that.setState({
+          shifted: false
+        })
+      }
+
+    })    
   }
 
   handleClick(e) {

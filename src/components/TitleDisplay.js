@@ -16,14 +16,17 @@ export default class TitleDisplay extends React.Component {
     			fontSize: '1.5em',
     			textAlign: 'center',
     			marginBottom: '0',
-    			transition: 'font-size .3s'
+    			transition: 'font-size .3s',
+          cursor: "url('/assets/images/edit.png'), text"
+
     		},
     		showStyle: {
     			margin: '0 auto',
     			fontSize: '2em',
     			textAlign: 'center',
     			marginBottom: '0',
-    			transition: 'font-size .3s'
+    			transition: 'font-size .3s',
+          cursor: 'default'
     		}
     	}
     }

@@ -14,7 +14,8 @@ export default class SectionName extends React.Component {
           minHeight: '50px',
           marginLeft: '5%',
           marginBottom: '15px',
-          transition: 'font-size .7s'
+          transition: 'font-size .7s',
+          cursor: "url('/assets/images/edit.png'), text"
 
     		},
     		showStyle: {
@@ -22,7 +23,8 @@ export default class SectionName extends React.Component {
           marginLeft: '5%',
           transition: 'font-size .7s',
           height: '50px',
-          marginBottom: '20px'
+          marginBottom: '20px',
+          cursor: 'default'
 
     		}
     	}
