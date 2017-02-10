@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e1e7ae76552a49985df1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "402f401cdbb9a705c880"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -16662,6 +16662,7 @@
 	    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
 
 	    _this.state = {
+	      shifted: false,
 	      styles: {
 	        editStyle: {
 	          padding: '10px',
@@ -16690,12 +16691,31 @@
 	    value: function componentDidMount() {
 	      var that = this;
 	      document.body.addEventListener('keydown', function (e) {
+	        var pressed = '';
 	        if (e.key === '`') {
 	          if (that.props.filter === 'EDIT') {
 	            that.props.actions.setVisibilityFilter('SHOW');
 	          } else {
 	            that.props.actions.setVisibilityFilter('EDIT');
 	          }
+	        }
+	        if (e.key === 'Shift') {
+	          that.setState({
+	            shifted: true
+	          });
+	        }
+	        if (e.key === 'Enter') {
+	          if (that.state.shifted) {
+	            that.props.actions.addSection();
+	          }
+	        }
+	      });
+	      document.body.addEventListener('keyup', function (e) {
+	        var pressed = '';
+	        if (e.key === 'Shift') {
+	          that.setState({
+	            shifted: false
+	          });
 	        }
 	      });
 	    }
@@ -31204,14 +31224,17 @@
 	          fontSize: '1em',
 	          textAlign: 'center',
 	          marginBottom: '5px',
-	          transition: 'font-size .3s'
+	          transition: 'font-size .3s',
+	          cursor: "url('/assets/images/edit.png'), text"
+
 	        },
 	        showStyle: {
 	          margin: '0 auto',
 	          fontSize: '1.2em',
 	          textAlign: 'center',
 	          marginBottom: '5px',
-	          transition: 'font-size .3s'
+	          transition: 'font-size .3s',
+	          cursor: 'default'
 	        }
 	      }
 	    };
@@ -31839,7 +31862,8 @@
 	          borderRadius: '50%',
 	          height: '50px',
 	          width: '50px',
-	          textAlign: 'center'
+	          textAlign: 'center',
+	          cursor: 'alias'
 
 	        }
 	      }
@@ -31957,14 +31981,16 @@
 	          fontSize: '1em',
 	          textAlign: 'center',
 	          marginBottom: '0',
-	          transition: 'font-size .3s'
+	          transition: 'font-size .3s',
+	          cursor: "url('/assets/images/edit.png'), text"
 	        },
 	        showStyle: {
 	          margin: '0 auto',
 	          fontSize: '1.2em',
 	          textAlign: 'center',
 	          marginBottom: '0',
-	          transition: 'font-size .3s'
+	          transition: 'font-size .3s',
+	          cursor: 'default'
 	        }
 	      }
 	    };
@@ -33171,7 +33197,8 @@
 	          minHeight: '50px',
 	          marginLeft: '5%',
 	          marginBottom: '15px',
-	          transition: 'font-size .7s'
+	          transition: 'font-size .7s',
+	          cursor: "url('/assets/images/edit.png'), text"
 
 	        },
 	        showStyle: {
@@ -33179,7 +33206,8 @@
 	          marginLeft: '5%',
 	          transition: 'font-size .7s',
 	          height: '50px',
-	          marginBottom: '20px'
+	          marginBottom: '20px',
+	          cursor: 'default'
 
 	        }
 	      }
@@ -33452,14 +33480,17 @@
 	          fontSize: '1.5em',
 	          textAlign: 'center',
 	          marginBottom: '0',
-	          transition: 'font-size .3s'
+	          transition: 'font-size .3s',
+	          cursor: "url('/assets/images/edit.png'), text"
+
 	        },
 	        showStyle: {
 	          margin: '0 auto',
 	          fontSize: '2em',
 	          textAlign: 'center',
 	          marginBottom: '0',
-	          transition: 'font-size .3s'
+	          transition: 'font-size .3s',
+	          cursor: 'default'
 	        }
 	      }
 	    };
