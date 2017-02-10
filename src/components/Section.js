@@ -43,6 +43,8 @@ export default class Section extends React.Component {
           paddingLeft: '10px',
           marginTop: '5px',
           marginBottom: '5px',
+          boxShadow: '5px 5px 5px darkgray',
+          backgroundColor: '#c0cbdb',
           transition: 'width .5s, border .5s, padding .5s'
         }
       }
@@ -75,7 +77,9 @@ export default class Section extends React.Component {
           filter={that.props.filter}
           sectionLength={that.props.measures.length}
           currentKey={that.props.currentKey}
-          display={that.props.display} />
+          display={that.props.display}
+          markChartInfoAsClicked={that.props.markChartInfoAsClicked}
+          markMultiplierAsClicked={that.props.markMultiplierAsClicked} />
     })
     return (
         <div style={style} className=''>
@@ -84,14 +88,16 @@ export default class Section extends React.Component {
             sectionId={this.props.id}
             setSectionName={this.props.setSectionName}
             clicked={this.props.clicked}
-            markSectionAsClicked={this.props.markSectionAsClicked}
             filter={this.props.filter}
-            markBeatAsClicked={this.props.markBeatAsClicked}/>
+            markBeatAsClicked={this.props.markBeatAsClicked}
+            markSectionAsClicked={this.props.markSectionAsClicked}
+            markChartInfoAsClicked={this.props.markChartInfoAsClicked}
+            markMultiplierAsClicked={this.props.markMultiplierAsClicked}/>
           <div style={{margin: '0 auto', width: '100%', maxHeight: '80%', position: 'relative'}}>
             {measuresToRender}
           </div>
           <SectionButtonToolbar sectionId={this.props.id} addMeasure={this.props.addMeasure} removeSection={this.props.removeSection} id={this.props.id} moveSectionUp={this.props.moveSectionUp} moveSectionDown={this.props.moveSectionDown} filter={this.props.filter} />
-          <SectionMultiplier filter={this.props.filter} multiplier={this.props.multiplier}/>
+          <SectionMultiplier filter={this.props.filter} multiplier={this.props.multiplier} multiplierClicked={this.props.multiplierClicked} markBeatAsClicked={this.props.markBeatAsClicked} markSectionAsClicked={this.props.markSectionAsClicked} markChartInfoAsClicked={this.props.markChartInfoAsClicked} markMultiplierAsClicked={this.props.markMultiplierAsClicked} setMultiplier={this.props.setMultiplier} sectionId={this.props.id} />
         </div>
     );
   }

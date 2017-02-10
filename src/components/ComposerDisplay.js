@@ -36,7 +36,10 @@ export default class ComposerDisplay extends React.Component {
   handleClick(e) {
   	e.preventDefault()
   	e.stopPropagation()
-  	if(this.props.filter === "EDIT") {	
+  	if(this.props.filter === "EDIT") {
+  		this.props.markBeatAsClicked(-1, -1, -1)
+  		this.props.markSectionAsClicked(-1)
+  		this.props.markMultiplierAsClicked(-1)			
   		this.props.markChartInfoAsClicked("COMPOSER")
   	}
   }

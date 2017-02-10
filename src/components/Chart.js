@@ -26,6 +26,7 @@ export default class Chart extends React.Component {
           measures={section.measures}
           clicked={section.clicked}
           multiplier={section.multiplier}
+          multiplierClicked={section.multiplierClicked}
           addMeasure={that.props.actions.addMeasure}
           removeMeasure={that.props.actions.removeMeasure}
           markBeatAsClicked={that.props.actions.markBeatAsClicked}
@@ -36,7 +37,10 @@ export default class Chart extends React.Component {
           moveSectionDown={that.props.actions.moveSectionDown}
           filter={that.props.filter}
           currentKey={that.props.currentKey}
-          display={that.props.display} />
+          display={that.props.display}
+          markChartInfoAsClicked={that.props.actions.markChartInfoAsClicked}
+          setMultiplier={that.props.actions.setMultiplier}
+          markMultiplierAsClicked={that.props.actions.markMultiplierAsClicked} />
   	})
     return (
       <div style={{

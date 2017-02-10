@@ -128,8 +128,10 @@ export default class Beat extends React.Component {
     if(this.props.filter === 'SHOW') {
       return
     }
-  	this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex, this.props.id);
     this.props.markSectionAsClicked(-1)
+    this.props.markChartInfoAsClicked("NONE")
+    this.props.markMultiplierAsClicked(-1)
+  	this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex, this.props.id);
   }
 
   handleKeyDown(e) {

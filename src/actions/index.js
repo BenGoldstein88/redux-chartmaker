@@ -146,3 +146,14 @@ export const markChartInfoAsClicked = (chartInfo) => ({
 	chartInfo
 })
 
+export const markMultiplierAsClicked = (sectionId) => ({
+	type: 'MARK_MULTIPLIER_AS_CLICKED',
+	sectionId
+})
+
+export const setMultiplier = (sectionId, multiplier) => ({
+	type: "SET_MULTIPLIER",
+	sectionId,
+	multiplier
+})
+

@@ -32,9 +32,9 @@ export default class ChartInfo extends React.Component {
   	}
     return (
       <div style={style}>
-      	<TitleDisplay title={this.props.title} setTitle={this.props.setTitle} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markChartInfoAsClicked={this.props.markChartInfoAsClicked}/>
-      	<ComposerDisplay composer={this.props.composer} setComposer={this.props.setComposer} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markChartInfoAsClicked={this.props.markChartInfoAsClicked}/>
-      	<ArrangerDisplay arranger={this.props.arranger} setArranger={this.props.setArranger} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markChartInfoAsClicked={this.props.markChartInfoAsClicked}/>
+      	<TitleDisplay title={this.props.title} setTitle={this.props.setTitle} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markBeatAsClicked={this.props.markBeatAsClicked} markSectionAsClicked={this.props.markSectionAsClicked} markChartInfoAsClicked={this.props.markChartInfoAsClicked} markMultiplierAsClicked={this.props.markMultiplierAsClicked}/>
+      	<ComposerDisplay composer={this.props.composer} setComposer={this.props.setComposer} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markBeatAsClicked={this.props.markBeatAsClicked} markSectionAsClicked={this.props.markSectionAsClicked} markChartInfoAsClicked={this.props.markChartInfoAsClicked} markMultiplierAsClicked={this.props.markMultiplierAsClicked}/>
+      	<ArrangerDisplay arranger={this.props.arranger} setArranger={this.props.setArranger} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markBeatAsClicked={this.props.markBeatAsClicked} markSectionAsClicked={this.props.markSectionAsClicked} markChartInfoAsClicked={this.props.markChartInfoAsClicked} markMultiplierAsClicked={this.props.markMultiplierAsClicked}/>
       </div>
     );
   }

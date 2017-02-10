@@ -58,6 +58,8 @@ export default class Measure extends React.Component {
         sectionId={that.props.sectionId}
         markBeatAsClicked={that.props.markBeatAsClicked}
         markSectionAsClicked={that.props.markSectionAsClicked}
+        markChartInfoAsClicked={that.props.markChartInfoAsClicked}
+        markMultiplierAsClicked={that.props.markMultiplierAsClicked}
         measureIndex={that.props.index}
         setChord={that.props.setChord}
         filter={that.props.filter}

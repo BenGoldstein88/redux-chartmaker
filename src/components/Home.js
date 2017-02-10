@@ -56,6 +56,7 @@ export default class Home extends React.Component {
     this.props.actions.markBeatAsClicked(-1, -1, -1)
     this.props.actions.markSectionAsClicked(-1)
     this.props.actions.markChartInfoAsClicked('NONE')
+    this.props.actions.markMultiplierAsClicked(-1)
   }
         // <SetDisplayButton setChordDisplay={this.props.actions.setChordDisplay} filter ={this.props.filter} display={this.props.display} />
   render() {
@@ -70,7 +71,7 @@ export default class Home extends React.Component {
 
     return (
       <div style={style} onClick={this.handleClick}>
-        <ChartInfo title={this.props.title} composer={this.props.composer} arranger={this.props.arranger} setTitle={this.props.actions.setTitle} setComposer={this.props.actions.setComposer} setArranger={this.props.actions.setArranger} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markChartInfoAsClicked={this.props.actions.markChartInfoAsClicked}/>
+        <ChartInfo title={this.props.title} composer={this.props.composer} arranger={this.props.arranger} setTitle={this.props.actions.setTitle} setComposer={this.props.actions.setComposer} setArranger={this.props.actions.setArranger} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markBeatAsClicked={this.props.actions.markBeatAsClicked} markSectionAsClicked={this.props.actions.markSectionAsClicked} markChartInfoAsClicked={this.props.actions.markChartInfoAsClicked} markMultiplierAsClicked={this.props.actions.markMultiplierAsClicked} />
         <SetFilterButton setVisibilityFilter={this.props.actions.setVisibilityFilter} filter={this.props.filter} />
         <ChooseKey currentKey={this.props.currentKey} setCurrentKey={this.props.actions.setCurrentKey} transposeAllChords={this.props.actions.transposeAllChords} filter={this.props.filter}/>
         {addSectionButton}

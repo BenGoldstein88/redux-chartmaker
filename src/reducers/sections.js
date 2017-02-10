@@ -231,7 +231,8 @@ function sections(state = [], action) {
 					numMeasures: action.numMeasures,
 					measures: [],
 					clicked: false,
-					multiplier: 1		
+					multiplier: 1,
+					multiplierClicked: false		
 				}
 			]
 		case 'REMOVE_SECTION':
@@ -261,7 +262,8 @@ function sections(state = [], action) {
 							clicked: false
 						}]),
 						clicked: false,
-						multiplier: section.multiplier							
+						multiplier: section.multiplier,
+						multiplierClicked: section.multiplierClicked							
 					}
 					return sectionClone
 				}
@@ -295,7 +297,8 @@ function sections(state = [], action) {
 						numMeasures: section.numMeasures+1,
 						measures: cleanMeasuresClone,
 						clicked: section.clicked,
-						multiplier: section.multiplier							
+						multiplier: section.multiplier,
+						multiplierClicked: section.multiplierClicked							
 					}
 					return sectionClone
 				}
@@ -353,7 +356,8 @@ function sections(state = [], action) {
 					numMeasures: currentSection.numMeasures,
 					clicked: currentSection.clicked,
 					measures: currentMeasures,
-					multiplier: currentSection.multiplier
+					multiplier: currentSection.multiplier,
+					multiplierClicked: currentSection.multiplierClicked
 				}
 				updatedSections.push(currentSectionClone)
 			}
@@ -431,7 +435,8 @@ function sections(state = [], action) {
 					numMeasures: currentSection.numMeasures,
 					clicked: currentSection.clicked,
 					measures: currentMeasures,
-					multiplier: currentSection.multiplier
+					multiplier: currentSection.multiplier,
+					multiplierClicked: currentSection.multiplierClicked
 				}
 				updatedSections.push(currentSectionClone)
 			}
@@ -478,7 +483,8 @@ function sections(state = [], action) {
 					numMeasures: currentSection.numMeasures,
 					clicked: currentSection.clicked,
 					measures: currentMeasures,
-					multiplier: currentSection.multiplier
+					multiplier: currentSection.multiplier,
+					multiplierClicked: currentSection.multiplierClicked
 				}
 				transposedSections.push(currentSectionClone)
 			}
@@ -522,6 +528,22 @@ function sections(state = [], action) {
 			sectionsClone[movingSectionIndex+1] = movingSection
 			sectionsClone[movingSectionIndex] = sectionBelow
 			return sectionsClone
+		case 'MARK_MULTIPLIER_AS_CLICKED':
+			var cloneSections = state.map((currentSection, index) => {
+				if(currentSection.id === action.sectionId) {
+					return Object.assign(currentSection, {multiplierClicked: true})
+				}
+				return Object.assign(currentSection, {multiplierClicked: false})
+			})
+			return cloneSections
+		case 'SET_MULTIPLIER':
+			var newlyClonedSections = state.map((currentSection, index) => {
+				if(currentSection.id === action.sectionId) {
+					return Object.assign(currentSection, {multiplier: action.multiplier})
+				}
+				return Object.assign(currentSection, {})
+			})
+			return newlyClonedSections
 
 		default:
 			return state

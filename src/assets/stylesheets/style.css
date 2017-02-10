@@ -28,7 +28,10 @@ html {
 
 body {
 	/*min-width: 500px;*/
-	background-color: #c6c9ce;
+	background-color: #e3ecf9;
+	border-top: 5px solid black;
+	border-bottom: 5px solid black;
+	border-radius: 25px;
 	height: 100%;
 	width: 100%;
 	min-width: 950px;
@@ -382,5 +385,20 @@ body {
 }
 
 .section-multiplier-p-show {
+	font-size: 2.5em;
+	font-weight: bold;
+	position: absolute;
+	bottom: -100px;
+	right: 10%;
+	/*transform: translate(-50%, -100%);*/
 
+}
+
+.multiplier-input {
+	background: transparent;
+	text-align: center;
+	font-size: 1.2em;
+	border: none;
+	height: 100%;
+	width: 100%;
 }

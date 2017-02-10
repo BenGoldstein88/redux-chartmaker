@@ -42,6 +42,8 @@ export default class SectionName extends React.Component {
   	e.preventDefault();
     if(this.props.filter==="EDIT") {
     	this.props.markBeatAsClicked(-1, -1, -1)
+      this.props.markChartInfoAsClicked("NONE")
+      this.props.markMultiplierAsClicked(-1)
     	this.props.markSectionAsClicked(this.props.sectionId);
     }
 

@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6e231675f916906b2535"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5f20c10196a15106a2d0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -16706,6 +16706,7 @@
 	      this.props.actions.markBeatAsClicked(-1, -1, -1);
 	      this.props.actions.markSectionAsClicked(-1);
 	      this.props.actions.markChartInfoAsClicked('NONE');
+	      this.props.actions.markMultiplierAsClicked(-1);
 	    }
 	    // <SetDisplayButton setChordDisplay={this.props.actions.setChordDisplay} filter ={this.props.filter} display={this.props.display} />
 
@@ -16724,7 +16725,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { style: style, onClick: this.handleClick },
-	        _react2.default.createElement(_ChartInfo2.default, { title: this.props.title, composer: this.props.composer, arranger: this.props.arranger, setTitle: this.props.actions.setTitle, setComposer: this.props.actions.setComposer, setArranger: this.props.actions.setArranger, filter: this.props.filter, currentChartInfo: this.props.currentChartInfo, markChartInfoAsClicked: this.props.actions.markChartInfoAsClicked }),
+	        _react2.default.createElement(_ChartInfo2.default, { title: this.props.title, composer: this.props.composer, arranger: this.props.arranger, setTitle: this.props.actions.setTitle, setComposer: this.props.actions.setComposer, setArranger: this.props.actions.setArranger, filter: this.props.filter, currentChartInfo: this.props.currentChartInfo, markBeatAsClicked: this.props.actions.markBeatAsClicked, markSectionAsClicked: this.props.actions.markSectionAsClicked, markChartInfoAsClicked: this.props.actions.markChartInfoAsClicked, markMultiplierAsClicked: this.props.actions.markMultiplierAsClicked }),
 	        _react2.default.createElement(_SetFilterButton2.default, { setVisibilityFilter: this.props.actions.setVisibilityFilter, filter: this.props.filter }),
 	        _react2.default.createElement(_ChooseKey2.default, { currentKey: this.props.currentKey, setCurrentKey: this.props.actions.setCurrentKey, transposeAllChords: this.props.actions.transposeAllChords, filter: this.props.filter }),
 	        addSectionButton,
@@ -31001,6 +31002,21 @@
 		};
 	};
 
+	var markMultiplierAsClicked = exports.markMultiplierAsClicked = function markMultiplierAsClicked(sectionId) {
+		return {
+			type: 'MARK_MULTIPLIER_AS_CLICKED',
+			sectionId: sectionId
+		};
+	};
+
+	var setMultiplier = exports.setMultiplier = function setMultiplier(sectionId, multiplier) {
+		return {
+			type: "SET_MULTIPLIER",
+			sectionId: sectionId,
+			multiplier: multiplier
+		};
+	};
+
 /***/ },
 /* 344 */
 /***/ function(module, exports, __webpack_require__) {
@@ -31212,6 +31228,9 @@
 	      e.preventDefault();
 	      e.stopPropagation();
 	      if (this.props.filter === "EDIT") {
+	        this.props.markBeatAsClicked(-1, -1, -1);
+	        this.props.markSectionAsClicked(-1);
+	        this.props.markMultiplierAsClicked(-1);
 	        this.props.markChartInfoAsClicked("ARRANGER");
 	      }
 	    }
@@ -31437,8 +31456,10 @@
 	      if (this.props.filter === 'SHOW') {
 	        return;
 	      }
-	      this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex, this.props.id);
 	      this.props.markSectionAsClicked(-1);
+	      this.props.markChartInfoAsClicked("NONE");
+	      this.props.markMultiplierAsClicked(-1);
+	      this.props.markBeatAsClicked(this.props.sectionId, this.props.measureIndex, this.props.id);
 	    }
 	  }, {
 	    key: 'handleKeyDown',
@@ -31628,6 +31649,7 @@
 	          measures: section.measures,
 	          clicked: section.clicked,
 	          multiplier: section.multiplier,
+	          multiplierClicked: section.multiplierClicked,
 	          addMeasure: that.props.actions.addMeasure,
 	          removeMeasure: that.props.actions.removeMeasure,
 	          markBeatAsClicked: that.props.actions.markBeatAsClicked,
@@ -31638,7 +31660,10 @@
 	          moveSectionDown: that.props.actions.moveSectionDown,
 	          filter: that.props.filter,
 	          currentKey: that.props.currentKey,
-	          display: that.props.display });
+	          display: that.props.display,
+	          markChartInfoAsClicked: that.props.actions.markChartInfoAsClicked,
+	          setMultiplier: that.props.actions.setMultiplier,
+	          markMultiplierAsClicked: that.props.actions.markMultiplierAsClicked });
 	      });
 	      return _react2.default.createElement(
 	        'div',
@@ -31734,9 +31759,9 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { style: style },
-	        _react2.default.createElement(_TitleDisplay2.default, { title: this.props.title, setTitle: this.props.setTitle, filter: this.props.filter, currentChartInfo: this.props.currentChartInfo, markChartInfoAsClicked: this.props.markChartInfoAsClicked }),
-	        _react2.default.createElement(_ComposerDisplay2.default, { composer: this.props.composer, setComposer: this.props.setComposer, filter: this.props.filter, currentChartInfo: this.props.currentChartInfo, markChartInfoAsClicked: this.props.markChartInfoAsClicked }),
-	        _react2.default.createElement(_ArrangerDisplay2.default, { arranger: this.props.arranger, setArranger: this.props.setArranger, filter: this.props.filter, currentChartInfo: this.props.currentChartInfo, markChartInfoAsClicked: this.props.markChartInfoAsClicked })
+	        _react2.default.createElement(_TitleDisplay2.default, { title: this.props.title, setTitle: this.props.setTitle, filter: this.props.filter, currentChartInfo: this.props.currentChartInfo, markBeatAsClicked: this.props.markBeatAsClicked, markSectionAsClicked: this.props.markSectionAsClicked, markChartInfoAsClicked: this.props.markChartInfoAsClicked, markMultiplierAsClicked: this.props.markMultiplierAsClicked }),
+	        _react2.default.createElement(_ComposerDisplay2.default, { composer: this.props.composer, setComposer: this.props.setComposer, filter: this.props.filter, currentChartInfo: this.props.currentChartInfo, markBeatAsClicked: this.props.markBeatAsClicked, markSectionAsClicked: this.props.markSectionAsClicked, markChartInfoAsClicked: this.props.markChartInfoAsClicked, markMultiplierAsClicked: this.props.markMultiplierAsClicked }),
+	        _react2.default.createElement(_ArrangerDisplay2.default, { arranger: this.props.arranger, setArranger: this.props.setArranger, filter: this.props.filter, currentChartInfo: this.props.currentChartInfo, markBeatAsClicked: this.props.markBeatAsClicked, markSectionAsClicked: this.props.markSectionAsClicked, markChartInfoAsClicked: this.props.markChartInfoAsClicked, markMultiplierAsClicked: this.props.markMultiplierAsClicked })
 	      );
 	    }
 	  }]);
@@ -31953,6 +31978,9 @@
 	      e.preventDefault();
 	      e.stopPropagation();
 	      if (this.props.filter === "EDIT") {
+	        this.props.markBeatAsClicked(-1, -1, -1);
+	        this.props.markSectionAsClicked(-1);
+	        this.props.markMultiplierAsClicked(-1);
 	        this.props.markChartInfoAsClicked("COMPOSER");
 	      }
 	    }
@@ -32161,6 +32189,8 @@
 	          sectionId: that.props.sectionId,
 	          markBeatAsClicked: that.props.markBeatAsClicked,
 	          markSectionAsClicked: that.props.markSectionAsClicked,
+	          markChartInfoAsClicked: that.props.markChartInfoAsClicked,
+	          markMultiplierAsClicked: that.props.markMultiplierAsClicked,
 	          measureIndex: that.props.index,
 	          setChord: that.props.setChord,
 	          filter: that.props.filter,
@@ -32728,7 +32758,7 @@
 	        null,
 	        _react2.default.createElement(
 	          'button',
-	          { onClick: this.handleClick },
+	          { disabled: true, onClick: this.handleClick },
 	          'SAVE'
 	        )
 	      );
@@ -32824,6 +32854,8 @@
 	          paddingLeft: '10px',
 	          marginTop: '5px',
 	          marginBottom: '5px',
+	          boxShadow: '5px 5px 5px darkgray',
+	          backgroundColor: '#c0cbdb',
 	          transition: 'width .5s, border .5s, padding .5s'
 	        }
 	      }
@@ -32859,7 +32891,9 @@
 	          filter: that.props.filter,
 	          sectionLength: that.props.measures.length,
 	          currentKey: that.props.currentKey,
-	          display: that.props.display });
+	          display: that.props.display,
+	          markChartInfoAsClicked: that.props.markChartInfoAsClicked,
+	          markMultiplierAsClicked: that.props.markMultiplierAsClicked });
 	      });
 	      return _react2.default.createElement(
 	        'div',
@@ -32869,16 +32903,18 @@
 	          sectionId: this.props.id,
 	          setSectionName: this.props.setSectionName,
 	          clicked: this.props.clicked,
-	          markSectionAsClicked: this.props.markSectionAsClicked,
 	          filter: this.props.filter,
-	          markBeatAsClicked: this.props.markBeatAsClicked }),
+	          markBeatAsClicked: this.props.markBeatAsClicked,
+	          markSectionAsClicked: this.props.markSectionAsClicked,
+	          markChartInfoAsClicked: this.props.markChartInfoAsClicked,
+	          markMultiplierAsClicked: this.props.markMultiplierAsClicked }),
 	        _react2.default.createElement(
 	          'div',
 	          { style: { margin: '0 auto', width: '100%', maxHeight: '80%', position: 'relative' } },
 	          measuresToRender
 	        ),
 	        _react2.default.createElement(_SectionButtonToolbar2.default, { sectionId: this.props.id, addMeasure: this.props.addMeasure, removeSection: this.props.removeSection, id: this.props.id, moveSectionUp: this.props.moveSectionUp, moveSectionDown: this.props.moveSectionDown, filter: this.props.filter }),
-	        _react2.default.createElement(_SectionMultiplier2.default, { filter: this.props.filter, multiplier: this.props.multiplier })
+	        _react2.default.createElement(_SectionMultiplier2.default, { filter: this.props.filter, multiplier: this.props.multiplier, multiplierClicked: this.props.multiplierClicked, markBeatAsClicked: this.props.markBeatAsClicked, markSectionAsClicked: this.props.markSectionAsClicked, markChartInfoAsClicked: this.props.markChartInfoAsClicked, markMultiplierAsClicked: this.props.markMultiplierAsClicked, setMultiplier: this.props.setMultiplier, sectionId: this.props.id })
 	      );
 	    }
 	  }]);
@@ -33012,30 +33048,76 @@
 	  function SectionMultiplier(props) {
 	    _classCallCheck(this, SectionMultiplier);
 
-	    return _possibleConstructorReturn(this, (SectionMultiplier.__proto__ || Object.getPrototypeOf(SectionMultiplier)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (SectionMultiplier.__proto__ || Object.getPrototypeOf(SectionMultiplier)).call(this, props));
+
+	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.handleChange = _this.handleChange.bind(_this);
+	    _this.handleKeyDown = _this.handleKeyDown.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(SectionMultiplier, [{
+	    key: 'handleClick',
+	    value: function handleClick(e) {
+	      e.stopPropagation();
+	      e.preventDefault();
+	      this.props.markBeatAsClicked(-1, -1, -1);
+	      this.props.markSectionAsClicked(-1);
+	      this.props.markChartInfoAsClicked("NONE");
+	      this.props.markMultiplierAsClicked(this.props.sectionId);
+	    }
+	  }, {
+	    key: 'handleChange',
+	    value: function handleChange(e) {
+	      e.preventDefault();
+	      this.props.setMultiplier(this.props.sectionId, e.target.value);
+	    }
+	  }, {
+	    key: 'handleKeyDown',
+	    value: function handleKeyDown(e) {
+	      if (e.key === 'Enter' || e.key === 'Tab') {
+	        e.preventDefault();
+	        this.props.markMultiplierAsClicked(-1);
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+
 	      var className = 'section-multiplier-';
 	      var pClassName = 'section-multiplier-p-';
+	      var thingToDisplay;
 	      if (this.props.filter === 'EDIT') {
 	        className += 'edit';
 	        pClassName += 'edit';
+	        if (this.props.multiplierClicked) {
+	          thingToDisplay = _react2.default.createElement('input', { onChange: this.handleChange, placeholder: this.props.multiplier, onKeyDown: this.handleKeyDown, className: 'multiplier-input', autoFocus: true });
+	        } else {
+	          thingToDisplay = _react2.default.createElement(
+	            'p',
+	            { className: pClassName },
+	            'x',
+	            this.props.multiplier
+	          );
+	        }
 	      } else {
 	        className += 'show';
 	        pClassName += 'show';
+	        if (this.props.multiplier === '1' || this.props.multiplier === 1 || this.props.multiplier === '' || this.props.multiplier === ' ') {
+	          thingToDisplay = null;
+	        } else {
+	          thingToDisplay = _react2.default.createElement(
+	            'p',
+	            { className: pClassName },
+	            'x',
+	            this.props.multiplier
+	          );
+	        }
 	      }
 	      return _react2.default.createElement(
 	        'div',
-	        { className: className },
-	        _react2.default.createElement(
-	          'p',
-	          { className: pClassName },
-	          'x',
-	          this.props.multiplier
-	        )
+	        { onClick: this.handleClick, className: className },
+	        thingToDisplay
 	      );
 	    }
 	  }]);
@@ -33117,6 +33199,8 @@
 	      e.preventDefault();
 	      if (this.props.filter === "EDIT") {
 	        this.props.markBeatAsClicked(-1, -1, -1);
+	        this.props.markChartInfoAsClicked("NONE");
+	        this.props.markMultiplierAsClicked(-1);
 	        this.props.markSectionAsClicked(this.props.sectionId);
 	      }
 	    }
@@ -33388,6 +33472,9 @@
 	      e.stopPropagation();
 	      e.preventDefault();
 	      if (this.props.filter === "EDIT") {
+	        this.props.markBeatAsClicked(-1, -1, -1);
+	        this.props.markSectionAsClicked(-1);
+	        this.props.markMultiplierAsClicked(-1);
 	        this.props.markChartInfoAsClicked("TITLE");
 	      }
 	    }
@@ -33900,7 +33987,8 @@
 					numMeasures: action.numMeasures,
 					measures: [],
 					clicked: false,
-					multiplier: 1
+					multiplier: 1,
+					multiplierClicked: false
 				}]);
 			case 'REMOVE_SECTION':
 				var _clone = state.map(function (section, index) {
@@ -33933,7 +34021,8 @@
 								clicked: false
 							}]),
 							clicked: false,
-							multiplier: section.multiplier
+							multiplier: section.multiplier,
+							multiplierClicked: section.multiplierClicked
 						};
 						return sectionClone;
 					}
@@ -33969,7 +34058,8 @@
 							numMeasures: section.numMeasures + 1,
 							measures: cleanMeasuresClone,
 							clicked: section.clicked,
-							multiplier: section.multiplier
+							multiplier: section.multiplier,
+							multiplierClicked: section.multiplierClicked
 						};
 						return sectionClone;
 					}
@@ -34026,7 +34116,8 @@
 						numMeasures: currentSection.numMeasures,
 						clicked: currentSection.clicked,
 						measures: currentMeasures,
-						multiplier: currentSection.multiplier
+						multiplier: currentSection.multiplier,
+						multiplierClicked: currentSection.multiplierClicked
 					};
 					updatedSections.push(currentSectionClone);
 				}
@@ -34105,7 +34196,8 @@
 						numMeasures: currentSection.numMeasures,
 						clicked: currentSection.clicked,
 						measures: currentMeasures,
-						multiplier: currentSection.multiplier
+						multiplier: currentSection.multiplier,
+						multiplierClicked: currentSection.multiplierClicked
 					};
 					updatedSections.push(currentSectionClone);
 				}
@@ -34151,7 +34243,8 @@
 						numMeasures: currentSection.numMeasures,
 						clicked: currentSection.clicked,
 						measures: currentMeasures,
-						multiplier: currentSection.multiplier
+						multiplier: currentSection.multiplier,
+						multiplierClicked: currentSection.multiplierClicked
 					};
 					transposedSections.push(currentSectionClone);
 				}
@@ -34199,6 +34292,22 @@
 				sectionsClone[movingSectionIndex + 1] = movingSection;
 				sectionsClone[movingSectionIndex] = sectionBelow;
 				return sectionsClone;
+			case 'MARK_MULTIPLIER_AS_CLICKED':
+				var cloneSections = state.map(function (currentSection, index) {
+					if (currentSection.id === action.sectionId) {
+						return Object.assign(currentSection, { multiplierClicked: true });
+					}
+					return Object.assign(currentSection, { multiplierClicked: false });
+				});
+				return cloneSections;
+			case 'SET_MULTIPLIER':
+				var newlyClonedSections = state.map(function (currentSection, index) {
+					if (currentSection.id === action.sectionId) {
+						return Object.assign(currentSection, { multiplier: action.multiplier });
+					}
+					return Object.assign(currentSection, {});
+				});
+				return newlyClonedSections;
 
 			default:
 				return state;
