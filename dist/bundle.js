@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "31a58ffe5480aeae718e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1a5b7cb296fb714cea80"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -32865,7 +32865,7 @@
 	        null,
 	        _react2.default.createElement(
 	          'button',
-	          { onClick: this.handleClick },
+	          { disabled: true, onClick: this.handleClick },
 	          'SAVE'
 	        )
 	      );

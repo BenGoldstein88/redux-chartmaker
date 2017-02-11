@@ -34,7 +34,7 @@ export default class SaveButton extends React.Component {
   render() {
     return (
       <div>
-      	<button onClick={this.handleClick}>
+      	<button disabled={true} onClick={this.handleClick}>
       		SAVE 
       	</button>
       </div>
