@@ -40,7 +40,8 @@ export default class Chart extends React.Component {
           display={that.props.display}
           markChartInfoAsClicked={that.props.actions.markChartInfoAsClicked}
           setMultiplier={that.props.actions.setMultiplier}
-          markMultiplierAsClicked={that.props.actions.markMultiplierAsClicked} />
+          markMultiplierAsClicked={that.props.actions.markMultiplierAsClicked}
+          addSection={that.props.actions.addSection} />
   	})
     return (
       <div style={{

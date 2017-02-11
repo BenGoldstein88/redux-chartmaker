@@ -23,12 +23,14 @@ export const REMOVE_SECTION = 'REMOVE_SECTION';
 let nextSectionId = 0
 let nextMeasureId = 0
 
-export const addSection = (numMeasures = 8, name = 'Chorus') => {
+export const addSection = (numMeasures = 0, name = 'Chorus', duplicate = false, sectionId = -1) => {
 	return {
 		type: 'ADD_SECTION',
 		id: nextSectionId++,
 		numMeasures,
-		name
+		name,
+		duplicate,
+		sectionId
 	}
 }
 

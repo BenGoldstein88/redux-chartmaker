@@ -172,7 +172,7 @@ body {
 
 .section-name-p {
 	font-size: 1.3em;
-	width: 150px;
+	/*width: 150px;*/
 	/*cursor: url('../images/edit.png'), text;*/
 }
 
@@ -244,6 +244,41 @@ body {
 	transition: background-color .3s;
 }
 
+.duplicate-section-button {
+	position: absolute;
+	top: 0;
+	left: -60px;
+	cursor: pointer;
+	border: none;
+	background-color: blue;
+	display: inline-block;
+	color: white;
+	font-size: 1em;
+	font-weight: normal;
+	height: 50px;
+	width: 50px;
+	margin: 2px;
+	border-radius: 10px;
+	/*position: relative;*/
+	text-align: 'center';	
+	box-shadow: 10px 8px 10px #888888;
+	transition: box-shadow .5s, font-weight .5s, font-size .5s, background-color .5s, color .5s;	
+}
+
+.duplicate-section-button:hover {
+	font-size: 1.7em;
+	font-weight: bold;
+	background-color: cyan;
+	color: black;
+    box-shadow: 12px 10px 10px #888888;
+    transition: box-shadow .5s, font-weight .5s, font-size .5s, background-color .5s, color .5s;
+}
+.duplicate-section-button:active {
+	background-color: darkblue;
+	color: cyan;
+	transition: background-color .3s, color .3s;	
+}
+
 .add-measure-button {
 	cursor: pointer;
 	border: none;
@@ -258,19 +293,19 @@ body {
 	/*position: relative;*/
 	text-align: 'center';	
 	box-shadow: 10px 8px 10px #888888;
-	transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;
+	transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s, color .3s;
 }
 
 .add-measure-button:hover {
 	font-size: 1.1em;
 	font-weight: bold;
     box-shadow: 12px 10px 10px #888888;
-    transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s;	
+    transition: box-shadow .3s, font-weight .3s, font-size .3s, background-color .3s, color .3s;	
 }
 .add-measure-button:active {
 	background-color: darkgreen;
 	color: limegreen;
-	transition: background-color .3s, color .1s;
+	transition: background-color .3s, color .3s;
 }
 
 .remove-section-button {

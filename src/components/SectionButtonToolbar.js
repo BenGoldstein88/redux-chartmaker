@@ -3,6 +3,7 @@ import RemoveSectionButton from './RemoveSectionButton'
 import AddMeasureButton from './AddMeasureButton';
 import MoveSectionUpButton from './MoveSectionUpButton';
 import MoveSectionDownButton from './MoveSectionDownButton';
+import DuplicateSectionButton from './DuplicateSectionButton';
 export default class SectionButtonToolbar extends React.Component {
   // static propTypes = {
   //   name: React.PropTypes.string,
@@ -18,6 +19,7 @@ export default class SectionButtonToolbar extends React.Component {
         <MoveSectionUpButton className={'section-toolbar-button'} moveSectionUp={this.props.moveSectionUp} sectionId={this.props.sectionId}/>
         <MoveSectionDownButton className={'section-toolbar-button'} moveSectionDown={this.props.moveSectionDown} sectionId={this.props.sectionId}/>
         <RemoveSectionButton className={'section-toolbar-button'} removeSection={this.props.removeSection} id={this.props.id} />
+        <DuplicateSectionButton className={'section-toolbar-button'} addSection={this.props.addSection} sectionName={this.props.sectionName} sectionId={this.props.sectionId} />
       </div>
     if(this.props.filter==='SHOW') {
       thingToDisplay = null

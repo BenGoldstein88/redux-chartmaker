@@ -97,7 +97,7 @@ export default class Section extends React.Component {
           <div style={{margin: '0 auto', width: '100%', maxHeight: '80%', position: 'relative'}}>
             {measuresToRender}
           </div>
-          <SectionButtonToolbar sectionId={this.props.id} addMeasure={this.props.addMeasure} removeSection={this.props.removeSection} id={this.props.id} moveSectionUp={this.props.moveSectionUp} moveSectionDown={this.props.moveSectionDown} filter={this.props.filter} />
+          <SectionButtonToolbar sectionId={this.props.id} addMeasure={this.props.addMeasure} removeSection={this.props.removeSection} id={this.props.id} moveSectionUp={this.props.moveSectionUp} moveSectionDown={this.props.moveSectionDown} filter={this.props.filter} sectionName={this.props.name} addSection={this.props.addSection}/>
           <SectionMultiplier filter={this.props.filter} multiplier={this.props.multiplier} multiplierClicked={this.props.multiplierClicked} markBeatAsClicked={this.props.markBeatAsClicked} markSectionAsClicked={this.props.markSectionAsClicked} markChartInfoAsClicked={this.props.markChartInfoAsClicked} markMultiplierAsClicked={this.props.markMultiplierAsClicked} setMultiplier={this.props.setMultiplier} sectionId={this.props.id} />
         </div>
     );

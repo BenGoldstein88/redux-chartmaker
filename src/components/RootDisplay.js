@@ -47,7 +47,7 @@ export default class RootDisplay extends React.Component {
   	var sharpBoxesToDisplay = <div className={'sharp-boxes'} >{sharpBoxes}</div>
   	var flatBoxes = this.state.roots.flats.map(function(rootNote, index) {
   		if(rootNote===that.props.currentKey) {
-  			return <div key={index} className={'root-box flat-box ' + 'root-box-' + rootNote[0] + 'flat' + 'current-key-box'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
+  			return <div key={index} className={'root-box flat-box ' + 'root-box-' + rootNote[0] + 'flat' + ' current-key-box'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
   		} else {
   			return <div key={index} className={'root-box flat-box ' + 'root-box-' + rootNote[0] + 'flat'}><p className={'root-box-p'} onClick={that.handleClick}>{rootNote}</p></div>
   		}

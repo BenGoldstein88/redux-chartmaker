@@ -14,8 +14,10 @@ export default class SetFilterButton extends React.Component {
   handleClick(e) {
   	e.preventDefault();
   	if(this.props.filter === 'EDIT'){
+      this.props.resetFormFields()
   		this.props.setVisibilityFilter('SHOW')
   	} else {
+      this.props.resetFormFields()
   		this.props.setVisibilityFilter('EDIT')
   	}
 

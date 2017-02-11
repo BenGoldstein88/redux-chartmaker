@@ -35,6 +35,7 @@ export default class Home extends React.Component {
     FocusStyleManager.onlyShowFocusOnTabs();
 
     this.handleClick = this.handleClick.bind(this);
+    this.resetFormFields = this.resetFormFields.bind(this);
     // this.transposeChord = this.transposeChord.bind(this);
 
   }
@@ -45,6 +46,7 @@ export default class Home extends React.Component {
       var pressed = ''
       if(e.key==='`') {
         if(that.props.filter==='EDIT') {
+          that.resetFormFields()
           that.props.actions.setVisibilityFilter('SHOW')
         } else {
           that.props.actions.setVisibilityFilter('EDIT')
@@ -73,12 +75,16 @@ export default class Home extends React.Component {
     })    
   }
 
-  handleClick(e) {
-    e.preventDefault()
+  resetFormFields() {
     this.props.actions.markBeatAsClicked(-1, -1, -1)
     this.props.actions.markSectionAsClicked(-1)
     this.props.actions.markChartInfoAsClicked('NONE')
-    this.props.actions.markMultiplierAsClicked(-1)
+    this.props.actions.markMultiplierAsClicked(-1)    
+  }
+
+  handleClick(e) {
+    e.preventDefault()
+    this.resetFormFields
   }
         // <SetDisplayButton setChordDisplay={this.props.actions.setChordDisplay} filter ={this.props.filter} display={this.props.display} />
   render() {
@@ -94,7 +100,7 @@ export default class Home extends React.Component {
     return (
       <div style={style} onClick={this.handleClick}>
         <ChartInfo title={this.props.title} composer={this.props.composer} arranger={this.props.arranger} setTitle={this.props.actions.setTitle} setComposer={this.props.actions.setComposer} setArranger={this.props.actions.setArranger} filter={this.props.filter} currentChartInfo={this.props.currentChartInfo} markBeatAsClicked={this.props.actions.markBeatAsClicked} markSectionAsClicked={this.props.actions.markSectionAsClicked} markChartInfoAsClicked={this.props.actions.markChartInfoAsClicked} markMultiplierAsClicked={this.props.actions.markMultiplierAsClicked} />
-        <SetFilterButton setVisibilityFilter={this.props.actions.setVisibilityFilter} filter={this.props.filter} />
+        <SetFilterButton setVisibilityFilter={this.props.actions.setVisibilityFilter} filter={this.props.filter} resetFormFields={this.resetFormFields} />
         <ChooseKey currentKey={this.props.currentKey} setCurrentKey={this.props.actions.setCurrentKey} transposeAllChords={this.props.actions.transposeAllChords} filter={this.props.filter}/>
         {addSectionButton}
         <Chart sections={this.props.sections} actions={this.props.actions} filter={this.props.filter} currentKey={this.props.currentKey} display={this.props.display} />
