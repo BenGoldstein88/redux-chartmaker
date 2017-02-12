@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "93ee3f3affb9710f66af"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "cf6ba639164c29a5c793"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -16733,7 +16733,7 @@
 	    key: 'handleClick',
 	    value: function handleClick(e) {
 	      e.preventDefault();
-	      this.resetFormFields;
+	      this.resetFormFields();
 	    }
 	    // <SetDisplayButton setChordDisplay={this.props.actions.setChordDisplay} filter ={this.props.filter} display={this.props.display} />
 

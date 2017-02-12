@@ -84,7 +84,7 @@ export default class Home extends React.Component {
 
   handleClick(e) {
     e.preventDefault()
-    this.resetFormFields
+    this.resetFormFields()
   }
         // <SetDisplayButton setChordDisplay={this.props.actions.setChordDisplay} filter ={this.props.filter} display={this.props.display} />
   render() {
