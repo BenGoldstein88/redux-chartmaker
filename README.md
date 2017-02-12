@@ -50,4 +50,9 @@ ArrowKeys:		Move between beats while one is selected,
 Tab:			Move to the first beat of the next measure when a beat is selected
 					Move to the next piece of chart information if one is selected
 
+<h2> Demo </h2>
+
+Let's do a quick example with Santeria by Sublime. I think it was written in E so I'm going to write it in E. If it turns out I'm wrong (or some horn player in a cover-band can't stomach the key), the chart is always transposable!
+
+![alt text](https://github.com/BenGoldstein88/redux-chartmaker/blob/master/src/assets/images/chartdemo.gif)
 
