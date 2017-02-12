@@ -2,11 +2,17 @@
 
 This is a tool for musicians (or whomever, really) to build, edit, view, and transpose charts. Save functionality is forthcoming, so be patient.
 
+[You can pilot a beta version of the app hosted on Heroku here.](https://chart-maker.herokuapp.com)
+
 <h2> First: </h2>
 
 Choose your key. Do this from the circle on the top left of the screen.
 
-Your starting key is important, as it will serve as reference if/when you decide to transpose the chart.
+Seriously. Figure out what key your song is in. If it's in a minor key, use the relative major or just the associated minor root (eg. key of Am you can use "C" or "A"). 
+
+If you're not sure, check the first and last chord of the song. If they're the same, there's a 99% chance the song key is that chord. If they are not the same, listen for whatever chord sounds like "home" harmonically in the song. Wherever the song seems to "rest". Worst case, ask someone with some training in diatonic chord theory.
+
+Choosing the right key now ensures your transpositions are accurate later.
 
 <h2> Next: </h2>
 (in no particular order)

@@ -32,6 +32,10 @@ function trueTransposeChord(chord, key, newKey) {
 	var oldKeyScale = scales[key + "Scale"]
 	var newKeyScale = scales[newKey + "Scale"]
 
+	if(key==="KEY") {
+		oldKeyScale = newKeyScale
+	}
+
 
 	var transposedChord
 	transposedChord = chord.replace(/(([CDEFGAB]#\*)|([CDEFGAB]#)|([CDEFGAB]b+)|([CDEFGAB]\**))/g, function(match) {
@@ -135,7 +139,7 @@ function sections(state = [], action) {
 				// var duplicatedMeasures = []
 				// for(var i in measuresToDuplicate) {
 				// 	var measuresToDuplicate = measuresToDuplicate[i]
-					
+
 				// }
 
 				var duplicatedSection = {
