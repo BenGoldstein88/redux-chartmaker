@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1a5b7cb296fb714cea80"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ffe6db785568127f7183"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -33089,6 +33089,9 @@
 	    return _possibleConstructorReturn(this, (SectionButtonToolbar.__proto__ || Object.getPrototypeOf(SectionButtonToolbar)).call(this, props));
 	  }
 
+	  // <DuplicateSectionButton className={'section-toolbar-button'} addSection={this.props.addSection} sectionName={this.props.sectionName} sectionId={this.props.sectionId} />
+
+
 	  _createClass(SectionButtonToolbar, [{
 	    key: 'render',
 	    value: function render() {
@@ -33098,8 +33101,7 @@
 	        _react2.default.createElement(_AddMeasureButton2.default, { className: 'section-toolbar-button', sectionId: this.props.sectionId, addMeasure: this.props.addMeasure }),
 	        _react2.default.createElement(_MoveSectionUpButton2.default, { className: 'section-toolbar-button', moveSectionUp: this.props.moveSectionUp, sectionId: this.props.sectionId }),
 	        _react2.default.createElement(_MoveSectionDownButton2.default, { className: 'section-toolbar-button', moveSectionDown: this.props.moveSectionDown, sectionId: this.props.sectionId }),
-	        _react2.default.createElement(_RemoveSectionButton2.default, { className: 'section-toolbar-button', removeSection: this.props.removeSection, id: this.props.id }),
-	        _react2.default.createElement(_DuplicateSectionButton2.default, { className: 'section-toolbar-button', addSection: this.props.addSection, sectionName: this.props.sectionName, sectionId: this.props.sectionId })
+	        _react2.default.createElement(_RemoveSectionButton2.default, { className: 'section-toolbar-button', removeSection: this.props.removeSection, id: this.props.id })
 	      );
 	      if (this.props.filter === 'SHOW') {
 	        thingToDisplay = null;
@@ -34001,6 +34003,13 @@
 					var sectionToDuplicate = state.find(function (section) {
 						return section.id === action.sectionId;
 					});
+					// var measuresToDuplicate = sectionToDuplicate.measures
+					// var duplicatedMeasures = []
+					// for(var i in measuresToDuplicate) {
+					// 	var measuresToDuplicate = measuresToDuplicate[i]
+
+					// }
+
 					var duplicatedSection = {
 						id: action.id,
 						name: sectionToDuplicate.name,

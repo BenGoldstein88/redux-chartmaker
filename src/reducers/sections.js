@@ -131,6 +131,13 @@ function sections(state = [], action) {
 				var sectionToDuplicate = state.find(function(section) {
 					return section.id === action.sectionId
 				})
+				// var measuresToDuplicate = sectionToDuplicate.measures
+				// var duplicatedMeasures = []
+				// for(var i in measuresToDuplicate) {
+				// 	var measuresToDuplicate = measuresToDuplicate[i]
+					
+				// }
+
 				var duplicatedSection = {
 					id: action.id,
 					name: sectionToDuplicate.name,

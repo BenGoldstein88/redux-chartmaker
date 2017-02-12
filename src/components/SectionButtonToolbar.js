@@ -13,13 +13,13 @@ export default class SectionButtonToolbar extends React.Component {
     super(props);
   }
 
+        // <DuplicateSectionButton className={'section-toolbar-button'} addSection={this.props.addSection} sectionName={this.props.sectionName} sectionId={this.props.sectionId} />
   render() {
     var thingToDisplay = <div id={'slide'}>
         <AddMeasureButton className={'section-toolbar-button'} sectionId={this.props.sectionId} addMeasure={this.props.addMeasure} />
         <MoveSectionUpButton className={'section-toolbar-button'} moveSectionUp={this.props.moveSectionUp} sectionId={this.props.sectionId}/>
         <MoveSectionDownButton className={'section-toolbar-button'} moveSectionDown={this.props.moveSectionDown} sectionId={this.props.sectionId}/>
         <RemoveSectionButton className={'section-toolbar-button'} removeSection={this.props.removeSection} id={this.props.id} />
-        <DuplicateSectionButton className={'section-toolbar-button'} addSection={this.props.addSection} sectionName={this.props.sectionName} sectionId={this.props.sectionId} />
       </div>
     if(this.props.filter==='SHOW') {
       thingToDisplay = null
