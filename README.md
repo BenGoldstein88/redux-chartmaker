@@ -44,9 +44,12 @@ Measure can be deleted with the **X** button beneath each one. That should be ob
 There are some keyboard shortcuts!
 
 Shift-Enter: 	Add new section
+
 `: 				Toggle EDIT/SHOW mode
+
 ArrowKeys:		Move between beats while one is selected,
-					Move between chart information (name, composer, arranger) when one is selected
+				Move between chart information (name, composer, arranger) when one is selected
+
 Tab:			Move to the first beat of the next measure when a beat is selected
 					Move to the next piece of chart information if one is selected
 
